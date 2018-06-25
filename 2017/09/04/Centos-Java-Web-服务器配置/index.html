@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=61021328"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Centos Java Web 服务器配置 | ViVi&#39;s craft | 只用来写技术相关的文章，记一些平时很少用很容易忘记的东西。能用实际项目来掌握的技术还懒得写，于是很少更新。想看更新频繁,内容日常的博客，请移步：&lt;a style=&#34;color:#FFFFFF;&#34; herf=&#34;https://chenvivi.wordpress.com&#34;&gt;https://chenvivi.wordpress.com&lt;/a&gt;</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="服务器,Linux">
+    <meta name="description" content="环境本机环境：Centos6.5 将要配置的环境： jdk1.8 tomcat7 mysql5.7 地址1116.196.115.166 Java安装把java安装包传到/usr/share下 运行如下命令1tar -zxvf jdk-8u144-linux-x64.tar.gz 配置环境变量在/etc/profile末尾添加三行内容并保存 123export JAVA_HOME=/usr/sha">
+<meta name="keywords" content="服务器,Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Centos Java Web 服务器配置">
+<meta property="og:url" content="http://blog.valorachen.club/2017/09/04/Centos-Java-Web-服务器配置/index.html">
+<meta property="og:site_name" content="ViVi&#39;s craft">
+<meta property="og:description" content="环境本机环境：Centos6.5 将要配置的环境： jdk1.8 tomcat7 mysql5.7 地址1116.196.115.166 Java安装把java安装包传到/usr/share下 运行如下命令1tar -zxvf jdk-8u144-linux-x64.tar.gz 配置环境变量在/etc/profile末尾添加三行内容并保存 123export JAVA_HOME=/usr/sha">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://omqwegju8.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20170904155133.png">
+<meta property="og:updated_time" content="2018-03-21T06:51:54.251Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Centos Java Web 服务器配置">
+<meta name="twitter:description" content="环境本机环境：Centos6.5 将要配置的环境： jdk1.8 tomcat7 mysql5.7 地址1116.196.115.166 Java安装把java安装包传到/usr/share下 运行如下命令1tar -zxvf jdk-8u144-linux-x64.tar.gz 配置环境变量在/etc/profile末尾添加三行内容并保存 123export JAVA_HOME=/usr/sha">
+<meta name="twitter:image" content="http://omqwegju8.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20170904155133.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="ViVi&#39;s craft" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ViVi</h5>
+          <a href="mailto:valorachen@163.com" title="valorachen@163.com" class="mail">valorachen@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                时间线
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://chenvivi.wordpress.com/" target="_blank" >
+                <i class="icon icon-lg icon-book"></i>
+                我的日记（代替py圈）
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom.xml" target="_blank" >
+                <i class="icon icon-lg icon-rss"></i>
+                RSS
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ChenViVi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://steamcommunity.com/profiles/76561198300793241" target="_blank" >
+                <i class="icon icon-lg icon-steam"></i>
+                Steam
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/p/1005053101937447/home?from=page_100505&mod=TAB&is_all=1#place" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Centos Java Web 服务器配置</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Centos Java Web 服务器配置</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-09-04T08:13:33.000Z" itemprop="datePublished" class="page-time">
+  2017-09-04
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#环境"><span class="post-toc-number">1.</span> <span class="post-toc-text">环境</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#地址"><span class="post-toc-number">2.</span> <span class="post-toc-text">地址</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Java"><span class="post-toc-number">3.</span> <span class="post-toc-text">Java</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置环境变量"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">配置环境变量</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Tomcat"><span class="post-toc-number">4.</span> <span class="post-toc-text">Tomcat</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装-1"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#启动服务"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">启动服务</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#开机运行服务"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">开机运行服务</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Mysql"><span class="post-toc-number">5.</span> <span class="post-toc-text">Mysql</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装-2"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#初始化mysql"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">初始化mysql</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#启动服务-1"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">启动服务</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#开机自启"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">开机自启</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#中文编码"><span class="post-toc-number">5.5.</span> <span class="post-toc-text">中文编码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改密码"><span class="post-toc-number">5.6.</span> <span class="post-toc-text">修改密码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#打开3306端口"><span class="post-toc-number">5.7.</span> <span class="post-toc-text">打开3306端口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#远程登录"><span class="post-toc-number">5.8.</span> <span class="post-toc-text">远程登录</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Centos-Java-Web-服务器配置"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Centos Java Web 服务器配置</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-09-04 16:13:33" datetime="2017-09-04T08:13:33.000Z"  itemprop="datePublished">2017-09-04</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>本机环境：Centos6.5</p>
+<p>将要配置的环境：</p>
+<p>jdk1.8</p>
+<p>tomcat7</p>
+<p>mysql5.7</p>
+<h2 id="地址"><a href="#地址" class="headerlink" title="地址"></a>地址</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">116.196.115.166</span><br></pre></td></tr></table></figure>
+<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>把java安装包传到/usr/share下</p>
+<p>运行如下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf jdk-8u144-linux-x64.tar.gz</span><br></pre></td></tr></table></figure></p>
+<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p>在/etc/profile末尾添加三行内容并保存</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/share/jdk1.8.0_144</span><br><span class="line">export CLASSPATH=.:%JAVA_HOME%/lib/dt.jar:%JAVA_HOME%/lib/tools.jar</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin</span><br></pre></td></tr></table></figure>
+<p>运行如下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile</span><br><span class="line">javac</span><br></pre></td></tr></table></figure></p>
+<h2 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h2><h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><p>把tomcat安装包传到/usr/share下</p>
+<p>运行如下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf apache-tomcat-7.0.81.tar.gz</span><br></pre></td></tr></table></figure></p>
+<h3 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h3><p>运行如下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/share/apache-tomcat-7.0.81/bin</span><br><span class="line">./startup.sh</span><br></pre></td></tr></table></figure></p>
+<h3 id="开机运行服务"><a href="#开机运行服务" class="headerlink" title="开机运行服务"></a>开机运行服务</h3><p><a href="http://blog.csdn.net/huxu981598436/article/details/54863298" target="_blank" rel="noopener">参考：http://blog.csdn.net/huxu981598436/article/details/54863298</a></p>
+<p>在/etc/init.d下新建一个文件tomcat</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/init.d/tomcat</span><br></pre></td></tr></table></figure>
+<p>写下如下代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"># chkconfig: 2345 10 90</span><br><span class="line"># description: Starts and Stops the Tomcat daemon.</span><br><span class="line"># /etc/init.d/tomcatd</span><br><span class="line"># Tomcat auto-start</span><br><span class="line"># Source function library.</span><br><span class="line">#. /etc/init.d/functions</span><br><span class="line"># source networking configuration.</span><br><span class="line">#. /etc/sysconfig/network</span><br><span class="line">RETVAL=0</span><br><span class="line">export JAVA_HOME=/usr/share/jdk1.8.0_144</span><br><span class="line">export JRE_HOME=/usr/share/jdk1.8.0_144/jre</span><br><span class="line">export CATALINA_HOME=/usr/share/apache-tomcat-7.0.67</span><br><span class="line">export CATALINA_BASE=/usr/share/apache-tomcat-7.0.67</span><br><span class="line">start()</span><br><span class="line">&#123;</span><br><span class="line">        if [ -f $CATALINA_HOME/bin/startup.sh ];</span><br><span class="line">          then</span><br><span class="line">            echo $&quot;Starting Tomcat&quot;</span><br><span class="line">                $CATALINA_HOME/bin/startup.sh</span><br><span class="line">            RETVAL=$?</span><br><span class="line">            echo &quot; OK&quot;</span><br><span class="line">            return $RETVAL</span><br><span class="line">        fi</span><br><span class="line">&#125;</span><br><span class="line">stop()</span><br><span class="line">&#123;</span><br><span class="line">        if [ -f $CATALINA_HOME/bin/shutdown.sh ];</span><br><span class="line">          then</span><br><span class="line">            echo $&quot;Stopping Tomcat&quot;</span><br><span class="line">                $CATALINA_HOME/bin/shutdown.sh</span><br><span class="line">            RETVAL=$?</span><br><span class="line">            sleep 1</span><br><span class="line">            ps -fwwu root | grep tomcat|grep -v grep | grep -v PID | awk &apos;&#123;print $2&#125;&apos;|xargs kill -9</span><br><span class="line">            echo &quot; OK&quot;</span><br><span class="line">            # [ $RETVAL -eq 0 ] &amp;&amp; rm -f /var/lock/...</span><br><span class="line">            return $RETVAL</span><br><span class="line">        fi</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">case &quot;$1&quot; in</span><br><span class="line"> start)</span><br><span class="line">        start</span><br><span class="line">        ;;</span><br><span class="line"> stop)</span><br><span class="line">        stop</span><br><span class="line">        ;;</span><br><span class="line"></span><br><span class="line"> restart)</span><br><span class="line">         echo $&quot;Restaring Tomcat&quot;</span><br><span class="line">         $0 stop</span><br><span class="line">         sleep 1</span><br><span class="line">         $0 start</span><br><span class="line">         ;;</span><br><span class="line"> *)</span><br><span class="line">        echo $&quot;Usage: $0 &#123;start|stop|restart&#125;&quot;</span><br><span class="line">        exit 1</span><br><span class="line">        ;;</span><br><span class="line">esac</span><br><span class="line">exit $RETVAL</span><br></pre></td></tr></table></figure>
+<p>执行:wq</p>
+<p>设置权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 755 /etc/init.d/tomcat</span><br></pre></td></tr></table></figure>
+<p>设定开机启动服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chkconfig tomcat on</span><br></pre></td></tr></table></figure>
+<p>测试</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">service tomcat start  </span><br><span class="line">service tomcat stop  </span><br><span class="line">service tomcat restart</span><br></pre></td></tr></table></figure>
+<h2 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h2><p><a href="http://www.cnblogs.com/starof/p/4680083.html" target="_blank" rel="noopener">参考：http://www.cnblogs.com/starof/p/4680083.html</a></p>
+<h3 id="安装-2"><a href="#安装-2" class="headerlink" title="安装"></a>安装</h3><p>如果使用yum命令直接安装，Centos6.5会直接安装mysql5.1。而笔者希望安装mysql5.7，所以需要添加mysql5.7的源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://repo.mysql.com//mysql57-community-release-el6-8.noarch.rpm</span><br></pre></td></tr></table></figure>
+<p>启用添加的源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh mysql57-community-release-el6-8.noarch.rpm</span><br></pre></td></tr></table></figure>
+<p>查看是否启用mysql5.7的源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum repolist enabled | grep mysql</span><br></pre></td></tr></table></figure>
+<p>安装mysql5.7</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install mysql-community-server</span><br></pre></td></tr></table></figure>
+<p><strong>注意：这里不要使用yum install mysql来安装，不然会安装mysql-client，而不是mysql-server</strong></p>
+<h3 id="初始化mysql"><a href="#初始化mysql" class="headerlink" title="初始化mysql"></a>初始化mysql</h3><p>新版本需要这一步</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqld --initialize-insecure --user=mysql --datadir=/var/lib/mysql</span><br></pre></td></tr></table></figure>
+<p>如果出错，试试如下命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /var/lib/mysql/*</span><br></pre></td></tr></table></figure>
+<p>原因分析：</p>
+<p>mysqld服务会检查数据目录是否存在</p>
+<p>如果数据目录不存在，mysqld则会创建它。</p>
+<p>如果数据目录存在，且不是空目录（即包含有文件或子目录），mysqld会显示一条错误信息并中止</p>
+<h3 id="启动服务-1"><a href="#启动服务-1" class="headerlink" title="启动服务"></a>启动服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mysqld start</span><br></pre></td></tr></table></figure>
+<h3 id="开机自启"><a href="#开机自启" class="headerlink" title="开机自启"></a>开机自启</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chkconfig mysqld on</span><br></pre></td></tr></table></figure>
+<h3 id="中文编码"><a href="#中文编码" class="headerlink" title="中文编码"></a>中文编码</h3><p>在/etc/my.cnf中相应位置添加如下内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[mysql]</span><br><span class="line">default-character-set =utf8</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://omqwegju8.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20170904155133.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="修改密码"><a href="#修改密码" class="headerlink" title="修改密码"></a>修改密码</h3><p><a href="http://jingyan.baidu.com/article/495ba841ef412d38b30edeb2.html" target="_blank" rel="noopener">参考：http://jingyan.baidu.com/article/495ba841ef412d38b30edeb2.html</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqladmin -uroot -p password 123456</span><br></pre></td></tr></table></figure></p>
+<h3 id="打开3306端口"><a href="#打开3306端口" class="headerlink" title="打开3306端口"></a>打开3306端口</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/sbin/iptables -I INPUT -p tcp --dport 3306 -j ACCEPT</span><br><span class="line">/etc/rc.d/init.d/iptables save</span><br></pre></td></tr></table></figure>
+<h3 id="远程登录"><a href="#远程登录" class="headerlink" title="远程登录"></a>远程登录</h3><p><a href="http://www.cnblogs.com/starof/p/4680083.html" target="_blank" rel="noopener">参考：http://www.cnblogs.com/starof/p/4680083.html</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p123456</span><br><span class="line">grant all privileges on *.* to &apos;root&apos;@&apos;%&apos; identified by &apos;123456&apos; with grant option;</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-03-21T06:51:54.251Z" itemprop="dateUpdated">2018-03-21 14:51:54</time>
+</span><br>
+
+
+        
+        转载请注明出处，虽然不会有人转载的说：<a href="/2017/09/04/Centos-Java-Web-服务器配置/" target="_blank" rel="external">http://blog.valorachen.club/2017/09/04/Centos-Java-Web-服务器配置/</a>
+        
+    </div>
+    <footer>
+        <a href="http://blog.valorachen.club">
+            <img src="/img/avatar.png" alt="ViVi">
+            ViVi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/服务器/">服务器</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.valorachen.club/2017/09/04/Centos-Java-Web-服务器配置/&title=《Centos Java Web 服务器配置》 — ViVi's craft&pic=http://blog.valorachen.club/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.valorachen.club/2017/09/04/Centos-Java-Web-服务器配置/&title=《Centos Java Web 服务器配置》 — ViVi's craft&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.valorachen.club/2017/09/04/Centos-Java-Web-服务器配置/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Centos Java Web 服务器配置》 — ViVi's craft&url=http://blog.valorachen.club/2017/09/04/Centos-Java-Web-服务器配置/&via=http://blog.valorachen.club" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.valorachen.club/2017/09/04/Centos-Java-Web-服务器配置/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/09/04/Centos-Php-服务器配置/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Centos Php 服务器配置</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/08/25/软件测试复习/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">软件测试复习</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "EwUx7kp4hDkqF3CsL5B6QGS1-gzGzoHsz",
+            appKey: "1tccniD7zvLprgUME5qQiIH1",
+            avatar: "mm",
+            placeholder: "Say something if you want to",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>ViVi &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.valorachen.club/2017/09/04/Centos-Java-Web-服务器配置/&title=《Centos Java Web 服务器配置》 — ViVi's craft&pic=http://blog.valorachen.club/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.valorachen.club/2017/09/04/Centos-Java-Web-服务器配置/&title=《Centos Java Web 服务器配置》 — ViVi's craft&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.valorachen.club/2017/09/04/Centos-Java-Web-服务器配置/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Centos Java Web 服务器配置》 — ViVi's craft&url=http://blog.valorachen.club/2017/09/04/Centos-Java-Web-服务器配置/&via=http://blog.valorachen.club" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.valorachen.club/2017/09/04/Centos-Java-Web-服务器配置/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACpUlEQVR42u3aQXLDMAgF0N7/0u0BktgfEBl35nnVaWyZl4UgiJ+f+Pq9vF7vfH3q7KeHLzw8PLyF0K9Jk6/g+v8J/iY2PDw8vDXe9cvy7fsTuLpv5/HcWPDw8PAexkvCvb6zWg/j4eHh/UdekgB6bYVkHTw8PLzn8JJmRI6vhpg0L9Z7LXh4eHgxLz9Fes7fK+d7eHh4eONT9QMb7mUzt7pmOVo8PDy8tY2w107NC9x81GBeLuPh4eF9h9d72aRFmzQvqk3bm/vx8PDwDvGqg6TzAYJ8mCBZ4SZh4OHh4a3xqq9MQsk/rd5T/q2Ah4eHt8abHN5PGNWEVGgB4+Hh4S3w8kB7yEnB3ftC3+Dx8PDwjvLy7bW33eedgV4BfXM/Hh4e3hovP7LqNWd7IVYbHx8TAx4eHt5RXq+F2tuyeyNZ1eYyHh4e3nd41eB6x/zJ+tUGcbnJi4eHh7fM641YzQeq8nI5STB4eHh4Z3mJuHcoNWnvJqklShJ4eHh4y7xeGmg2BeJ00ivN34wO4OHh4R3lzRsQeaE8GUQoJyE8PDy8BV6+WVdD7A0EJIw8eeDh4eHt8ao//s+OC0yK8qhAx8PDwzvKy4POx7B6RfCkGVEuoPHw8PAGvPnDvQZrdXQgL7WjUz48PDy8Q7xJ47U6VjU/HstLbTw8PLxtXjTMFLd98zK6l4qiIQY8PDy8NV416Gq53GtGFBJAterHw8PDG8BOJYbehp7E03wXHh4e3gJvssf22gfV0HuNjAMpBA8PD29QeebNhXnzIi/BC8NheHh4eGu8pAie7LrVgYBJZsPDw8N7Jq86QFBdpxfPm9Xw8PDwHsmrltHzFJIX8Xh4eHh7vPnSveI4f6p5CIeHh4e3wOsNZlVTS/XALAccOOvDw8PDS3l/Qg+cccYTOyEAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

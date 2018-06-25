@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=61021328"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>网件 R6400 折腾笔记 | ViVi&#39;s craft | 只用来写技术相关的文章，记一些平时很少用很容易忘记的东西。能用实际项目来掌握的技术还懒得写，于是很少更新。想看更新频繁,内容日常的博客，请移步：&lt;a style=&#34;color:#FFFFFF;&#34; herf=&#34;https://chenvivi.wordpress.com&#34;&gt;https://chenvivi.wordpress.com&lt;/a&gt;</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="路由器">
+    <meta name="description" content="网件 R6400 折腾笔记前言武汉房子里的路由器是以前的租客留下的，信号超差，差到我妈都受不了，于是批准我买新的路由器。作为萌新啥都不懂，于是就去搜知乎，然后打开了新世界的大门。头一次听说路由器还可以刷机，还可以搭建 nas，还能配置  shadowsocks，并且 get 到各种新知识 新手科普买硬件从来不敢瞎买，必然是一堆科普过后才敢下手 并不是带宽够就一定能拥有快速的网络呢 我对路由是一有一">
+<meta name="keywords" content="路由器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网件 R6400 折腾笔记">
+<meta property="og:url" content="http://blog.valorachen.club/2018/06/17/网件R6400折腾笔记/index.html">
+<meta property="og:site_name" content="ViVi&#39;s craft">
+<meta property="og:description" content="网件 R6400 折腾笔记前言武汉房子里的路由器是以前的租客留下的，信号超差，差到我妈都受不了，于是批准我买新的路由器。作为萌新啥都不懂，于是就去搜知乎，然后打开了新世界的大门。头一次听说路由器还可以刷机，还可以搭建 nas，还能配置  shadowsocks，并且 get 到各种新知识 新手科普买硬件从来不敢瞎买，必然是一堆科普过后才敢下手 并不是带宽够就一定能拥有快速的网络呢 我对路由是一有一">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://img.valorachen.top/18-6-17/30900391.jpg">
+<meta property="og:image" content="http://img.valorachen.top/18-6-17/11315474.jpg">
+<meta property="og:image" content="http://img.valorachen.top/18-6-17/81324656.jpg">
+<meta property="og:image" content="http://img.valorachen.top/18-6-17/41146831.jpg">
+<meta property="og:image" content="http://img.valorachen.top/18-6-17/63188134.jpg">
+<meta property="og:image" content="http://img.valorachen.top/18-6-17/30427203.jpg">
+<meta property="og:image" content="http://img.valorachen.top/18-6-17/66855062.jpg">
+<meta property="og:image" content="http://img.valorachen.top/18-6-17/11649670.jpg">
+<meta property="og:image" content="http://img.valorachen.top/18-6-17/23094283.jpg">
+<meta property="og:image" content="http://img.valorachen.top/18-6-17/14994495.jpg">
+<meta property="og:image" content="http://img.valorachen.top/18-6-17/49069002.jpg">
+<meta property="og:image" content="http://img.valorachen.top/18-6-17/43574800.jpg">
+<meta property="og:image" content="http://img.valorachen.top/18-6-17/2252708.jpg">
+<meta property="og:image" content="http://img.valorachen.top/18-6-17/31693937.jpg">
+<meta property="og:image" content="http://img.valorachen.top/18-6-17/64564481.jpg">
+<meta property="og:image" content="http://img.valorachen.top/18-6-17/33589519.jpg">
+<meta property="og:image" content="http://img.valorachen.top/18-6-17/32612221.jpg">
+<meta property="og:image" content="http://img.valorachen.top/18-6-17/88802641.jpg">
+<meta property="og:image" content="http://img.valorachen.top/18-6-17/40442457.jpg">
+<meta property="og:image" content="http://img.valorachen.top/18-6-17/18323836.jpg">
+<meta property="og:updated_time" content="2018-06-25T03:26:14.690Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网件 R6400 折腾笔记">
+<meta name="twitter:description" content="网件 R6400 折腾笔记前言武汉房子里的路由器是以前的租客留下的，信号超差，差到我妈都受不了，于是批准我买新的路由器。作为萌新啥都不懂，于是就去搜知乎，然后打开了新世界的大门。头一次听说路由器还可以刷机，还可以搭建 nas，还能配置  shadowsocks，并且 get 到各种新知识 新手科普买硬件从来不敢瞎买，必然是一堆科普过后才敢下手 并不是带宽够就一定能拥有快速的网络呢 我对路由是一有一">
+<meta name="twitter:image" content="http://img.valorachen.top/18-6-17/30900391.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="ViVi&#39;s craft" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ViVi</h5>
+          <a href="mailto:valorachen@163.com" title="valorachen@163.com" class="mail">valorachen@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                时间线
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://chenvivi.wordpress.com/" target="_blank" >
+                <i class="icon icon-lg icon-book"></i>
+                我的日记（代替py圈）
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom.xml" target="_blank" >
+                <i class="icon icon-lg icon-rss"></i>
+                RSS
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ChenViVi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://steamcommunity.com/profiles/76561198300793241" target="_blank" >
+                <i class="icon icon-lg icon-steam"></i>
+                Steam
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/p/1005053101937447/home?from=page_100505&mod=TAB&is_all=1#place" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">网件 R6400 折腾笔记</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">网件 R6400 折腾笔记</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-06-17T08:07:57.000Z" itemprop="datePublished" class="page-time">
+  2018-06-17
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#网件-R6400-折腾笔记"><span class="post-toc-number">1.</span> <span class="post-toc-text">网件 R6400 折腾笔记</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">前言</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#新手科普"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">新手科普</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#并不是带宽够就一定能拥有快速的网络呢"><span class="post-toc-number">1.1.1.1.</span> <span class="post-toc-text">并不是带宽够就一定能拥有快速的网络呢</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-4G-和-5G"><span class="post-toc-number">1.1.1.2.</span> <span class="post-toc-text">2.4G 和 5G</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#网络上行与下行"><span class="post-toc-number">1.1.1.3.</span> <span class="post-toc-text">网络上行与下行</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#路由器带机量"><span class="post-toc-number">1.1.1.4.</span> <span class="post-toc-text">路由器带机量</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#信号强度与路由器发射功率"><span class="post-toc-number">1.1.1.5.</span> <span class="post-toc-text">信号强度与路由器发射功率</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#购买"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">购买</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#验货"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">验货</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#初始化"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">初始化</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#梅林固件"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">梅林固件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#啥是梅林固件"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">啥是梅林固件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#开整"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">开整</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#原生固件-gt-梅林7-2"><span class="post-toc-number">1.3.2.1.</span> <span class="post-toc-text">原生固件 -&gt; 梅林7.2</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#梅林7-2-gt-梅林7-4"><span class="post-toc-number">1.3.2.2.</span> <span class="post-toc-text">梅林7.2 -&gt;梅林7.4</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参考"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">参考</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#shadowsocks"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">shadowsocks</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#开启Samba服务"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">开启Samba服务</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#下载工具"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">下载工具</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-网件R6400折腾笔记"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">网件 R6400 折腾笔记</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-06-17 16:07:57" datetime="2018-06-17T08:07:57.000Z"  itemprop="datePublished">2018-06-17</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="网件-R6400-折腾笔记"><a href="#网件-R6400-折腾笔记" class="headerlink" title="网件 R6400 折腾笔记"></a>网件 R6400 折腾笔记</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>武汉房子里的路由器是以前的租客留下的，信号超差，差到我妈都受不了，于是批准我买新的路由器。作为萌新啥都不懂，于是就去搜知乎，然后打开了新世界的大门。头一次听说路由器还可以刷机，还可以搭建 nas，还能配置  shadowsocks，并且 get 到各种新知识</p>
+<h3 id="新手科普"><a href="#新手科普" class="headerlink" title="新手科普"></a>新手科普</h3><p>买硬件从来不敢瞎买，必然是一堆科普过后才敢下手</p>
+<h4 id="并不是带宽够就一定能拥有快速的网络呢"><a href="#并不是带宽够就一定能拥有快速的网络呢" class="headerlink" title="并不是带宽够就一定能拥有快速的网络呢"></a>并不是带宽够就一定能拥有快速的网络呢</h4><blockquote>
+<p>我对路由是一有一定了解的，有个好朋友是个运维。他这么跟我说：<strong>想要通过无线WIFI享受100M网络，一定要使用基于 802.11ac 的 5G 频段。因此，你是要必须拥有可以接收 5G 信号的无线网卡和路由器</strong> </p>
+</blockquote>
+<h4 id="2-4G-和-5G"><a href="#2-4G-和-5G" class="headerlink" title="2.4G 和 5G"></a>2.4G 和 5G</h4><blockquote>
+<p>路由器的频段粗分为两个，2.4G 频段和 5G频段 单频的其实就指的是只支持2.4G的802.11b/g/n三种协议 双频又叫ac路由器指的是同时支持802.11bgn和802.11ac </p>
+<p>2.4G 里的协议分为三代 802.11b：理论最高 11Mbps（1.375MB 每秒钟这个的确可以做到） 802.11g：理论最高 54Mbps（6.75MB每秒这个的确很虚了） 802.11n：理论最高 600Mbps（能做到就见鬼了） </p>
+<p>5G 的话细分是也有不少<br>但是主流的是 802.11n 和 802.11ac<br>802.11n 可以在 5G 频段工作，不过性能远不如 ac 的好<br>用公司里的优科 Ruckus 的无线 ap 测验过<br>100M 宽带下的实际下行速度其实就 8MB/s 不到甚至更低<br>802.11ac 的话，最高可以达到 40-60MB/s，100M 宽带可以轻松跑满<br>重要的是，在 802.11ac（个人认为这个叫真 5G）环境下<br>无线设备和路由器的连接，延迟可以媲美有线<br>在 Netgear R6100 配上5G usb 网卡的情况下，打 MC 在线完全没问题</p>
+</blockquote>
+<h4 id="网络上行与下行"><a href="#网络上行与下行" class="headerlink" title="网络上行与下行"></a>网络上行与下行</h4><blockquote>
+<p>目前我们消费者接触的运营商(ISP)的宽带，上行速率和下行是有很大区别的<br>比如100M的电信光纤，家用的话，下行带宽是100M，但是上行只有8M，即1MB每秒<br>如果是8M的宽带上行顶多就1M，即128KB/s<br>这样做的目的<br>1，普通家用的人根本用不着太高的上行带宽，最耗费上行带宽的QQ或者微信视频聊天<br>亲测只需要128KB/s的稳定上传就可以完全不卡，测试情况是城中村宽带和日本的微信视频聊天<br>2，多余的上行带宽可以卖给有需要的大企业，比如上下行对等的20M宽带（专线）<br>用的是静态ip不是随机分配，中国电信的报价是八九千一个月。。。</p>
+</blockquote>
+<h4 id="路由器带机量"><a href="#路由器带机量" class="headerlink" title="路由器带机量"></a>路由器带机量</h4><blockquote>
+<p>带机量由这些东西决定：处理器性能，运行内存大小，支持多少出入以及哪种MIMO技术 普通的路由比如那台99包邮的，处理器主频400Mhz，运行内存8M，闪存2M，支持3T3R 这样的机子明显不适合带多个的，就那小破运存玩啥。。 </p>
+</blockquote>
+<h4 id="信号强度与路由器发射功率"><a href="#信号强度与路由器发射功率" class="headerlink" title="信号强度与路由器发射功率"></a>信号强度与路由器发射功率</h4><blockquote>
+<p>工信部把无线路由器的发射功率限制死了在100毫瓦<br>100毫瓦是个啥概念？手机天线的发射功率都有800毫瓦<br>所以某些品牌说自己的路由器有穿墙模式，顶多就个噱头<br>当然也有些品牌会隐藏自己更改发射功率的能力<br>比如磊科的某些路由器可以开到200mw，D-link的某些路由器可以开到300mw左右<br>Netgear的某些路由器，通过更改固件，换运行区域或者插代码，可以达到500mw的发射功率<br>不过呢，发射功率越大不见得效果越好，发射功率和接受信号优劣仅仅是部分正相关<br>如果发射功率太高，而本身路由器天线质量很差，这样信噪比会变得很恶劣<br>而如果路由器本身的承载能力处理能力不足，你会在很远的地方都收到路由器信号<br>而且，网络根本连接不上，俗称假信号。<br>路由器的NAT能力远远比无线信号功率更重要</p>
+</blockquote>
+<p>参考：</p>
+<p><a href="https://www.zhihu.com/question/48860976/answer/123669949" target="_blank" rel="noopener">【知乎】有哪些家用无线路由器值得推荐？</a></p>
+<p><a href="https://www.zhihu.com/question/48860976/answer/123669949" target="_blank" rel="noopener">【知乎】家庭用 100M 光纤使用什么无线路由器才能发挥最大带宽？</a></p>
+<h3 id="购买"><a href="#购买" class="headerlink" title="购买"></a>购买</h3><p>大家最推荐的就是网件了，于是去狗东一搜，沃日！</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.valorachen.top/18-6-17/30900391.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.valorachen.top/18-6-17/11315474.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>正当陷入纠结的时候，我不知从哪儿鬼使神差的看到 R6400 这个型号，狗东 618 领券到手价 400。果断变身销售人员以三寸不烂之舌说服了母上。因为电脑上 1T 硬盘真的不够用了，而且 Android 上用影梭开 SS 老是容易杀进程真的烦，花 400 如果能解决这两个痛点而且还有各种功能等着我折腾我真的觉得值。跟妈说如果不给我钱我下个月发工资也会买的，这样就得忍受现在这个破路由器一个月。母上自己也烦现在的路由器网速慢信号差，于是就恩准了</p>
+<h3 id="验货"><a href="#验货" class="headerlink" title="验货"></a>验货</h3><p>正面一个 USB 3.0，放到正面确实人性化，设计师干得好！</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.valorachen.top/18-6-17/81324656.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>各种指示灯和让人摸头不知脑的操作按钮</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.valorachen.top/18-6-17/41146831.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>四个 LAN 口 + 一个USB 2.0</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.valorachen.top/18-6-17/63188134.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure> 
+<p>与之前的三流路由器对比</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.valorachen.top/18-6-17/30427203.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>插好电源和 WAN 口后启动，按照机子反面给出 WIFI 名和密码连接，浏览器会自动打开配置向导界面让你配置 WIFI 名和密码，然后路由器会重启来应用你的配置，搞定之后就进入主界面了</p>
+<h2 id="梅林固件"><a href="#梅林固件" class="headerlink" title="梅林固件"></a>梅林固件</h2><p>想折腾，梅林固件就是第一步</p>
+<h3 id="啥是梅林固件"><a href="#啥是梅林固件" class="headerlink" title="啥是梅林固件"></a>啥是梅林固件</h3><p>Asuswrt-merlin 是一个对华硕 Asuswrt 固件二次开发进行各种改进和修正的项目。Merlin 固件拥有更多的功能，由于第三方不断维护代码，各种新功能也在不断增加</p>
+<p><a href="http://koolshare.cn/forum-96-1.html" target="_blank" rel="noopener">KoolShare论坛</a> | <a href="http://firmware.koolshare.cn/" target="_blank" rel="noopener">KoolShare 固件列表 </a></p>
+<h3 id="开整"><a href="#开整" class="headerlink" title="开整"></a>开整</h3><p>Merlin 固件使用的是华硕官方的闭源驱动，而不是其他人使用的开源驱动，稳定性相比开源驱动要高很多，同时也就意味着非华硕的路由器想用梅林纯看运气，碰巧跟华硕某个版本硬件一致了就能用，不一致就别指望能有支持了</p>
+<p>由于网件和华硕多少硬件上有些不一致，所以需要从 <code>.chk</code>后缀的梅林固件过渡，然后再刷入<code>.chk</code>后缀的高版本固件</p>
+<p>下面讲的刷机教程仅限网件 R6400，其他型号请自行搜索教程，自行下载对应型号刷机文件，变砖后果自负</p>
+<p>以下是待会用到的固件，再重复一遍，不是 R6400 不要用下面的固件刷，会砖</p>
+<p><a href="http://downland.valorachen.top/R6400_380.63_2_X7.2.1.chk" target="_blank" rel="noopener">下载 R6400_380.63_2_X7.2.1.chk</a> | <a href="http://downland.valorachen.top/R6400_380.65-X7.4.trx" target="_blank" rel="noopener">下载 R6400_380.65-X7.4.trx</a></p>
+<h4 id="原生固件-gt-梅林7-2"><a href="#原生固件-gt-梅林7-2" class="headerlink" title="原生固件 -&gt; 梅林7.2"></a>原生固件 -&gt; 梅林7.2</h4><p>高级 –&gt; 管理 –&gt; 路由器升级 -&gt; 上传 <code>R6400_380.63_2_X7.2.1.chk</code></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.valorachen.top/18-6-17/66855062.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>点上传后，会提示你是否继续，点确定</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.valorachen.top/18-6-17/11649670.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>点确定后，就提示固件或升级将花2分钟，请勿关闭电源或按复位键。。中途不能断电</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.valorachen.top/18-6-17/23094283.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>若等3分钟后，浏览器界面会转到梅林的界面，若不会自动跳转，等路由器的电源灯变为白灯时，浏览器直接输入192.168.1.1。看见梅林界面后，点最上方的“跳过设置向导”</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.valorachen.top/18-6-17/14994495.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>需要你设置无线密码后才能进入路由器设置主界面</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.valorachen.top/18-6-17/49069002.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>首次进入梅林主界面，需要设置管理员用户名与管理员密码</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.valorachen.top/18-6-17/43574800.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>设置好管理员和密码后就进入梅林主界面</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.valorachen.top/18-6-17/2252708.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h4 id="梅林7-2-gt-梅林7-4"><a href="#梅林7-2-gt-梅林7-4" class="headerlink" title="梅林7.2 -&gt;梅林7.4"></a>梅林7.2 -&gt;梅林7.4</h4><p>系统管理 -&gt; 固件升级 -&gt; 新固件文件 -&gt; 选择文件 -&gt; 选择 <code>R6400_380.65-X7.4.trx</code></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.valorachen.top/18-6-17/31693937.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.valorachen.top/18-6-17/64564481.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>刷机过程中，千万不要去手动重启或关机路由器，后果可以很严重。升级完成后，浏览器也会自动跳转登录页面。如下图：填上你之前设置过的用户名和管理员密码登录就行</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.valorachen.top/18-6-17/33589519.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>登录后回到梅林设置主界面，使用7.4前，先进行一次恢复出厂设置。为了减少问题 </p>
+<p><img src="http://img.valorachen.top/18-6-17/32612221.jpg" alt=""></p>
+<p>恢复出厂重新进入界面，在<code>系统管理</code>内的<code>系统设置</code>里找到下图红框的2个选项，都勾选上”是“，应用后重启路由器，就可以设置上网设置无线打开软件中心使用了</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.valorachen.top/18-6-17/88802641.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="http://koolshare.cn/thread-4451-1-1.html" target="_blank" rel="noopener">小白R7K请别用TT当过渡固件 </a></p>
+<p><a href="http://www.acwifi.net/1127.html" target="_blank" rel="noopener">网件R6400刷梅林固件教程</a></p>
+<h2 id="shadowsocks"><a href="#shadowsocks" class="headerlink" title="shadowsocks"></a>shadowsocks</h2><p>shadowsocks 是一种神奇的魔法（你懂得），不了解 shadowsocks 的童鞋可以看看我的这篇文章：</p>
+<p><a href="http://blog.valorachen.top/2018/03/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8shadowsocks%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84vpn/#%E5%89%8D%E8%A8%80%EF%BC%88%E7%BA%AF%E5%B1%9E%E7%9E%8E%E7%99%BD%E6%B4%BB%EF%BC%8C%E5%BF%99%E4%BA%BA%E5%8B%BF%E7%9C%8B%EF%BC%89" target="_blank" rel="noopener">史上最详细的零基础新手傻瓜教程，使用 shadowsocks 搭建自己的 VPN</a></p>
+<p>受魔法屏障的影响，现在梅林固件的软件中心里已经不再提供shadowsocks的在线安装。不过依然可以通过离线安装完成</p>
+<p>不过我们可以 <a href="https://raw.githubusercontent.com/koolshare/koolshare.github.io/acelan_softcenter_ui/shadowsocks/shadowsocks.tar.gz" target="_blank" rel="noopener">从 github 下载 shadowsocks 安装包</a></p>
+<p>点击左侧菜单最下面的<code>Software Center</code>，使用离线安装的方式安装</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.valorachen.top/18-6-17/40442457.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>然后你的软件中心就会多出一个叫做<code>科学上网</code>的应用，自己到里边配置代理服务器吧</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.valorachen.top/18-6-17/18323836.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p> 参考：<a href="http://blog.sinovale.com/1353.html" target="_blank" rel="noopener">梅林固件安装shadowsocks</a></p>
+<h2 id="开启Samba服务"><a href="#开启Samba服务" class="headerlink" title="开启Samba服务"></a>开启Samba服务</h2><p>待填坑…</p>
+<h2 id="下载工具"><a href="#下载工具" class="headerlink" title="下载工具"></a>下载工具</h2><p>待填坑…</p>
+<p>参考：<a href="http://wurang.net/merlin02_nas/#2-%E5%AD%98%E5%82%A8%E4%BB%8B%E8%B4%A8" target="_blank" rel="noopener">梅林固件折腾笔记二–搭建小型NAS</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-06-25T03:26:14.690Z" itemprop="dateUpdated">2018-06-25 11:26:14</time>
+</span><br>
+
+
+        
+        转载请注明出处，虽然不会有人转载的说：<a href="/2018/06/17/网件R6400折腾笔记/" target="_blank" rel="external">http://blog.valorachen.club/2018/06/17/网件R6400折腾笔记/</a>
+        
+    </div>
+    <footer>
+        <a href="http://blog.valorachen.club">
+            <img src="/img/avatar.png" alt="ViVi">
+            ViVi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/路由器/">路由器</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.valorachen.club/2018/06/17/网件R6400折腾笔记/&title=《网件 R6400 折腾笔记》 — ViVi's craft&pic=http://blog.valorachen.club/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.valorachen.club/2018/06/17/网件R6400折腾笔记/&title=《网件 R6400 折腾笔记》 — ViVi's craft&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.valorachen.club/2018/06/17/网件R6400折腾笔记/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《网件 R6400 折腾笔记》 — ViVi's craft&url=http://blog.valorachen.club/2018/06/17/网件R6400折腾笔记/&via=http://blog.valorachen.club" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.valorachen.club/2018/06/17/网件R6400折腾笔记/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/06/25/记一些以前不知道的-Gradle-配置/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">记一些以前不知道的 Gradle 配置</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/04/07/文件索引程序h5ai修改版，视频播放，文件上传/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">文件索引程序h5ai修改版，视频播放，文件上传</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "EwUx7kp4hDkqF3CsL5B6QGS1-gzGzoHsz",
+            appKey: "1tccniD7zvLprgUME5qQiIH1",
+            avatar: "mm",
+            placeholder: "Say something if you want to",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>ViVi &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.valorachen.club/2018/06/17/网件R6400折腾笔记/&title=《网件 R6400 折腾笔记》 — ViVi's craft&pic=http://blog.valorachen.club/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.valorachen.club/2018/06/17/网件R6400折腾笔记/&title=《网件 R6400 折腾笔记》 — ViVi's craft&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.valorachen.club/2018/06/17/网件R6400折腾笔记/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《网件 R6400 折腾笔记》 — ViVi's craft&url=http://blog.valorachen.club/2018/06/17/网件R6400折腾笔记/&via=http://blog.valorachen.club" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.valorachen.club/2018/06/17/网件R6400折腾笔记/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsklEQVR42u3aQXLCMBAEwPz/08mVFLGZWUmEQ/tEgbHVOkiq2f36iq/vh+vxm6tf8389f07evvnCw8PDWxj683V/zz31np0A2vH8MQV4eHh4x3hXK2oCSFbj2ZaTjOeFBQ8PD+/DePk3K8OdTQEeHh7eZ/Lyo/B7wgs8PDy8d/LyuKE9EOfDbdmbsxY8PDy8mJdXkT7n85H6Hh4eHt5yVX1lsW6LW8nhuB4tHh4e3gFevuDmTQCzZqn1QtrlG/Hw8PC28malrJVXtrFC2+b161c8PDy8A7z7uCEJZ9sB5YHC7CBepCl4eHh4C7x8sU6i1XYRb7eQ/H48PDy8c7xdEeqJcCFvR6i3Cjw8PLxl3mwpz58za0SYxSJRGIGHh4c34s2i0lnRKw8p2idc/oqHh4d3gDdbcJMD7qyZIJ/cIrbAw8PD28pry0ttSJEHuzPei4M4Hh4e3gHe7KiaF/XbeHdX1IuHh4f3v7z89StPaI/LdaMAHh4e3iZeW6xqG57yiUsO1vXk4uHh4R3jrccBK00GLb5oOMDDw8M7wGsbodpXrhyLd8XBeHh4eHt5SfB6uiG1bTjIj/h4eHh4J3jrjVBJoauNaPNyWnSgx8PDw9vKa8tXsyloN542Vr58Jh4eHt4B3ko5qn39rkaB9gl4eHh4J3h54aptFGjbAtqtqO4pw8PDwzvGyxsI2oP1+qDricPDw8M7xmuLXu03bfyRXy/iCTw8PLytvPX0Ir8/DzK2tWrh4eHhHeC1i+99AJHfuauxoC2e4eHh4e3itY9uo4F2mmYbQ1TTw8PDw9vKa1up8pA3H/TS3nX1Lzw8PLyP4eUBxEqrVjueIqXGw8PDeyMvD16T0lcbRrQbDB4eHt45XvvnGWN2/1LpCw8PD+/tVfX6CBsHCu2AZm/Bw8PD28r7AXukiL3ZjrK2AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=61021328"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>ViVi&#39;s craft | 只用来写技术相关的文章，记一些平时很少用很容易忘记的东西。能用实际项目来掌握的技术还懒得写，于是很少更新。想看更新频繁,内容日常的博客，请移步：&lt;a style=&#34;color:#FFFFFF;&#34; herf=&#34;https://chenvivi.wordpress.com&#34;&gt;https://chenvivi.wordpress.com&lt;/a&gt;</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="ViVi&#39;s craft">
+<meta property="og:url" content="http://blog.valorachen.club/index.html">
+<meta property="og:site_name" content="ViVi&#39;s craft">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ViVi&#39;s craft">
+    
+        <link rel="alternate" type="application/atom+xml" title="ViVi&#39;s craft" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ViVi</h5>
+          <a href="mailto:valorachen@163.com" title="valorachen@163.com" class="mail">valorachen@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect active">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                时间线
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://chenvivi.wordpress.com/" target="_blank" >
+                <i class="icon icon-lg icon-book"></i>
+                我的日记（代替py圈）
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom.xml" target="_blank" >
+                <i class="icon icon-lg icon-rss"></i>
+                RSS
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ChenViVi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://steamcommunity.com/profiles/76561198300793241" target="_blank" >
+                <i class="icon icon-lg icon-steam"></i>
+                Steam
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/p/1005053101937447/home?from=page_100505&mod=TAB&is_all=1#place" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">ViVi&#39;s craft</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header index-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">ViVi&#39;s craft</h1>
+        <h5 class="subtitle">
+            
+                只用来写技术相关的文章，记一些平时很少用很容易忘记的东西。能用实际项目来掌握的技术还懒得写，于是很少更新。想看更新频繁,内容日常的博客，请移步：<a style="color:#FFFFFF;" herf="https://chenvivi.wordpress.com">https://chenvivi.wordpress.com</a>
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+<div class="container body-wrap">
+
+    <ul class="post-list">
+    
+        <li class="post-list-item fade">
+            <article id="post-记一些以前不知道的-Gradle-配置"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-06-25 11:33:16" datetime="2018-06-25T03:33:16.000Z"  itemprop="datePublished">2018-06-25</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/06/25/记一些以前不知道的-Gradle-配置/">记一些以前不知道的 Gradle 配置</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        前言关于 Gradle 的使用，最多的操作就是导库，顶多也就配置过自动签名，因为实战上没这个需求自己也不太主动学。我一向都是用什么学什么，只要我需要做一个东西，跨技术甚至跨领域都没关系。可能今天想做 Android 程序后天就觉得有个想法需要学建站技术才能实现，然后打游戏需要 记 BOSS 技能 CD 时间又做了个桌面定时软件，我甚至接触过编曲。但是如果我不需要做的功能，可能就瞟一眼完事，不...
+    
+
+        <a href="/2018/06/25/记一些以前不知道的-Gradle-配置/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-网件R6400折腾笔记"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-06-17 16:07:57" datetime="2018-06-17T08:07:57.000Z"  itemprop="datePublished">2018-06-17</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/06/17/网件R6400折腾笔记/">网件 R6400 折腾笔记</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        网件 R6400 折腾笔记前言武汉房子里的路由器是以前的租客留下的，信号超差，差到我妈都受不了，于是批准我买新的路由器。作为萌新啥都不懂，于是就去搜知乎，然后打开了新世界的大门。头一次听说路由器还可以刷机，还可以搭建 nas，还能配置  shadowsocks，并且 get 到各种新知识
+新手科普买硬件从来不敢瞎买，必然是一堆科普过后才敢下手
+并不是带宽够就一定能拥有快速的网络呢
+我对路由是...
+    
+
+        <a href="/2018/06/17/网件R6400折腾笔记/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/路由器/">路由器</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-文件索引程序h5ai修改版，视频播放，文件上传"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-04-07 19:44:24" datetime="2018-04-07T11:44:24.000Z"  itemprop="datePublished">2018-04-07</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/04/07/文件索引程序h5ai修改版，视频播放，文件上传/">文件索引程序h5ai修改版，视频播放，文件上传</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        前言买了年vps之后天天沉迷搞机，饭不吃了，屎不拉了，甚至游戏都不打了。最近穿梭与各个大佬的博客之间，了解了vps另一种用途：存储功能（大误：下种子！存本子！存小姐姐！）。我凭着兴趣把owncloud（官网 | 教程），nextcloud（官网），Cloudreve（github | 教程）都搭了一遍，然后发现我并不想用它们存任何文件。vps只有10G不说，以我现在的玩法，哪天不带重装的哪有...
+    
+
+        <a href="/2018/04/07/文件索引程序h5ai修改版，视频播放，文件上传/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/建站/">建站</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-我的网站导航"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-04-07 15:40:58" datetime="2018-04-07T07:40:58.000Z"  itemprop="datePublished">2018-04-07</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/04/07/我的网站导航/">我的网站导航</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        因为vultr上搭的vpn看不了p站，于是果断删掉了服务器买了一年的搬瓦工小鸡。买vps光用来科学上网简直是浪费，于是参考这篇文章：VPS有什么有趣的用途？，疯狂折腾了一番。这个过程中，发现百度的自定义导航已经满足不了我的需求了，现有的产品有是有，但是全部都用户体验极差，UI辣眼睛，有很多直接使用表格来布局一眼望去全是字根本找不到想要的网站，于是乎想自己写一个导航。
+导航无非就两个功能呗：1...
+    
+
+        <a href="/2018/04/07/我的网站导航/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/建站/">建站</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-从零开始使用shadowsocks搭建自己的vpn"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-03-29 13:53:23" datetime="2018-03-29T05:53:23.000Z"  itemprop="datePublished">2018-03-29</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/03/29/从零开始使用shadowsocks搭建自己的vpn/">史上最详细的零基础新手傻瓜教程，使用shadowsocks搭建自己的VPN</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        前言（纯属瞎白活，忙人勿看）做完了事，想着怎么用剩下的点钱提高自己的生活质量。去知乎上瞅了瞅，都是电动牙刷、收纳盒、尤克里里这种我根本不感兴趣的东西。有点想买小米智能音箱，kindle，平板电脑之类的硬件，但是仔细一思考感觉消费太高也并不是那么需要。各种会员或者是steam游戏这种虚拟消费也有想过。可是会员到期还早，游戏多到放在库里没时间玩。然后不知怎么的想到了科学上网，毕竟不科学上网的程序...
+    
+
+        <a href="/2018/03/29/从零开始使用shadowsocks搭建自己的vpn/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shadowsocks/">shadowsocks</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vpn/">vpn</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vps/">vps</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-网易云音乐API Part2（搜索，评论）"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-12-22 11:39:14" datetime="2017-12-22T03:39:14.000Z"  itemprop="datePublished">2017-12-22</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/12/22/网易云音乐API Part2（搜索，评论）/">网易云音乐API Part2（搜索，评论）</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        测试相关用户id=1317458286
+用户最爱歌歌单id=2023423393
+歌曲id=289145
+专辑id=28688
+歌单id=381180171
+MVid=381180171
+电台节目id=908984796
+电台评论id=648416766
+搜索搜索type: 搜索类型；默认为1即单曲,取值意义:
+1: 单曲
+10: 专辑
+100: 歌手
+1000: 歌单
+1002: 用户
+1...
+    
+
+        <a href="/2017/12/22/网易云音乐API Part2（搜索，评论）/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网易云音乐/">网易云音乐</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-网易云音乐API Part1(登录，用户，歌单)"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-12-21 16:21:03" datetime="2017-12-21T08:21:03.000Z"  itemprop="datePublished">2017-12-21</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/12/21/网易云音乐API Part1(登录，用户，歌单)/">网易云音乐API Part1(登录，用户，歌单)</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        测试相关用户id=1317458286
+用户最爱歌歌单id=2023423393
+歌曲id=289145
+专辑id=28688
+歌单id=381180171
+MVid=381180171
+电台节目id=908984796
+电台评论id=648416766
+登录手机登陆http://116.196.87.226:3000/login/cellphone?phone=15926099436&am...
+    
+
+        <a href="/2017/12/21/网易云音乐API Part1(登录，用户，歌单)/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网易云音乐/">网易云音乐</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-在Centos部署NodeJs服务端心得"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-12-20 16:01:37" datetime="2017-12-20T08:01:37.000Z"  itemprop="datePublished">2017-12-20</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/12/20/在Centos部署NodeJs服务端心得/">在Centos部署NodeJs服务端心得</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        前言因为项目需要，现需将NeteaseCloudMusicApi部署到服务器上运行，此项目是nodejs写的，所以服务器上需要安装nodejs。在实际操作的过程中，我遇到了一些问题，现记录于此文。
+问题运行时报错原因：此项目对于nodejs版本有要求，不能使用5x以下的版本运行。
+解决过程：安装不同版本的nodejs，直到找到可以运行程序的版本。
+经验：nodejs迭代较快，下次遇到node...
+    
+
+        <a href="/2017/12/20/在Centos部署NodeJs服务端心得/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网易云音乐/">网易云音乐</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-网易云音乐下载链接API分析"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-12-20 11:19:22" datetime="2017-12-20T03:19:22.000Z"  itemprop="datePublished">2017-12-20</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/12/20/网易云音乐下载链接API分析/">网易云音乐下载链接API分析</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        获取歌曲文件go版1234567891011121314func encrypt_id(id string) string &#123;	byte1 := []byte(&quot;3go8&amp;$8*3*3h0k(2)2&quot;)	byte2 := []byte(id)	for i := 0; i &lt; len(byte2); i++ &#123;		byte2[i] = by...
+    
+
+        <a href="/2017/12/20/网易云音乐下载链接API分析/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/API/">API</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网易云音乐/">网易云音乐</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Android复习"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-11-10 21:37:55" datetime="2017-11-10T13:37:55.000Z"  itemprop="datePublished">2017-11-10</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/11/10/Android复习/">Android复习</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        Activity生命周期启动：onCreate() onStart() onResume()
+前台到后台：onPause() onStop()
+后台到前台： onRestart() onStart() onResume()
+解锁：onStart() onResume()
+销毁：onPause() onStop() onDestory()
+启动模式任务栈是一种后进先出的结构。
+standard...
+    
+
+        <a href="/2017/11/10/Android复习/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/复习/">复习</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+    </ul>
+
+    
+<nav id="page-nav">
+    <div class="inner">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+    </div>
+</nav>
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>ViVi &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.valorachen.club/&title=ViVi's craft&pic=http://blog.valorachen.club/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.valorachen.club/&title=ViVi's craft&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.valorachen.club/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=ViVi's craft&url=http://blog.valorachen.club/&via=http://blog.valorachen.club" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.valorachen.club/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABt0lEQVR42u3aQW7DMAwEQP//0+kLoixJS06K8akIUGl8Icilryt+Xstn/V/r064dDy4u7pibUHrc5Jby+bi4uAe56zJUZSUFKzkfFxf3V7jrApSfgIuL+5+46yvX6MfqLi4uboubDCfVotYrbbfNari4uANub6S59+8t+S4uLm6L+yo+9w5I5dtxcXGPcPOCsm5Z8uam2r7g4uI+xZ0MQuVQo/hxxodXwsXF3cbtlaF9M0vU4uDi4m7jVqFJIUuWqdUShouLe5I7X7Lm69Xe4qQwq+Hi4m7gzmPTwpWt4BUXF/ckNwks8l+qLzxpiXBxcZ/i9oaiHNEbt3Bxcfdx501MD5EXu3JgiouLO+ZWV6HVsaS3evmwiMXFxT3O3bFk7YWwUSHDxcU9yO3FH72YI2mScHFxn+UmrU++LEl+ye/FxcU9w52sV6uL2GqMgouL+xS3OrTkcWqyvUlClubL4OLijrnzy6pL1nz18nb4wcXFPcKdL1HyoGQSquLi4n4zt/o5ZvWctyfj4uJ+JXeeVOTRyQ0tDi4u7oBb/XRy3tA0QxNcXNwj3LwM9UDJy+efa+Di4m7m/gG/hOIxdkUULgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

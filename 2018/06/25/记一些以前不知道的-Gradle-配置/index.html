@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=61021328"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>记一些以前不知道的 Gradle 配置 | ViVi&#39;s craft | 只用来写技术相关的文章，记一些平时很少用很容易忘记的东西。能用实际项目来掌握的技术还懒得写，于是很少更新。想看更新频繁,内容日常的博客，请移步：&lt;a style=&#34;color:#FFFFFF;&#34; herf=&#34;https://chenvivi.wordpress.com&#34;&gt;https://chenvivi.wordpress.com&lt;/a&gt;</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="前言关于 Gradle 的使用，最多的操作就是导库，顶多也就配置过自动签名，因为实战上没这个需求自己也不太主动学。我一向都是用什么学什么，只要我需要做一个东西，跨技术甚至跨领域都没关系。可能今天想做 Android 程序后天就觉得有个想法需要学建站技术才能实现，然后打游戏需要 记 BOSS 技能 CD 时间又做了个桌面定时软件，我甚至接触过编曲。但是如果我不需要做的功能，可能就瞟一眼完事，不会去深">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记一些以前不知道的 Gradle 配置">
+<meta property="og:url" content="http://blog.valorachen.club/2018/06/25/记一些以前不知道的-Gradle-配置/index.html">
+<meta property="og:site_name" content="ViVi&#39;s craft">
+<meta property="og:description" content="前言关于 Gradle 的使用，最多的操作就是导库，顶多也就配置过自动签名，因为实战上没这个需求自己也不太主动学。我一向都是用什么学什么，只要我需要做一个东西，跨技术甚至跨领域都没关系。可能今天想做 Android 程序后天就觉得有个想法需要学建站技术才能实现，然后打游戏需要 记 BOSS 技能 CD 时间又做了个桌面定时软件，我甚至接触过编曲。但是如果我不需要做的功能，可能就瞟一眼完事，不会去深">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://img.valorachen.top/18-6-21/92387976.jpg">
+<meta property="og:updated_time" content="2018-06-25T03:34:22.110Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="记一些以前不知道的 Gradle 配置">
+<meta name="twitter:description" content="前言关于 Gradle 的使用，最多的操作就是导库，顶多也就配置过自动签名，因为实战上没这个需求自己也不太主动学。我一向都是用什么学什么，只要我需要做一个东西，跨技术甚至跨领域都没关系。可能今天想做 Android 程序后天就觉得有个想法需要学建站技术才能实现，然后打游戏需要 记 BOSS 技能 CD 时间又做了个桌面定时软件，我甚至接触过编曲。但是如果我不需要做的功能，可能就瞟一眼完事，不会去深">
+<meta name="twitter:image" content="http://img.valorachen.top/18-6-21/92387976.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="ViVi&#39;s craft" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ViVi</h5>
+          <a href="mailto:valorachen@163.com" title="valorachen@163.com" class="mail">valorachen@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                时间线
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://chenvivi.wordpress.com/" target="_blank" >
+                <i class="icon icon-lg icon-book"></i>
+                我的日记（代替py圈）
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom.xml" target="_blank" >
+                <i class="icon icon-lg icon-rss"></i>
+                RSS
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ChenViVi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://steamcommunity.com/profiles/76561198300793241" target="_blank" >
+                <i class="icon icon-lg icon-steam"></i>
+                Steam
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/p/1005053101937447/home?from=page_100505&mod=TAB&is_all=1#place" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">记一些以前不知道的 Gradle 配置</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">记一些以前不知道的 Gradle 配置</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-06-25T03:33:16.000Z" itemprop="datePublished" class="page-time">
+  2018-06-25
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ABI-管理"><span class="post-toc-number">2.</span> <span class="post-toc-text">ABI 管理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#啥是-ABI"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">啥是 ABI</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#在-Gradle-中配置应用支持的-ABI"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">在 Gradle 中配置应用支持的 ABI</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参考"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">参考</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Lint"><span class="post-toc-number">3.</span> <span class="post-toc-text">Lint</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#啥是-Lint"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">啥是 Lint</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#gradle-配置-Lint-提示"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">gradle 配置 Lint 提示</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参考-1"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">参考</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#dex-编译"><span class="post-toc-number">4.</span> <span class="post-toc-text">dex 编译</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#啥是-dex"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">啥是 dex</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Gradle-配置-dex-编译"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">Gradle 配置 dex 编译</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参考-2"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">参考</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#packagingOptions（打包选项）"><span class="post-toc-number">5.</span> <span class="post-toc-text">packagingOptions（打包选项）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#packagingOption的选项"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">packagingOption的选项</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#First-pick"><span class="post-toc-number">5.1.1.</span> <span class="post-toc-text">First-pick</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Merge"><span class="post-toc-number">5.1.2.</span> <span class="post-toc-text">Merge</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Exclude"><span class="post-toc-number">5.1.3.</span> <span class="post-toc-text">Exclude</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参考-3"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">参考</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#productFlavors（打包特性）"><span class="post-toc-number">6.</span> <span class="post-toc-text">productFlavors（打包特性）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置多渠道"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">配置多渠道</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#打包命令"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">打包命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参考-4"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">参考</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-记一些以前不知道的-Gradle-配置"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">记一些以前不知道的 Gradle 配置</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-06-25 11:33:16" datetime="2018-06-25T03:33:16.000Z"  itemprop="datePublished">2018-06-25</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>关于 Gradle 的使用，最多的操作就是导库，顶多也就配置过自动签名，因为实战上没这个需求自己也不太主动学。我一向都是用什么学什么，只要我需要做一个东西，跨技术甚至跨领域都没关系。可能今天想做 Android 程序后天就觉得有个想法需要学建站技术才能实现，然后打游戏需要 记 BOSS 技能 CD 时间又做了个桌面定时软件，我甚至接触过编曲。但是如果我不需要做的功能，可能就瞟一眼完事，不会去深入理解，超懒</p>
+<p>发现了个官方文档：<a href="https://google.github.io/android-gradle-dsl/current/index.html" target="_blank" rel="noopener">https://google.github.io/android-gradle-dsl/current/index.html</a></p>
+<p>另外，Gradle 编译居然不是多线程的</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.valorachen.top/18-6-21/92387976.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="ABI-管理"><a href="#ABI-管理" class="headerlink" title="ABI 管理"></a>ABI 管理</h2><p>我甚至都不知道这个东西的专有名词是叫 ABI</p>
+<h3 id="啥是-ABI"><a href="#啥是-ABI" class="headerlink" title="啥是 ABI"></a>啥是 ABI</h3><p>ABI 是 Application Binary Interface 的缩写</p>
+<p>典型的 ABI 包含以下信息：</p>
+<ul>
+<li>机器代码应使用的 CPU 指令集</li>
+<li>运行时内存存储和加载的字节顺序</li>
+<li>可执行二进制文件（例如程序和共享库）的格式，以及它们支持的内容类型（例如 .so）</li>
+<li>用于解析内容与系统之间数据的各种约定。这些约定包括对齐限制，以及系统如何使用堆栈和在调用函数时注册</li>
+<li>运行时可用于机器代码的函数符号列表 - 通常来自非常具体的库集</li>
+</ul>
+<p>Android目前支持以下七种ABI：<strong>armeabi、armeabi-v7a、arm64-v8a、x86、x86_64、mips、mips64</strong></p>
+<p>arm64-v8a ,x86_64 这两个 ABI 应用并不是必须要做支持，手机一般都会提供自动兼容，像微信就是一个 armeabi打天下</p>
+<h3 id="在-Gradle-中配置应用支持的-ABI"><a href="#在-Gradle-中配置应用支持的-ABI" class="headerlink" title="在 Gradle 中配置应用支持的 ABI"></a>在 Gradle 中配置应用支持的 ABI</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ndk &#123;</span><br><span class="line">    abiFilters &quot;armeabi&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://developer.android.com/ndk/guides/abis?hl=zh-cn" target="_blank" rel="noopener">https://developer.android.com/ndk/guides/abis?hl=zh-cn</a></p>
+<p><a href="https://blog.csdn.net/justFWD/article/details/49308199" target="_blank" rel="noopener">https://blog.csdn.net/justFWD/article/details/49308199</a></p>
+<h2 id="Lint"><a href="#Lint" class="headerlink" title="Lint"></a>Lint</h2><h3 id="啥是-Lint"><a href="#啥是-Lint" class="headerlink" title="啥是 Lint"></a>啥是 Lint</h3><p>Lint 在项目编译时会检查一些导致代码质量不佳的错误，比如 有个 layout 文件没有用到什么的</p>
+<h3 id="gradle-配置-Lint-提示"><a href="#gradle-配置-Lint-提示" class="headerlink" title="gradle 配置 Lint 提示"></a>gradle 配置 Lint 提示</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">    lintOptions &#123;</span><br><span class="line">        // true--关闭lint报告的分析进度</span><br><span class="line">        quiet true</span><br><span class="line">        // true--错误发生后停止gradle构建</span><br><span class="line">        abortOnError false</span><br><span class="line">        // true--只报告error</span><br><span class="line">        ignoreWarnings true</span><br><span class="line">        // true--忽略有错误的文件的全/绝对路径(默认是true)</span><br><span class="line">        //absolutePaths true</span><br><span class="line">        // true--检查所有问题点，包含其他默认关闭项</span><br><span class="line">        checkAllWarnings true</span><br><span class="line">        // true--所有warning当做error</span><br><span class="line">        warningsAsErrors true</span><br><span class="line">        // 关闭指定问题检查</span><br><span class="line">        disable &apos;TypographyFractions&apos;,&apos;TypographyQuotes&apos;</span><br><span class="line">        // 打开指定问题检查</span><br><span class="line">        enable &apos;RtlHardcoded&apos;,&apos;RtlCompat&apos;, &apos;RtlEnabled&apos;</span><br><span class="line">        // 仅检查指定问题</span><br><span class="line">        check &apos;NewApi&apos;, &apos;InlinedApi&apos;</span><br><span class="line">        // true--error输出文件不包含源码行号</span><br><span class="line">        noLines true</span><br><span class="line">        // true--显示错误的所有发生位置，不截取</span><br><span class="line">        showAll true</span><br><span class="line">        // 回退lint设置(默认规则)</span><br><span class="line">        lintConfig file(&quot;default-lint.xml&quot;)</span><br><span class="line">        // true--生成txt格式报告(默认false)</span><br><span class="line">        textReport true</span><br><span class="line">        // 重定向输出；可以是文件或&apos;stdout&apos;</span><br><span class="line">        textOutput &apos;stdout&apos;</span><br><span class="line">        // true--生成XML格式报告</span><br><span class="line">        xmlReport false</span><br><span class="line">        // 指定xml报告文档(默认lint-results.xml)</span><br><span class="line">        xmlOutput file(&quot;lint-report.xml&quot;)</span><br><span class="line">        // true--生成HTML报告(带问题解释，源码位置，等)</span><br><span class="line">        htmlReport true</span><br><span class="line">        // html报告可选路径(构建器默认是lint-results.html )</span><br><span class="line">        htmlOutput file(&quot;lint-report.html&quot;)</span><br><span class="line">        //  true--所有正式版构建执行规则生成崩溃的lint检查，如果有崩溃问题将停止构建</span><br><span class="line">        checkReleaseBuilds true</span><br><span class="line">        // 在发布版本编译时检查(即使不包含lint目标)，指定问题的规则生成崩溃</span><br><span class="line">        fatal &apos;NewApi&apos;, &apos;InlineApi&apos;</span><br><span class="line">        // 指定问题的规则生成错误</span><br><span class="line">        error &apos;Wakelock&apos;, &apos;TextViewEdits&apos;</span><br><span class="line">        // 指定问题的规则生成警告</span><br><span class="line">        warning &apos;ResourceAsColor&apos;</span><br><span class="line">        // 忽略指定问题的规则(同关闭检查)</span><br><span class="line">        ignore &apos;TypographyQuotes&apos;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="参考-1"><a href="#参考-1" class="headerlink" title="参考"></a>参考</h3><p><a href="https://developer.android.com/studio/write/lint?hl=zh-cn" target="_blank" rel="noopener">https://developer.android.com/studio/write/lint?hl=zh-cn</a></p>
+<p><a href="https://blog.csdn.net/berber78/article/details/60766091" target="_blank" rel="noopener">https://blog.csdn.net/berber78/article/details/60766091</a></p>
+<h2 id="dex-编译"><a href="#dex-编译" class="headerlink" title="dex 编译"></a>dex 编译</h2><h3 id="啥是-dex"><a href="#啥是-dex" class="headerlink" title="啥是 dex"></a>啥是 dex</h3><p>搞不懂 dex，就反编译玩过。大概查了一下，dex 对于 Davlik虚拟机， 就像 exe 对于 Windows一样吧。也就是 dex 编译 必然是 Android 编译的一部分咯</p>
+<h3 id="Gradle-配置-dex-编译"><a href="#Gradle-配置-dex-编译" class="headerlink" title="Gradle 配置 dex 编译"></a>Gradle 配置 dex 编译</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">    dexOptions &#123;</span><br><span class="line">    	//是否开启增量编译, 当dex 对应的文件有修改的时候才去编译dex优化编译效率，这个功能 android studio 默认是关闭的，如果开启multi dex 此句无效</span><br><span class="line">        incremental false</span><br><span class="line">        //是否预加载 dex 库依赖项以加快您的增量构建速度</span><br><span class="line">        preDexLibraries = false</span><br><span class="line">        //是否忽略方法数限制的检查</span><br><span class="line">        jumboMode = false</span><br><span class="line">        //进行 dex 编译的进程所使用的最大栈内存，太小可能导致OOM而无法通过编译</span><br><span class="line">        javaMaxHeapSize &quot;2048M&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="参考-2"><a href="#参考-2" class="headerlink" title="参考"></a>参考</h3><p><a href="https://stackoverflow.com/questions/28927255/how-can-i-use-android-dexoptions" target="_blank" rel="noopener">https://stackoverflow.com/questions/28927255/how-can-i-use-android-dexoptions</a></p>
+<p><a href="https://www.cnblogs.com/zhaoyanjun/p/5736305.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhaoyanjun/p/5736305.html</a></p>
+<p><a href="https://stackoverflow.com/questions/26779552/what-does-the-incremental-dex-option-in-android-studio-do" target="_blank" rel="noopener">https://stackoverflow.com/questions/26779552/what-does-the-incremental-dex-option-in-android-studio-do</a></p>
+<p><a href="https://stackoverflow.com/questions/33750404/android-gradle-what-is-javamaxheapsize-4g" target="_blank" rel="noopener">https://stackoverflow.com/questions/33750404/android-gradle-what-is-javamaxheapsize-4g</a></p>
+<h2 id="packagingOptions（打包选项）"><a href="#packagingOptions（打包选项）" class="headerlink" title="packagingOptions（打包选项）"></a>packagingOptions（打包选项）</h2><h3 id="packagingOption的选项"><a href="#packagingOption的选项" class="headerlink" title="packagingOption的选项"></a>packagingOption的选项</h3><p>简单翻译一下官方文档就理解了</p>
+<h4 id="First-pick"><a href="#First-pick" class="headerlink" title="First-pick"></a>First-pick</h4><p>First-pick 选项对应的文件会被打包到 apk 中，如果有多个对应文件，只有第一个会被打包，其他的会被忽略</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">packagingOptions &#123;</span><br><span class="line">    pickFirst &quot;anyFileWillDo&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Merge"><a href="#Merge" class="headerlink" title="Merge"></a>Merge</h4><p>Merge 选项对应的文件会被合并到 apk 中。例如，当合并两个文件的时候，如果第一个文件的结尾不是换行符变会自动添加一个换行符，然后第二个文件的内容会被合并到第一个文件的末尾，这样就构成了合并后的文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">packagingOptions &#123;</span><br><span class="line">    merge &quot;/LICENSE.txt&quot; // Same as: merges += [&quot;/LICENSE.txt&quot;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Exclude"><a href="#Exclude" class="headerlink" title="Exclude"></a>Exclude</h4><p>Exclude 选项对应的文件不会被编译到 apk 中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">packagingOptions &#123;</span><br><span class="line">	exclude &apos;META-INF/LICENSE&apos;</span><br><span class="line">	exclude &apos;META-INF/LICENSE.txt&apos;</span><br><span class="line">	exclude &apos;META-INF/NOTICE&apos;</span><br><span class="line">	exclude &apos;META-INF/NOTICE.txt&apos;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="参考-3"><a href="#参考-3" class="headerlink" title="参考"></a>参考</h3><p><a href="https://google.github.io/android-gradle-dsl/current/com.android.build.gradle.internal.dsl.PackagingOptions.html" target="_blank" rel="noopener">https://google.github.io/android-gradle-dsl/current/com.android.build.gradle.internal.dsl.PackagingOptions.html</a></p>
+<h2 id="productFlavors（打包特性）"><a href="#productFlavors（打包特性）" class="headerlink" title="productFlavors（打包特性）"></a>productFlavors（打包特性）</h2><p>用于多渠道打包</p>
+<h3 id="配置多渠道"><a href="#配置多渠道" class="headerlink" title="配置多渠道"></a>配置多渠道</h3><p>在 Android Studio 3.0 中，需要加入 <code>flavorDimensions</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flavorDimensions &quot;versionCode&quot;</span><br></pre></td></tr></table></figure>
+<p>添加 demo 渠道</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">productFlavors &#123;</span><br><span class="line">	demo &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="打包命令"><a href="#打包命令" class="headerlink" title="打包命令"></a>打包命令</h3><p>打包 demo 渠道的 apk</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew assembleGoogleRelease</span><br></pre></td></tr></table></figure>
+<p>打包所有渠道的 apk</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew assembleRelease</span><br></pre></td></tr></table></figure>
+<h3 id="参考-4"><a href="#参考-4" class="headerlink" title="参考"></a>参考</h3><p><a href="https://juejin.im/entry/577383c66be3ff006adc92a3" target="_blank" rel="noopener">https://juejin.im/entry/577383c66be3ff006adc92a3</a></p>
+<p><a href="https://blog.csdn.net/mynameishuangshuai/article/details/51783303" target="_blank" rel="noopener">https://blog.csdn.net/mynameishuangshuai/article/details/51783303</a></p>
+<p><a href="https://blog.csdn.net/SYIF88/article/details/75009663" target="_blank" rel="noopener">https://blog.csdn.net/SYIF88/article/details/75009663</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-06-25T03:34:22.110Z" itemprop="dateUpdated">2018-06-25 11:34:22</time>
+</span><br>
+
+
+        
+        转载请注明出处，虽然不会有人转载的说：<a href="/2018/06/25/记一些以前不知道的-Gradle-配置/" target="_blank" rel="external">http://blog.valorachen.club/2018/06/25/记一些以前不知道的-Gradle-配置/</a>
+        
+    </div>
+    <footer>
+        <a href="http://blog.valorachen.club">
+            <img src="/img/avatar.png" alt="ViVi">
+            ViVi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.valorachen.club/2018/06/25/记一些以前不知道的-Gradle-配置/&title=《记一些以前不知道的 Gradle 配置》 — ViVi's craft&pic=http://blog.valorachen.club/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.valorachen.club/2018/06/25/记一些以前不知道的-Gradle-配置/&title=《记一些以前不知道的 Gradle 配置》 — ViVi's craft&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.valorachen.club/2018/06/25/记一些以前不知道的-Gradle-配置/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《记一些以前不知道的 Gradle 配置》 — ViVi's craft&url=http://blog.valorachen.club/2018/06/25/记一些以前不知道的-Gradle-配置/&via=http://blog.valorachen.club" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.valorachen.club/2018/06/25/记一些以前不知道的-Gradle-配置/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/06/17/网件R6400折腾笔记/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">网件 R6400 折腾笔记</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "EwUx7kp4hDkqF3CsL5B6QGS1-gzGzoHsz",
+            appKey: "1tccniD7zvLprgUME5qQiIH1",
+            avatar: "mm",
+            placeholder: "Say something if you want to",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>ViVi &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.valorachen.club/2018/06/25/记一些以前不知道的-Gradle-配置/&title=《记一些以前不知道的 Gradle 配置》 — ViVi's craft&pic=http://blog.valorachen.club/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.valorachen.club/2018/06/25/记一些以前不知道的-Gradle-配置/&title=《记一些以前不知道的 Gradle 配置》 — ViVi's craft&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.valorachen.club/2018/06/25/记一些以前不知道的-Gradle-配置/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《记一些以前不知道的 Gradle 配置》 — ViVi's craft&url=http://blog.valorachen.club/2018/06/25/记一些以前不知道的-Gradle-配置/&via=http://blog.valorachen.club" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.valorachen.club/2018/06/25/记一些以前不知道的-Gradle-配置/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACuklEQVR42u3aUU7DQAwFQO5/6XKAtsuzvS4gTb6qKk12gpQ1z/76io/H0/HunPP353Oez0x+e+HAw8PDGy89uXRy/vmb83qSz+c14OHh4W3zkttUb5D8avKwos0JDw8P78/w5oV4wsbDw8P777zzrxJAvuhf2Bjw8PDwiry8qO1tEr3Yd1LQ4+Hh4e3xqkv5C59X+nt4eHh44656dauYl8LJaEJhnXh4eHgLvEmr/u5IVj5SUG6P4eHh4V3lVV/Z1SJ7HulOAgs8PDy8DV5SsM5HBJJt5nyvaisODw8Pb4/XGz/NqfkSeyX4D/fCw8PDW+AlRW2vIL77OC5sY3h4eHiXePklkuZWHi4k1+k1w97ue3h4eHgLvHxQoJd53I0qonXi4eHhLfDyiPZuOtp7cL3BLzw8PLxtXt6O6sUWvbi2unXh4eHh7fHysnX+Qs83iUmI/GKmDA8PD2+BVy2jk9vnm0e+VVSjZDw8PLxtXrWF3xx+Cq7TK/Rf3BcPDw9vgdd7ZffaYz12NRD5obDGw8PDG/OSJeZLz5theQutF/IW+mx4eHh4A17yv/y8YVaNKvJH8+IbPDw8vI/wkvZSHkDkIUWVF10BDw8Pb4FX3QZ6rbIqrDpoFa0ZDw8P7xKv96Kvjh1MCutqQIyHh4e3zZuUrXkBncSvkw2pOXqFh4eH1+L1gtoqe2OY4PwHeDs6gIeHhzfmVZdSbUflDbNooa1wBA8PD+8u71E88kI8b//nvGQYq5B/4OHh4bV41RdutWE/GVTNW3TXol48PDy8mJe3pqpn9hppl4eu8PDw8NZ41Rdxb8/JS+dqvBu1wfDw8PA+zktK3l4MMXlA5QYYHh4e3gd5SQTcCxryR5AHwXh4eHjbvGrEUN0AqgXxrTgDDw8Pb4NXHWaat/Dz0YFk67owTICHh4eX8r4BkXYW24xnoYUAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=61021328"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>如何将NetBeans中的Java程序导出可执行文件.exe | ViVi&#39;s craft | 只用来写技术相关的文章，记一些平时很少用很容易忘记的东西。能用实际项目来掌握的技术还懒得写，于是很少更新。想看更新频繁,内容日常的博客，请移步：&lt;a style=&#34;color:#FFFFFF;&#34; herf=&#34;https://chenvivi.wordpress.com&#34;&gt;https://chenvivi.wordpress.com&lt;/a&gt;</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="教程,Java，Swing">
+    <meta name="description" content="前言昨天刚刚给自己的Hexo主题增加了一个安利模块，把这个主题上传到Github了，链接在此：angui 没错，这个主题的名字是安轨，因为我是个前端小白，所以改这个主题让我的心情很爆炸，简直是m安轨，所以主题名叫angui 刚刚在博客上利用这个板块放了几首歌上去，并不是测试数据，我有很用心的写乐评的，有兴趣就听一听吧，吃我安利">
+<meta name="keywords" content="教程,Java，Swing">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何将NetBeans中的Java程序导出可执行文件.exe">
+<meta property="og:url" content="http://blog.valorachen.club/2017/03/12/如何将NetBeans中的Java程序导出可执行文件-exe/index.html">
+<meta property="og:site_name" content="ViVi&#39;s craft">
+<meta property="og:description" content="前言昨天刚刚给自己的Hexo主题增加了一个安利模块，把这个主题上传到Github了，链接在此：angui 没错，这个主题的名字是安轨，因为我是个前端小白，所以改这个主题让我的心情很爆炸，简直是m安轨，所以主题名叫angui 刚刚在博客上利用这个板块放了几首歌上去，并不是测试数据，我有很用心的写乐评的，有兴趣就听一听吧，吃我安利">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://i1.piimg.com/567571/0b04fa3bbde393e3.png">
+<meta property="og:image" content="http://i1.piimg.com/567571/3c3fdfd60f8b3ba2.png">
+<meta property="og:image" content="http://p1.bpimg.com/567571/a2737190cab1d659.png">
+<meta property="og:image" content="http://p1.bpimg.com/567571/25ed5fcb7469a9f7.png">
+<meta property="og:image" content="http://p1.bqimg.com/567571/ab6eaecd254b6729.png">
+<meta property="og:image" content="http://p1.bqimg.com/567571/88ec11b8757a4292.png">
+<meta property="og:updated_time" content="2017-04-14T09:17:00.180Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何将NetBeans中的Java程序导出可执行文件.exe">
+<meta name="twitter:description" content="前言昨天刚刚给自己的Hexo主题增加了一个安利模块，把这个主题上传到Github了，链接在此：angui 没错，这个主题的名字是安轨，因为我是个前端小白，所以改这个主题让我的心情很爆炸，简直是m安轨，所以主题名叫angui 刚刚在博客上利用这个板块放了几首歌上去，并不是测试数据，我有很用心的写乐评的，有兴趣就听一听吧，吃我安利">
+<meta name="twitter:image" content="http://i1.piimg.com/567571/0b04fa3bbde393e3.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="ViVi&#39;s craft" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ViVi</h5>
+          <a href="mailto:valorachen@163.com" title="valorachen@163.com" class="mail">valorachen@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                时间线
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://chenvivi.wordpress.com/" target="_blank" >
+                <i class="icon icon-lg icon-book"></i>
+                我的日记（代替py圈）
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom.xml" target="_blank" >
+                <i class="icon icon-lg icon-rss"></i>
+                RSS
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ChenViVi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://steamcommunity.com/profiles/76561198300793241" target="_blank" >
+                <i class="icon icon-lg icon-steam"></i>
+                Steam
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/p/1005053101937447/home?from=page_100505&mod=TAB&is_all=1#place" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">如何将NetBeans中的Java程序导出可执行文件.exe</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">如何将NetBeans中的Java程序导出可执行文件.exe</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-03-12T15:47:45.000Z" itemprop="datePublished" class="page-time">
+  2017-03-12
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#实际步骤"><span class="post-toc-number">2.</span> <span class="post-toc-text">实际步骤</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#下载并安装-Inno-Setup"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">下载并安装 Inno Setup</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#添加环境变量"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">添加环境变量</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#重启NetBeans"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">重启NetBeans</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#在-IDE-中启用本机打包"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">在 IDE 中启用本机打包</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#进行打包"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">进行打包</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装exe"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">安装exe</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#后续"><span class="post-toc-number">3.</span> <span class="post-toc-text">后续</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-如何将NetBeans中的Java程序导出可执行文件-exe"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">如何将NetBeans中的Java程序导出可执行文件.exe</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-03-12 23:47:45" datetime="2017-03-12T15:47:45.000Z"  itemprop="datePublished">2017-03-12</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>昨天刚刚给自己的Hexo主题增加了一个安利模块，把这个主题上传到Github了，链接在此：<a href="https://github.com/ChenViVi/angui" target="_blank" rel="noopener">angui</a></p>
+<p>没错，这个主题的名字是安轨，因为我是个前端小白，所以改这个主题让我的心情很爆炸，简直是m安轨，所以主题名叫angui</p>
+<p>刚刚在博客上利用这个板块放了几首歌上去，并不是测试数据，我有很用心的写乐评的，有兴趣就听一听吧，<a href="https://chenvivi.github.io/reading/" target="_blank" rel="noopener">吃我安利</a></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://i1.piimg.com/567571/0b04fa3bbde393e3.png" alt="效果预览" title="">
+                </div>
+                <div class="image-caption">效果预览</div>
+            </figure>
+<p>安利模块中的内容是由一个json文件生成的，每次要添加新内容，就需要手动编写json。当内容繁多的时候，这样的方式就特别不方便，而且还容易写错，于是寻思着做一个图形界面直接生成json，这样方便快捷，而且不容易出错。</p>
+<p>这个程序放在Github了，链接在此：<a href="https://github.com/ChenViVi/ReadingGenerator" target="_blank" rel="noopener">ReadingGenerator</a>。也可以直接<a href="https://github.com/ChenViVi/ReadingGenerator/raw/master/ReadingGenerator-1.0.exe" target="_blank" rel="noopener">下载exe</a></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://i1.piimg.com/567571/3c3fdfd60f8b3ba2.png" alt="效果预览" title="">
+                </div>
+                <div class="image-caption">效果预览</div>
+            </figure>
+<p>Json的处理方面我也算是半个老司机了，所以程序很快就写出来了。但是怎么导出exe我还是真不知道，以前一直都是直接在IDE里编译运行，总不能以后想添加个什么内容就打开编译器运行一遍呀，所以就开始找解决办法了，按照<a href="https://netbeans.org/kb/docs/java/native_pkg_zh_CN.html" target="_blank" rel="noopener">这篇文章</a>完美解决了问题，但是我还是想在这里把步骤再过一遍</p>
+<h2 id="实际步骤"><a href="#实际步骤" class="headerlink" title="实际步骤"></a>实际步骤</h2><h3 id="下载并安装-Inno-Setup"><a href="#下载并安装-Inno-Setup" class="headerlink" title="下载并安装 Inno Setup"></a>下载并安装 Inno Setup</h3><p><a href="http://www.jrsoftware.org/download.php/is.exe" target="_blank" rel="noopener">走你</a></p>
+<h3 id="添加环境变量"><a href="#添加环境变量" class="headerlink" title="添加环境变量"></a>添加环境变量</h3><p>将你的Inno Setup安装路径添加到环境变量中</p>
+<h3 id="重启NetBeans"><a href="#重启NetBeans" class="headerlink" title="重启NetBeans"></a>重启NetBeans</h3><p>这是为了使新的环境变量生效</p>
+<h3 id="在-IDE-中启用本机打包"><a href="#在-IDE-中启用本机打包" class="headerlink" title="在 IDE 中启用本机打包"></a>在 IDE 中启用本机打包</h3><ol>
+<li><p>鼠标停在项目上，右键-&gt;属性</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://p1.bpimg.com/567571/a2737190cab1d659.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
+<li><p>点击【部署】面板，打勾</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://p1.bpimg.com/567571/25ed5fcb7469a9f7.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
+</ol>
+<h3 id="进行打包"><a href="#进行打包" class="headerlink" title="进行打包"></a>进行打包</h3><p>鼠标停在项目上，右键-&gt;属性</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://p1.bqimg.com/567571/ab6eaecd254b6729.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="安装exe"><a href="#安装exe" class="headerlink" title="安装exe"></a>安装exe</h3><p>生成的exe文件在 你的项目\dist\bundles目录下，双击来安装这个程序吧。</p>
+<p>如果安装失败，并且弹出的对话框提示找不到主类，可能你的程序没有设置主类，在NetBeans中，主类会有特殊标志，如图红框所示</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://p1.bqimg.com/567571/88ec11b8757a4292.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h2><ol>
+<li><p>抽时间把安利页面完善一下吧，加点电影，书籍，番剧什么的</p>
+</li>
+<li><p>稍微拾起一点对Swing的映像了，趁热打铁，把作业做了吧</p>
+</li>
+<li><p>并没有在这周成功的找回人生方向。如果问我方向和努力那个重要，我会毫不犹地回答方向更重要。现在的我，再怎么努力都是南辕北辙，所以需要尽快回到人生的方向，可这偏偏是件欲速而不达的事情。虽然如此，我还是会加油的</p>
+</li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-04-14T09:17:00.180Z" itemprop="dateUpdated">2017-04-14 17:17:00</time>
+</span><br>
+
+
+        
+        转载请注明出处，虽然不会有人转载的说：<a href="/2017/03/12/如何将NetBeans中的Java程序导出可执行文件-exe/" target="_blank" rel="external">http://blog.valorachen.club/2017/03/12/如何将NetBeans中的Java程序导出可执行文件-exe/</a>
+        
+    </div>
+    <footer>
+        <a href="http://blog.valorachen.club">
+            <img src="/img/avatar.png" alt="ViVi">
+            ViVi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java，Swing/">Java，Swing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.valorachen.club/2017/03/12/如何将NetBeans中的Java程序导出可执行文件-exe/&title=《如何将NetBeans中的Java程序导出可执行文件.exe》 — ViVi's craft&pic=http://blog.valorachen.club/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.valorachen.club/2017/03/12/如何将NetBeans中的Java程序导出可执行文件-exe/&title=《如何将NetBeans中的Java程序导出可执行文件.exe》 — ViVi's craft&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.valorachen.club/2017/03/12/如何将NetBeans中的Java程序导出可执行文件-exe/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《如何将NetBeans中的Java程序导出可执行文件.exe》 — ViVi's craft&url=http://blog.valorachen.club/2017/03/12/如何将NetBeans中的Java程序导出可执行文件-exe/&via=http://blog.valorachen.club" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.valorachen.club/2017/03/12/如何将NetBeans中的Java程序导出可执行文件-exe/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/04/10/亲手打造萌萌哒的新键盘/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">亲手打造萌萌哒的新键盘</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/03/11/哀家敲代码就是一把梭！/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">哀家敲代码就是一把梭！</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "EwUx7kp4hDkqF3CsL5B6QGS1-gzGzoHsz",
+            appKey: "1tccniD7zvLprgUME5qQiIH1",
+            avatar: "mm",
+            placeholder: "Say something if you want to",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>ViVi &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.valorachen.club/2017/03/12/如何将NetBeans中的Java程序导出可执行文件-exe/&title=《如何将NetBeans中的Java程序导出可执行文件.exe》 — ViVi's craft&pic=http://blog.valorachen.club/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.valorachen.club/2017/03/12/如何将NetBeans中的Java程序导出可执行文件-exe/&title=《如何将NetBeans中的Java程序导出可执行文件.exe》 — ViVi's craft&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.valorachen.club/2017/03/12/如何将NetBeans中的Java程序导出可执行文件-exe/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《如何将NetBeans中的Java程序导出可执行文件.exe》 — ViVi's craft&url=http://blog.valorachen.club/2017/03/12/如何将NetBeans中的Java程序导出可执行文件-exe/&via=http://blog.valorachen.club" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.valorachen.club/2017/03/12/如何将NetBeans中的Java程序导出可执行文件-exe/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADHklEQVR42u3ay24bQQwEwPz/TytArraVblIGZLrmJCzk2anRgebjz594Pf6tj082zz9+fv6dr071/DurhY2Njf1D2I+n66sjtjsnB03e8tWF5hZsbGzsq+z8EM9D1Owq2zC5vyxsbGzs38lu04zk+fO3J0EUGxsbG3uWGLTJSV5Oyq8bGxsbG7tNG9pQlJf725JWe4nY2NjYt9lto/edP39jfxsbGxv7LdmP9Zo1dzdP2qD1yZmxsbGxD7HzZuommM0KSZviVBTYsLGxsU+w81JRcpR2NKd9/qqcAhsbG/sSu22UtkM8rxqjnJX7/+PCxsbGPspui+/FiMxihzz9KBIkbGxs7KPstjCUY+paV7xnm5ZgY2NjX2Vvyu6zBsOrrjtPYOpDYGNjY789u6Xm5ac2jM3avcPLwsbGxj7EbgPY8yO+auwmQe5Hf7CxsbFvsPNmbZHZlEX8NtXZ7PbJpBI2Njb2IXY7HNMO67RXtr+IL/fExsbGPsSeNXrbEcw8/OR/ux8qwsbGxr7HbktFOTgPfrNTDctV2NjY2IfY7ZqFq00bYHahL6BiY2Njvz27HdNJykbt87Y5sS9CYWNjY19i54dor2bT7k2SkNmAETY2NvY9dv4PfV5sapOK2djNZswIGxsb+/ewZ0WlWaF/GHtH4zvY2NjY99ivbejOUot2+GaTrmBjY2NfYtdfHb0yT0JmAbLdGRsbG/s2u01LZolNO0PU/jDRCbGxsbEPsb/vBXmqMxvE2beisbGxse+x24JRUvqZtRb24bBuG2BjY2P/cPammdoy2obBrAgVBTBsbGzsc+ziD+Kwlzdx9+3bti2BjY2NfYndJhvtcOQsydn8GEVBChsbG/vHsh/lyhsJeZhpi/7tST45FTY2NvYh9n7Ypb2stsyUAPKAh42NjX2VnRw6/7wJIbOgOPw9sbGxsc+x86JMkmzk79qEsU27AhsbG/s3s5Ot80Gctp0wC7fY2NjY2G3rtw1am+GeYRUNGxsb+xw7CQlt+SYvA7Wt5X2YxMbGxr7E3hSD2u1mozz7dsXL+tvY2NjY78X+CxXMd8tch7gEAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

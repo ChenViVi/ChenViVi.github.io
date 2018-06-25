@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=61021328"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>IDEA部署项目到远程Tomcat | ViVi&#39;s craft | 只用来写技术相关的文章，记一些平时很少用很容易忘记的东西。能用实际项目来掌握的技术还懒得写，于是很少更新。想看更新频繁,内容日常的博客，请移步：&lt;a style=&#34;color:#FFFFFF;&#34; herf=&#34;https://chenvivi.wordpress.com&#34;&gt;https://chenvivi.wordpress.com&lt;/a&gt;</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="服务器,Linux">
+    <meta name="description" content="环境Centos6.5 tomcat7 IntelliJ IDEA 2017.1.5 按着教程来我按照下面的文章几乎一步不漏地执行了相应操作： 参考：http://blog.csdn.net/tianjun2012/article/details/52795202 为什么说是几乎，是因为他文章里提到了，如果服务器的外网地址需要在/etc/hosts做映射，然而这里没有详细说明怎么去做映射，我自己也">
+<meta name="keywords" content="服务器,Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IDEA部署项目到远程Tomcat">
+<meta property="og:url" content="http://blog.valorachen.club/2017/09/06/IDEA部署项目到远程Tomcat/index.html">
+<meta property="og:site_name" content="ViVi&#39;s craft">
+<meta property="og:description" content="环境Centos6.5 tomcat7 IntelliJ IDEA 2017.1.5 按着教程来我按照下面的文章几乎一步不漏地执行了相应操作： 参考：http://blog.csdn.net/tianjun2012/article/details/52795202 为什么说是几乎，是因为他文章里提到了，如果服务器的外网地址需要在/etc/hosts做映射，然而这里没有详细说明怎么去做映射，我自己也">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://omqwegju8.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20170907004002.png">
+<meta property="og:updated_time" content="2017-09-06T17:43:27.015Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="IDEA部署项目到远程Tomcat">
+<meta name="twitter:description" content="环境Centos6.5 tomcat7 IntelliJ IDEA 2017.1.5 按着教程来我按照下面的文章几乎一步不漏地执行了相应操作： 参考：http://blog.csdn.net/tianjun2012/article/details/52795202 为什么说是几乎，是因为他文章里提到了，如果服务器的外网地址需要在/etc/hosts做映射，然而这里没有详细说明怎么去做映射，我自己也">
+<meta name="twitter:image" content="http://omqwegju8.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20170907004002.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="ViVi&#39;s craft" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ViVi</h5>
+          <a href="mailto:valorachen@163.com" title="valorachen@163.com" class="mail">valorachen@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                时间线
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://chenvivi.wordpress.com/" target="_blank" >
+                <i class="icon icon-lg icon-book"></i>
+                我的日记（代替py圈）
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom.xml" target="_blank" >
+                <i class="icon icon-lg icon-rss"></i>
+                RSS
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ChenViVi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://steamcommunity.com/profiles/76561198300793241" target="_blank" >
+                <i class="icon icon-lg icon-steam"></i>
+                Steam
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/p/1005053101937447/home?from=page_100505&mod=TAB&is_all=1#place" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">IDEA部署项目到远程Tomcat</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">IDEA部署项目到远程Tomcat</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-09-06T15:25:49.000Z" itemprop="datePublished" class="page-time">
+  2017-09-06
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#环境"><span class="post-toc-number">1.</span> <span class="post-toc-text">环境</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#按着教程来"><span class="post-toc-number">2.</span> <span class="post-toc-text">按着教程来</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#错误，因为错过的细节"><span class="post-toc-number">3.</span> <span class="post-toc-text">错误，因为错过的细节</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#类似而不一样的错误"><span class="post-toc-number">4.</span> <span class="post-toc-text">类似而不一样的错误</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#退而求其次"><span class="post-toc-number">5.</span> <span class="post-toc-text">退而求其次</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">6.</span> <span class="post-toc-text">总结</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-IDEA部署项目到远程Tomcat"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">IDEA部署项目到远程Tomcat</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-09-06 23:25:49" datetime="2017-09-06T15:25:49.000Z"  itemprop="datePublished">2017-09-06</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>Centos6.5</p>
+<p>tomcat7</p>
+<p>IntelliJ IDEA 2017.1.5</p>
+<h2 id="按着教程来"><a href="#按着教程来" class="headerlink" title="按着教程来"></a>按着教程来</h2><p>我按照下面的文章几乎一步不漏地执行了相应操作：</p>
+<p><a href="http://blog.csdn.net/tianjun2012/article/details/52795202" target="_blank" rel="noopener">参考：http://blog.csdn.net/tianjun2012/article/details/52795202</a></p>
+<p>为什么说是几乎，是因为他文章里提到了，如果服务器的外网地址需要在/etc/hosts做映射，然而这里没有详细说明怎么去做映射，我自己也不知道怎么操作，于是仅跳过了这一步。</p>
+<p>然而当我准备部署时，IDE报错如下：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://omqwegju8.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20170907004002.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>还有一个教程，大同小异，该报错还得报错。</p>
+<p><a href="http://blog.lanyus.com/archives/197.html" target="_blank" rel="noopener">参考：http://blog.lanyus.com/archives/197.html</a></p>
+<h2 id="错误，因为错过的细节"><a href="#错误，因为错过的细节" class="headerlink" title="错误，因为错过的细节"></a>错误，因为错过的细节</h2><p>去网上搜索，参考如下文章的解释，IDEA部署默认是需要开启一个叫做JMX的功能，但是Tomcat默认关闭了此功能。所以要么打开JMX功能，要么不使用JMX功能。</p>
+<p>网上搜索怎么开启JMX，发现确实是一个很繁琐的操作，tan90°</p>
+<p>不使用JMX功能，为啥改host就能做到呢？host与JMX有毛关系，这一点笔者还是没明白。</p>
+<p><a href="http://blog.csdn.net/Mark_LQ/article/details/52027363" target="_blank" rel="noopener">参考：http://blog.csdn.net/Mark_LQ/article/details/52027363</a></p>
+<h2 id="类似而不一样的错误"><a href="#类似而不一样的错误" class="headerlink" title="类似而不一样的错误"></a>类似而不一样的错误</h2><p>既然教程原文中也提到了host需要做什么不可描述的映射，笔者考虑可能确实与host有关，于是搜索这方面的信息，发现很多人都通过修改host而成功解决问题。</p>
+<p><a href="http://www.codes51.com/itwd/1482825.html" target="_blank" rel="noopener">http://www.codes51.com/itwd/1482825.html</a></p>
+<p><a href="http://blog.csdn.net/wingsyy_cs/article/details/53585750" target="_blank" rel="noopener">http://blog.csdn.net/wingsyy_cs/article/details/53585750</a></p>
+<p><a href="http://www.wangchao.net.cn/it/detail_129876.html" target="_blank" rel="noopener">http://www.wangchao.net.cn/it/detail_129876.html</a></p>
+<p>但是这个解决方法对应的报错信息和我不一样。</p>
+<p>他们的报错信息是Unable to ping server at localhost:1099</p>
+<p>我的报错信息是Unable to connect to the [我的主机ip地址]:1099</p>
+<p>别人都用这个方法成功解决了问题，而我却还是不行。</p>
+<h2 id="退而求其次"><a href="#退而求其次" class="headerlink" title="退而求其次"></a>退而求其次</h2><p>我很不容易的翻到了唯一一个和我报错信息一致的问答帖</p>
+<p><a href="https://stackoverflow.com/questions/14085371/tomcat-intellij-idea-remote-deploy" target="_blank" rel="noopener">https://stackoverflow.com/questions/14085371/tomcat-intellij-idea-remote-deploy</a></p>
+<p>然而他犯错太容易找出来了，少了一对””而已，很好改过来，我的错误在哪儿我还真是找死都没找出来。还好答主还提供了另一个方案，上传war包。</p>
+<p>其实我已经知道有这个方法了，之前简单学习JavaWeb的时候我就知道把工程放到webapp目录下就相当于是部署到tomcat下了，但是现在弄spring这个方法行不通，我就想一定有别的办法，于是知道了有上传war包这个方法了。</p>
+<p>但是网上的说法是把war扔webapp下重启服务完事，现在想起来这个说法还真的是一点都没错厚。</p>
+<p>还是这个答主细心说明要把war改成ROOT.war然后再扔webapp下，不然就不能访问<a href="http://youripaddress:8080" target="_blank" rel="noopener">http://youripaddress:8080</a></p>
+<p>刚开始我对手动上传war这个方法是拒绝的，这一点都不优雅，直接在IDE里点一个按钮就完成上传棒多了。但是鉴于我实在是被逼无奈，怎么行就怎么来吧。经过实践，发现还是得删掉webapp下的ROOT文件夹，不然还得显示tomcat那个页面。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>我还是不懂改不改host和jmx有什么关系，我甚至不知道hos或是jmx到底是干啥的。</p>
+<p>我还没有尝试开启jmx这个办法。</p>
+<p>我还是不能使用IDEA一键部署项目，退而求其次采用了上传war的方法。</p>
+<p>愿意好好把话说清楚的人都是大好人。如果教程帖能把关于host的东西也说明白就好了。而最后提到的问题答主那样详细的解答与补充，真的详细到让人感动。我不能要求别人怎么样，但是我对于自己写的文章一定是涉及到每个细节，我一直力求把所有的事情都讲得明明白白。不仅是在写文中，其实生活中的每一种信息传达方式，都应该把此放在第一位。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-09-06T17:43:27.015Z" itemprop="dateUpdated">2017-09-07 01:43:27</time>
+</span><br>
+
+
+        
+        转载请注明出处，虽然不会有人转载的说：<a href="/2017/09/06/IDEA部署项目到远程Tomcat/" target="_blank" rel="external">http://blog.valorachen.club/2017/09/06/IDEA部署项目到远程Tomcat/</a>
+        
+    </div>
+    <footer>
+        <a href="http://blog.valorachen.club">
+            <img src="/img/avatar.png" alt="ViVi">
+            ViVi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/服务器/">服务器</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.valorachen.club/2017/09/06/IDEA部署项目到远程Tomcat/&title=《IDEA部署项目到远程Tomcat》 — ViVi's craft&pic=http://blog.valorachen.club/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.valorachen.club/2017/09/06/IDEA部署项目到远程Tomcat/&title=《IDEA部署项目到远程Tomcat》 — ViVi's craft&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.valorachen.club/2017/09/06/IDEA部署项目到远程Tomcat/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《IDEA部署项目到远程Tomcat》 — ViVi's craft&url=http://blog.valorachen.club/2017/09/06/IDEA部署项目到远程Tomcat/&via=http://blog.valorachen.club" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.valorachen.club/2017/09/06/IDEA部署项目到远程Tomcat/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/09/13/用Spring框架写接口时遇到的问题/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">用Spring框架写接口时遇到的问题</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/09/04/Centos-Php-服务器配置/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Centos Php 服务器配置</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "EwUx7kp4hDkqF3CsL5B6QGS1-gzGzoHsz",
+            appKey: "1tccniD7zvLprgUME5qQiIH1",
+            avatar: "mm",
+            placeholder: "Say something if you want to",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>ViVi &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.valorachen.club/2017/09/06/IDEA部署项目到远程Tomcat/&title=《IDEA部署项目到远程Tomcat》 — ViVi's craft&pic=http://blog.valorachen.club/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.valorachen.club/2017/09/06/IDEA部署项目到远程Tomcat/&title=《IDEA部署项目到远程Tomcat》 — ViVi's craft&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.valorachen.club/2017/09/06/IDEA部署项目到远程Tomcat/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《IDEA部署项目到远程Tomcat》 — ViVi's craft&url=http://blog.valorachen.club/2017/09/06/IDEA部署项目到远程Tomcat/&via=http://blog.valorachen.club" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.valorachen.club/2017/09/06/IDEA部署项目到远程Tomcat/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrUlEQVR42u3aS4rDMBAFwLn/pTPbQLDn9UfBA+VVcIyi8kKtvNbPT3y93q73O/fPfD75+bn37fKFh4eHN5j659Wb+tUzvVdzP5+rZ/Dw8PBO8+6nlS/f99PK1+1qWbq8j4eHh/cA3j0s3/7mW2Q8PDy8/86rloHJ5PI54OHh4X2fl4QRydC9oLYahRzJWvDw8PBiXr6pfc7nI/09PDw8vHFXvVok8oJRfaHN2eLh4eEd4FUj1/nmeBIT9+aJh4eHt8t7ja+8rZWXmeqdy5eFh4eHd4BXXazz0DbBVEdLXkczU8HDw8OLecnPTyZ3z64Wj2p5wMPDwzvHm2DyBT35No+Ao1qHh4eHd4CXbKnzzXH+k3k7rXf0Cg8PD+8cL1+48zC3Ghz0ikQ0czw8PLwDvOpRp0lTv3fQqnoAa3SSCw8PD6/F2w0mqkWlGgqPOn54eHh4A15vWr2CUT2O0CsDeHh4eKd5k2ZYtYRstdCqM8TDw8Pb4iWD5gFBPuZ80Y+QeHh4eMd4k41veWu7NE4UZODh4eEd4FWjh6QAjJbyQePtj5eFh4eHt8SbHAg4HVXkBeZyBDw8PLwDvOpCvHWwICkS1e1+lFLj4eHhjXm96Dbf7E6OT+VRbxTj4uHh4S3x8sJQPXpVjTnyEKTZQsPDw8Nb5VX/6vdW3eoGunf0qjx1PDw8vCVer7nV20b3It08KMHDw8M7x8sHTVbd+YGDraKFh4eHt8ubhALzhlkeWyyUBDw8PLwlXn5Vo9veCHno0GTg4eHhLfF6gcI8vKhu2fPNOh4eHt53eHmc2lvEJyVhoabh4eHhPYaXt/+3AuLyVhsPDw/vAbxkU57HuHkLrRo04+Hh4Z3mTZpP1fu9RlrzqAEeHh7eAV71H33vuEAe6VazhYXYAg8PDy/l/QIoVjXK0WxEJAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

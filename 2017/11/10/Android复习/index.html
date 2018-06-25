@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=61021328"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Android复习 | ViVi&#39;s craft | 只用来写技术相关的文章，记一些平时很少用很容易忘记的东西。能用实际项目来掌握的技术还懒得写，于是很少更新。想看更新频繁,内容日常的博客，请移步：&lt;a style=&#34;color:#FFFFFF;&#34; herf=&#34;https://chenvivi.wordpress.com&#34;&gt;https://chenvivi.wordpress.com&lt;/a&gt;</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="复习">
+    <meta name="description" content="Activity生命周期启动：onCreate() onStart() onResume() 前台到后台：onPause() onStop() 后台到前台： onRestart() onStart() onResume() 解锁：onStart() onResume() 销毁：onPause() onStop() onDestory() 启动模式任务栈是一种后进先出的结构。 standard：每次">
+<meta name="keywords" content="复习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android复习">
+<meta property="og:url" content="http://blog.valorachen.club/2017/11/10/Android复习/index.html">
+<meta property="og:site_name" content="ViVi&#39;s craft">
+<meta property="og:description" content="Activity生命周期启动：onCreate() onStart() onResume() 前台到后台：onPause() onStop() 后台到前台： onRestart() onStart() onResume() 解锁：onStart() onResume() 销毁：onPause() onStop() onDestory() 启动模式任务栈是一种后进先出的结构。 standard：每次">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-11-11T15:29:32.538Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android复习">
+<meta name="twitter:description" content="Activity生命周期启动：onCreate() onStart() onResume() 前台到后台：onPause() onStop() 后台到前台： onRestart() onStart() onResume() 解锁：onStart() onResume() 销毁：onPause() onStop() onDestory() 启动模式任务栈是一种后进先出的结构。 standard：每次">
+    
+        <link rel="alternate" type="application/atom+xml" title="ViVi&#39;s craft" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ViVi</h5>
+          <a href="mailto:valorachen@163.com" title="valorachen@163.com" class="mail">valorachen@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                时间线
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://chenvivi.wordpress.com/" target="_blank" >
+                <i class="icon icon-lg icon-book"></i>
+                我的日记（代替py圈）
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom.xml" target="_blank" >
+                <i class="icon icon-lg icon-rss"></i>
+                RSS
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ChenViVi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://steamcommunity.com/profiles/76561198300793241" target="_blank" >
+                <i class="icon icon-lg icon-steam"></i>
+                Steam
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/p/1005053101937447/home?from=page_100505&mod=TAB&is_all=1#place" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Android复习</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Android复习</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-11-10T13:37:55.000Z" itemprop="datePublished" class="page-time">
+  2017-11-10
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Activity生命周期"><span class="post-toc-number">1.</span> <span class="post-toc-text">Activity生命周期</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#启动模式"><span class="post-toc-number">2.</span> <span class="post-toc-text">启动模式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Activity缓存方法"><span class="post-toc-number">3.</span> <span class="post-toc-text">Activity缓存方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Fragment生命周期"><span class="post-toc-number">4.</span> <span class="post-toc-text">Fragment生命周期</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Service不死"><span class="post-toc-number">5.</span> <span class="post-toc-text">Service不死</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#三种动画的区别"><span class="post-toc-number">6.</span> <span class="post-toc-text">三种动画的区别</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#View"><span class="post-toc-number">7.</span> <span class="post-toc-text">View</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ViewGroup"><span class="post-toc-number">8.</span> <span class="post-toc-text">ViewGroup</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Handler、Looper、Message、MessageQueue"><span class="post-toc-number">9.</span> <span class="post-toc-text">Handler、Looper、Message、MessageQueue</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Android复习"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Android复习</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-11-10 21:37:55" datetime="2017-11-10T13:37:55.000Z"  itemprop="datePublished">2017-11-10</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="Activity生命周期"><a href="#Activity生命周期" class="headerlink" title="Activity生命周期"></a>Activity生命周期</h2><p>启动：onCreate() onStart() onResume()</p>
+<p>前台到后台：onPause() onStop()</p>
+<p>后台到前台： onRestart() onStart() onResume()</p>
+<p>解锁：onStart() onResume()</p>
+<p>销毁：onPause() onStop() onDestory()</p>
+<h2 id="启动模式"><a href="#启动模式" class="headerlink" title="启动模式"></a>启动模式</h2><p>任务栈是一种后进先出的结构。</p>
+<p>standard：每次启动Activity都会创建一个新的Activity实例,并且将其压入任务栈栈顶。</p>
+<p>singleTop：若新Activity已经位于任务栈的栈顶,那么此Activity不会被重新创建。否则与standard相同。</p>
+<p>singleTask：如果栈中没有此Activity，则创建此Activity。如果栈中已经有一个Activity实例,则清除在其栈顶的所有Activity，来使当前Activity达到栈顶。</p>
+<p>singleInstance：此Activity独享一个栈，只拥有一个实例。</p>
+<h2 id="Activity缓存方法"><a href="#Activity缓存方法" class="headerlink" title="Activity缓存方法"></a>Activity缓存方法</h2><p>activity中保存数据有两种方式onPause() onSaveInstanceState(bundle)。 恢复数据也有两种途径onCreate(Bundle), onRestoreInstanceState(budle)。</p>
+<p>onRestoreInstanceState()被调用的前提是activity A“确实”被系统销毁了。onRestoreInstanceState()的bundle参数也会传递到onCreate方法中，你也可以选择在onCreate方法中做数据还原。</p>
+<p>onSaveInstanceState()会在onPause()或onStop()之前执行。</p>
+<p>onRestoreInstanceState()会在onStart()和onResume()之间执行。</p>
+<h2 id="Fragment生命周期"><a href="#Fragment生命周期" class="headerlink" title="Fragment生命周期"></a>Fragment生命周期</h2><p>启动：onAttach() onCreate() onCreateView() onActivityCreated() onStart() onResume()</p>
+<p>被替换（调用过addToBackStack()）：onPause() onStop() onDestoryView()</p>
+<p>重新回到屏幕：onActivityCreated() onStart() onResume()</p>
+<p>销毁：onPause() onStop() onDestoryView() onDestory() onDetach()</p>
+<h2 id="Service不死"><a href="#Service不死" class="headerlink" title="Service不死"></a>Service不死</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Override   </span><br><span class="line">public int onStartCommand(Intent intent, int flags, int startId) &#123;</span><br><span class="line">        return START_STICKY;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:priority = &quot;1000&quot;</span><br></pre></td></tr></table></figure>
+<p>当service走onDestory()的时候，发送一个自定义的广播，当收到广播的时候，重新启动service</p>
+<p>在onDestroy()里startService</p>
+<p>监听系统广播判断Service状态.例如：手机重启、界面唤醒、应用状态改变</p>
+<p>放一个像素在前台</p>
+<h2 id="三种动画的区别"><a href="#三种动画的区别" class="headerlink" title="三种动画的区别"></a>三种动画的区别</h2><p>tween 补间动画。通过指定View的初末状态和变化时间、方式，对View的内容完成一系列的图形变换来实现动画效果。 Alpha Scale Translate Rotate。</p>
+<p>frame 帧动画 AnimationDrawable 控制 animation-list xml布局</p>
+<p>PropertyAnimation 属性动画</p>
+<h2 id="View"><a href="#View" class="headerlink" title="View"></a>View</h2><p>onMeasure() 大小</p>
+<p>onDraw() 绘制</p>
+<p>onFinishInflate() xml加载完成</p>
+<p>onSizeChanged()</p>
+<p>onLayout() 使用此方法得到显示位置</p>
+<p>dispathTouchEvent() 分发TouchEvent</p>
+<p>onTouchEvent() 处理TouchEvent</p>
+<h2 id="ViewGroup"><a href="#ViewGroup" class="headerlink" title="ViewGroup"></a>ViewGroup</h2><p>dispathDraw() 绘制子View</p>
+<p>onInterceptTouchEvent() 拦截子View触摸事件</p>
+<h2 id="Handler、Looper、Message、MessageQueue"><a href="#Handler、Looper、Message、MessageQueue" class="headerlink" title="Handler、Looper、Message、MessageQueue"></a>Handler、Looper、Message、MessageQueue</h2><p>Looper将MessageQueue中的Message分配给Hnadle来处理</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-11-11T15:29:32.538Z" itemprop="dateUpdated">2017-11-11 23:29:32</time>
+</span><br>
+
+
+        
+        转载请注明出处，虽然不会有人转载的说：<a href="/2017/11/10/Android复习/" target="_blank" rel="external">http://blog.valorachen.club/2017/11/10/Android复习/</a>
+        
+    </div>
+    <footer>
+        <a href="http://blog.valorachen.club">
+            <img src="/img/avatar.png" alt="ViVi">
+            ViVi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/复习/">复习</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.valorachen.club/2017/11/10/Android复习/&title=《Android复习》 — ViVi's craft&pic=http://blog.valorachen.club/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.valorachen.club/2017/11/10/Android复习/&title=《Android复习》 — ViVi's craft&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.valorachen.club/2017/11/10/Android复习/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android复习》 — ViVi's craft&url=http://blog.valorachen.club/2017/11/10/Android复习/&via=http://blog.valorachen.club" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.valorachen.club/2017/11/10/Android复习/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/12/20/网易云音乐下载链接API分析/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">网易云音乐下载链接API分析</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/11/08/排序算法/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">排序算法</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "EwUx7kp4hDkqF3CsL5B6QGS1-gzGzoHsz",
+            appKey: "1tccniD7zvLprgUME5qQiIH1",
+            avatar: "mm",
+            placeholder: "Say something if you want to",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>ViVi &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.valorachen.club/2017/11/10/Android复习/&title=《Android复习》 — ViVi's craft&pic=http://blog.valorachen.club/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.valorachen.club/2017/11/10/Android复习/&title=《Android复习》 — ViVi's craft&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.valorachen.club/2017/11/10/Android复习/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android复习》 — ViVi's craft&url=http://blog.valorachen.club/2017/11/10/Android复习/&via=http://blog.valorachen.club" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.valorachen.club/2017/11/10/Android复习/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACH0lEQVR42u3ay3UjMQwEQOeftDYAr6RuQD6ILJ787Pmw5gADBH5+4vX4tZ5d8/v65Jn5XauFgYHxtYzHy/X6lcm2Xm8xv+vNp8TAwLiAkQTQ9vro9THpzZ4xMDAwgnQtD9NJkMXAwMDYB9xnSV5ebyZPxsDAwGiL2PaMKw+17V8xMDBuY+xD5N/9/Cf9DQwMjK9iPMr1OjnLC9RN+P7PWzAwMI5mbI7SZlcmn2b4FgwMjKMZbbnYBt826VwNimFgYBzNaEvZWTOgbSrMUkwMDIyTGMlRe5LG7cvU1WfCwMA4mjFLCmejXW3UL8YsMDAwrmG0wbTFzJ5f5LMYGBjXMJIi87MBNH/+m2diYGBcwEgCax5Sc/CszfC0E4uBgXEcY/aCpNydlbV5EVv8x8DAwPhyxqaIzXltyjj7DQYGxj2MWcOyTQ1nzYkow8XAwDiO0TYsPzXzMDvUW02cYWBgfC2jJeVPSALup6gYGBg3MNrxr3Zsaz9UEaWYGBgY1zDywDqby9oUt/XMCAYGxnGM4nxukeS1x235HjAwMG5jbDD7UbNhmwEDA+NQxqNcm6I3TzdrKgYGxtGMfWcw33R7ZRvQMTAwzmbMguxmi7Mhj6KIxcDAOJSRB75Zw2Afst8c3mFgYGCUIxQzfN7UXHVWMTAwLmC06WM77NW2SzEwMO5htAnc5q4o1YubBxgYGDcw2hZjGy7bTbQYDAyMoxn/AJCG2xktvRXYAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=61021328"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>排序算法 | ViVi&#39;s craft | 只用来写技术相关的文章，记一些平时很少用很容易忘记的东西。能用实际项目来掌握的技术还懒得写，于是很少更新。想看更新频繁,内容日常的博客，请移步：&lt;a style=&#34;color:#FFFFFF;&#34; herf=&#34;https://chenvivi.wordpress.com&#34;&gt;https://chenvivi.wordpress.com&lt;/a&gt;</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="复习">
+    <meta name="description" content="冒泡排序12345678910111213141516171819202122#include&amp;lt;stdio.h&amp;gt;void bubble_sort(int a[], int n);int main()&amp;#123;	int a[] = &amp;#123;50,40,63,20,98,41,65,78,21,34&amp;#125;;	sort2(a,10);	for(int i = 0;i &amp;lt; 1">
+<meta name="keywords" content="复习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="排序算法">
+<meta property="og:url" content="http://blog.valorachen.club/2017/11/08/排序算法/index.html">
+<meta property="og:site_name" content="ViVi&#39;s craft">
+<meta property="og:description" content="冒泡排序12345678910111213141516171819202122#include&amp;lt;stdio.h&amp;gt;void bubble_sort(int a[], int n);int main()&amp;#123;	int a[] = &amp;#123;50,40,63,20,98,41,65,78,21,34&amp;#125;;	sort2(a,10);	for(int i = 0;i &amp;lt; 1">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-11-09T03:38:25.118Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="排序算法">
+<meta name="twitter:description" content="冒泡排序12345678910111213141516171819202122#include&amp;lt;stdio.h&amp;gt;void bubble_sort(int a[], int n);int main()&amp;#123;	int a[] = &amp;#123;50,40,63,20,98,41,65,78,21,34&amp;#125;;	sort2(a,10);	for(int i = 0;i &amp;lt; 1">
+    
+        <link rel="alternate" type="application/atom+xml" title="ViVi&#39;s craft" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ViVi</h5>
+          <a href="mailto:valorachen@163.com" title="valorachen@163.com" class="mail">valorachen@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                时间线
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://chenvivi.wordpress.com/" target="_blank" >
+                <i class="icon icon-lg icon-book"></i>
+                我的日记（代替py圈）
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom.xml" target="_blank" >
+                <i class="icon icon-lg icon-rss"></i>
+                RSS
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ChenViVi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://steamcommunity.com/profiles/76561198300793241" target="_blank" >
+                <i class="icon icon-lg icon-steam"></i>
+                Steam
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/p/1005053101937447/home?from=page_100505&mod=TAB&is_all=1#place" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">排序算法</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">排序算法</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-11-08T13:54:51.000Z" itemprop="datePublished" class="page-time">
+  2017-11-08
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#冒泡排序"><span class="post-toc-number">1.</span> <span class="post-toc-text">冒泡排序</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#选择排序"><span class="post-toc-number">2.</span> <span class="post-toc-text">选择排序</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#快速排序"><span class="post-toc-number">3.</span> <span class="post-toc-text">快速排序</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#并归排序"><span class="post-toc-number">4.</span> <span class="post-toc-text">并归排序</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-排序算法"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">排序算法</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-11-08 21:54:51" datetime="2017-11-08T13:54:51.000Z"  itemprop="datePublished">2017-11-08</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">void bubble_sort(int a[], int n);</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	int a[] = &#123;50,40,63,20,98,41,65,78,21,34&#125;;</span><br><span class="line">	sort2(a,10);</span><br><span class="line">	for(int i = 0;i &lt; 10 ;i ++)	printf(&quot; %d&quot;,a[i]);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void bubble_sort(int a[], int n)&#123;</span><br><span class="line">	for(int i=0;i&lt;n-1;i++)&#123;</span><br><span class="line">		for(int j=0;j&lt;n-i;j++)&#123;</span><br><span class="line">			if(a[j]&gt;a[j+1])&#123;</span><br><span class="line">				int temp=a[j];</span><br><span class="line">				a[j]=a[j+1];</span><br><span class="line">				a[j+1]=temp;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">void insert_sort(int a[], int n);</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    int a[]=&#123;32,12,7, 78, 23,45&#125;;</span><br><span class="line">    insert_sort(a,6);</span><br><span class="line">    for(int i=0; i&lt;6; i++) printf(&quot; %d&quot;, a[i]);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void insert_sort(int a[], int n) &#123;</span><br><span class="line">    for (int i=0; i&lt;n; i++) &#123;</span><br><span class="line">        int k = i;</span><br><span class="line">        for (int j=i+1; j&lt;n; j++)</span><br><span class="line">            if (a[k]&gt;a[j]) k=j;</span><br><span class="line">        if (i!=k) &#123;</span><br><span class="line">            int tmp=a[i];</span><br><span class="line">            a[i]=a[k];</span><br><span class="line">            a[k]=tmp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">void Merge(int sourceArr[],int tempArr[], int startIndex, int midIndex, int endIndex)&#123;</span><br><span class="line">	int i = startIndex, j=midIndex+1, k = startIndex;</span><br><span class="line">	while(i!=midIndex+1 &amp;&amp; j!=endIndex+1)&#123;</span><br><span class="line">       if(sourceArr[i] &gt; sourceArr[j]) tempArr[k++] = sourceArr[j++];</span><br><span class="line">	   else tempArr[k++] = sourceArr[i++];</span><br><span class="line">	&#125;</span><br><span class="line">	while(i != midIndex+1) tempArr[k++] = sourceArr[i++];</span><br><span class="line">	while(j != endIndex+1) tempArr[k++] = sourceArr[j++];</span><br><span class="line">	for(i=startIndex; i&lt;=endIndex; i++) sourceArr[i] = tempArr[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void MergeSort(int sourceArr[], int tempArr[], int startIndex, int endIndex)&#123;</span><br><span class="line">	int midIndex;</span><br><span class="line">	if(startIndex &lt; endIndex)&#123;</span><br><span class="line">		midIndex = (startIndex + endIndex) / 2;</span><br><span class="line">		MergeSort(sourceArr, tempArr, startIndex, midIndex);</span><br><span class="line">		MergeSort(sourceArr, tempArr, midIndex+1, endIndex);</span><br><span class="line">		Merge(sourceArr, tempArr, startIndex, midIndex, endIndex);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	int a[8] = &#123;50, 10, 20, 30, 70, 40, 80, 60&#125;;</span><br><span class="line">	int i, b[8];</span><br><span class="line">	MergeSort(a, b, 0, 7);</span><br><span class="line">    for(i=0; i&lt;8; i++) printf(&quot;%d &quot;, a[i]);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="并归排序"><a href="#并归排序" class="headerlink" title="并归排序"></a>并归排序</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">void Merge(int a[],int b[], int start, int mid, int end);</span><br><span class="line">void MergeSort(int a[], int b[], int start, int end);</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	int a[8] = &#123;50, 10, 30, 20, 70, 40, 80, 60&#125;;</span><br><span class="line">	int i, b[8];</span><br><span class="line">	MergeSort(a,b,0,7);</span><br><span class="line">    for(i=0;i&lt;8;i++) printf(&quot;%d &quot;,a[i]);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void MergeSort(int a[], int b[], int start, int end)&#123;</span><br><span class="line">    int mid;</span><br><span class="line">    if(start&lt;end)&#123;</span><br><span class="line">        mid = (start+end)/2;</span><br><span class="line">        MergeSort(a,b,start,mid);</span><br><span class="line">        MergeSort(a,b,mid+1,end);</span><br><span class="line">        Merge(a,b,start,mid,end);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Merge(int a[],int b[], int start, int mid, int end)&#123;</span><br><span class="line">    int i=start, j=mid+1, k=start;</span><br><span class="line">    while(i!=mid+1 &amp;&amp; j!=end+1)&#123;</span><br><span class="line">        if(a[i]&gt;a[j]) b[k++]=a[j++];</span><br><span class="line">        else b[k++]=a[i++];</span><br><span class="line">    &#125;</span><br><span class="line">    while(i!=mid+1) b[k++]=a[i++];</span><br><span class="line">    while(j!=end+1) b[k++]=a[j++];</span><br><span class="line">    for(i=start;i&lt;=end;i++) a[i]=b[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-11-09T03:38:25.118Z" itemprop="dateUpdated">2017-11-09 11:38:25</time>
+</span><br>
+
+
+        
+        转载请注明出处，虽然不会有人转载的说：<a href="/2017/11/08/排序算法/" target="_blank" rel="external">http://blog.valorachen.club/2017/11/08/排序算法/</a>
+        
+    </div>
+    <footer>
+        <a href="http://blog.valorachen.club">
+            <img src="/img/avatar.png" alt="ViVi">
+            ViVi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/复习/">复习</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.valorachen.club/2017/11/08/排序算法/&title=《排序算法》 — ViVi's craft&pic=http://blog.valorachen.club/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.valorachen.club/2017/11/08/排序算法/&title=《排序算法》 — ViVi's craft&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.valorachen.club/2017/11/08/排序算法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《排序算法》 — ViVi's craft&url=http://blog.valorachen.club/2017/11/08/排序算法/&via=http://blog.valorachen.club" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.valorachen.club/2017/11/08/排序算法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/11/10/Android复习/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Android复习</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/09/13/用Spring框架写接口时遇到的问题/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">用Spring框架写接口时遇到的问题</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "EwUx7kp4hDkqF3CsL5B6QGS1-gzGzoHsz",
+            appKey: "1tccniD7zvLprgUME5qQiIH1",
+            avatar: "mm",
+            placeholder: "Say something if you want to",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>ViVi &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.valorachen.club/2017/11/08/排序算法/&title=《排序算法》 — ViVi's craft&pic=http://blog.valorachen.club/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.valorachen.club/2017/11/08/排序算法/&title=《排序算法》 — ViVi's craft&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.valorachen.club/2017/11/08/排序算法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《排序算法》 — ViVi's craft&url=http://blog.valorachen.club/2017/11/08/排序算法/&via=http://blog.valorachen.club" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.valorachen.club/2017/11/08/排序算法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACM0lEQVR42u3aQW7DMAwF0dz/0s62G8vzSTWAqfEqCFxZzwUYiuTng6/rz3X3zfr+/pobLhkyZLyWcS2v9T1k5fWmyWf0dBkyZBzAIJtY33/3YLImoT7sWYYMGTJqS4cBvfUsGTJkyFiGTh4uycFVhgwZMjqHWHJ/WoAj6ePms7gMGTJeyOBV999//pf+hgwZMl7FuMKrlhqm24p3JUOGjNEMHuDSFDAd3UjZMmTIOIdRO1KShiU/cJLS2wNMhgwZoxm1NkCnoEbKefzw/NDlkCFDxiAGOaz2ByY6B+Pi2VeGDBlDGSm1U6rjYRfBZMiQcQCDp3FBvhkmiLzlIEOGjHMYaVFsV2iu/e3tq5EhQ8YBDF4s46GWj3zVmqO3LUwZMmSMY6wbh2kSWTvupoW2h86GDBkyRjPIuANP+NJEsDMCIkOGjNkMnsCl81f8BZHXF2e4MmTIGMTY9bC0MMfDdzxsIUOGjKEMMtDQGdjigxe8PIf2IEOGjKGMWvDlpbHOuFjx/yBDhowRjFobIB2kIGE9vfP2ECtDhoyhjH7bMm1n8oYBenEyZMg4gMEfzBuWnWELzpMhQ8ZsxhVe6aY7DdGAKkOGjNGM9MDZH/OqjWigYQsZMmSMZvAg22k6rtfn7QFUbpMhQ8ZQRq0xsGuQYsPohgwZMmS0M81OgwE1PmXIkCEjLNzzgl2tkLch4MqQIeOFjM6DO2lfbThMhgwZpzHSJchCvOj2EEbbPwMyZMh4OeML23e8KkKLenwAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

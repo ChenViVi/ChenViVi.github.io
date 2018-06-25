@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=61021328"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Oracle复习 | ViVi&#39;s craft | 只用来写技术相关的文章，记一些平时很少用很容易忘记的东西。能用实际项目来掌握的技术还懒得写，于是很少更新。想看更新频繁,内容日常的博客，请移步：&lt;a style=&#34;color:#FFFFFF;&#34; herf=&#34;https://chenvivi.wordpress.com&#34;&gt;https://chenvivi.wordpress.com&lt;/a&gt;</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="用户创建 12345create user c##c identified by 110120default tablespace  df_testtemporary tablespace  tempquota unlimited on  df_testaccount unlock 修改密码 1alter user c##c identified by 123456; 授权 12345678910">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Oracle复习">
+<meta property="og:url" content="http://blog.valorachen.club/2017/06/28/Oracle复习/index.html">
+<meta property="og:site_name" content="ViVi&#39;s craft">
+<meta property="og:description" content="用户创建 12345create user c##c identified by 110120default tablespace  df_testtemporary tablespace  tempquota unlimited on  df_testaccount unlock 修改密码 1alter user c##c identified by 123456; 授权 12345678910">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-07-18T08:00:30.958Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Oracle复习">
+<meta name="twitter:description" content="用户创建 12345create user c##c identified by 110120default tablespace  df_testtemporary tablespace  tempquota unlimited on  df_testaccount unlock 修改密码 1alter user c##c identified by 123456; 授权 12345678910">
+    
+        <link rel="alternate" type="application/atom+xml" title="ViVi&#39;s craft" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ViVi</h5>
+          <a href="mailto:valorachen@163.com" title="valorachen@163.com" class="mail">valorachen@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                时间线
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://chenvivi.wordpress.com/" target="_blank" >
+                <i class="icon icon-lg icon-book"></i>
+                我的日记（代替py圈）
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom.xml" target="_blank" >
+                <i class="icon icon-lg icon-rss"></i>
+                RSS
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ChenViVi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://steamcommunity.com/profiles/76561198300793241" target="_blank" >
+                <i class="icon icon-lg icon-steam"></i>
+                Steam
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/p/1005053101937447/home?from=page_100505&mod=TAB&is_all=1#place" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Oracle复习</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Oracle复习</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-06-28T04:46:14.000Z" itemprop="datePublished" class="page-time">
+  2017-06-28
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#用户"><span class="post-toc-number">1.</span> <span class="post-toc-text">用户</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#表空间"><span class="post-toc-number">2.</span> <span class="post-toc-text">表空间</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#表"><span class="post-toc-number">3.</span> <span class="post-toc-text">表</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">创建</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#插入"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">插入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#更新"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">更新</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#删除"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">删除</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#存储过程"><span class="post-toc-number">4.</span> <span class="post-toc-text">存储过程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查找"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">查找</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">修改</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#函数"><span class="post-toc-number">5.</span> <span class="post-toc-text">函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#触发器"><span class="post-toc-number">6.</span> <span class="post-toc-text">触发器</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据库触发器"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">数据库触发器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#语句触发器"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">语句触发器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#带函数的触发器"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">带函数的触发器</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Oracle复习"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Oracle复习</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-06-28 12:46:14" datetime="2017-06-28T04:46:14.000Z"  itemprop="datePublished">2017-06-28</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="用户"><a href="#用户" class="headerlink" title="用户"></a>用户</h2><p>创建</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create user c##c identified by 110120</span><br><span class="line">default tablespace  df_test</span><br><span class="line">temporary tablespace  temp</span><br><span class="line">quota unlimited on  df_test</span><br><span class="line">account unlock</span><br></pre></td></tr></table></figure>
+<p>修改密码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter user c##c identified by 123456;</span><br></pre></td></tr></table></figure>
+<p>授权</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">grant create table to c##c;</span><br><span class="line">grant alter any table to c##c;</span><br><span class="line">grant drop any table to c##c;</span><br><span class="line">grant insert any table to c##c;</span><br><span class="line">grant update any table to c##c;</span><br><span class="line">grant create session to c##c;</span><br><span class="line">grant connect to c##c;</span><br><span class="line">grant resource to c##c;</span><br><span class="line">grant create tablespace to c##c;</span><br><span class="line">grant create procedure to c##c;</span><br><span class="line">grant create trigger to c##c;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grant insert on test to c##c;</span><br></pre></td></tr></table></figure>
+<p>Connect 角色，是授予最终用户的典型权利，最基本的权利，能够连接到Oracle数据库中，并在对其他用户的表有访问权限时，做SELECT、UPDATE、INSERTT等操作。</p>
+<p>Alter session–修改会话；</p>
+<p>Create cluster–建立聚簇；</p>
+<p>Create database link–建立数据库连接；</p>
+<p>Create sequence–建立序列；</p>
+<p>Create session–建立会话；</p>
+<p>Create synonym–建立同义词；</p>
+<p>Create view–建立视图。</p>
+<p>Resource 角色，是授予开发人员的，能在自己的方案中创建表、序列、视图等。</p>
+<p>Create cluster–建立聚簇；</p>
+<p>Create procedure–建立过程；</p>
+<p>Create sequence—建立序列；</p>
+<p>Create table–建表；</p>
+<p>Create trigger–建立促发器；</p>
+<p>Create type–建立类型。</p>
+<p>DBA角色，是授予系统管理员的，拥有该角色的用户就能成为系统管理员了，它拥有所有的系统权限。</p>
+<h2 id="表空间"><a href="#表空间" class="headerlink" title="表空间"></a>表空间</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">create tablespace df_test</span><br><span class="line">logging datafile &apos;D:\2_Software\2_Develop\Oracle\df_test1.ora&apos; size 50m</span><br><span class="line">autoextend on next  10m</span><br><span class="line">maxsize unlimited,</span><br><span class="line">&apos;D:\2_Software\2_Develop\Oracle\df_test2.ora&apos; size  50m</span><br><span class="line">autoextend on next  10m</span><br><span class="line">maxsize unlimited</span><br><span class="line">extent management local</span><br><span class="line">segment space management auto</span><br></pre></td></tr></table></figure>
+<h2 id="表"><a href="#表" class="headerlink" title="表"></a>表</h2><h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create table stu(</span><br><span class="line">  stu_no number,</span><br><span class="line">  stu_name varchar(10),</span><br><span class="line">  constraint pk_stu primary key(stu_no) validate</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">create table stu_info(</span><br><span class="line">  stu_no number,</span><br><span class="line">  stu_sex varchar(10),</span><br><span class="line">  stu_grade number,</span><br><span class="line">  constraint pk_stu_info primary key(stu_no) validate,</span><br><span class="line">  constraint fk_stu_info foreign key(stu_no) references stu(stu_no) validate)</span><br><span class="line">organization index tablespace ts_test</span><br><span class="line">pctfree 5</span><br><span class="line">initrans 1</span><br><span class="line">maxtrans 30</span><br><span class="line">storage(buffer_pool keep)</span><br><span class="line">parallel</span><br></pre></td></tr></table></figure>
+<h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into stu(stu_no,stu_name) values(1,&apos;student1&apos;);</span><br></pre></td></tr></table></figure>
+<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update stu set stu_name = &apos;student2&apos;,stu_no = 2 where stu_no = 1;</span><br></pre></td></tr></table></figure>
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">delete from stu where stu_no = 2;</span><br></pre></td></tr></table></figure>
+<h2 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a>存储过程</h2><h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><p>创建</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create or replace procedure pro_query(pro_stu_no in stu.stu_no%type,pro_stu_name out stu.stu_name%type)</span><br><span class="line">as</span><br><span class="line">begin</span><br><span class="line">select stu_name into pro_stu_name from stu where stu_no =  pro_stu_no;</span><br><span class="line">end pro_query;</span><br></pre></td></tr></table></figure>
+<p>测试</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">set serveroutput on</span><br><span class="line">declare</span><br><span class="line">pro_stu_no stu.stu_no%type;</span><br><span class="line">pro_stu_name stu.stu_name%type;</span><br><span class="line">begin</span><br><span class="line">pro_stu_no := 1;</span><br><span class="line">pro_query(pro_stu_no,pro_stu_name);</span><br><span class="line">dbms_output.put_line(&apos;学生姓名：&apos;||pro_stu_name);</span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+<h3 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h3><p>创建</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create or replace procedure pro_update(pro_stu_no in stu.stu_no%type,pro_stu_name in stu.stu_name%type)</span><br><span class="line">as</span><br><span class="line">begin</span><br><span class="line">update stu set stu_name = pro_stu_name where stu_no = pro_stu_no;</span><br><span class="line">end pro_update;</span><br></pre></td></tr></table></figure>
+<p>测试</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">set serveroutput on</span><br><span class="line">declare</span><br><span class="line">pro_stu_no stu.stu_no%type;</span><br><span class="line">pro_stu_name stu.stu_name%type;</span><br><span class="line">begin</span><br><span class="line">pro_stu_no := 1;</span><br><span class="line">pro_stu_name := &apos;student2&apos;;</span><br><span class="line">pro_update(pro_stu_no,pro_stu_name);</span><br><span class="line">commit;</span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>创建</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">create or replace function fun_query(fun_stu_no number)</span><br><span class="line">return varchar</span><br><span class="line">is</span><br><span class="line">result varchar(20);</span><br><span class="line">begin</span><br><span class="line">select stu_name into result from stu where stu_no = fun_stu_no;</span><br><span class="line">return result;</span><br><span class="line">exception</span><br><span class="line">when no_data_found then return 999;</span><br><span class="line">end fun_query;</span><br></pre></td></tr></table></figure>
+<p>测试</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from stu where stu_name = fun_query(1);</span><br></pre></td></tr></table></figure>
+<h2 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h2><h3 id="数据库触发器"><a href="#数据库触发器" class="headerlink" title="数据库触发器"></a>数据库触发器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">CREATE TABLE connect_audit  (</span><br><span class="line">  login_date DATE,</span><br><span class="line"> logoff_date DATE,</span><br><span class="line">  user_name    VARCHAR2(30));</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE OR REPLACE PROCEDURE  demo_log_proc</span><br><span class="line">IS</span><br><span class="line"> BEGIN</span><br><span class="line"> INSERT INTO  connect_audit(login_date,user_name)</span><br><span class="line"> VALUES (SYSDATE,  USER);</span><br><span class="line">  END  demo_log_proc;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE OR REPLACE TRIGGER  logon_trig</span><br><span class="line"> AFTER LOGON ON DATABASE</span><br><span class="line"> CALL  demo_log_proc</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from   connect_audit;</span><br></pre></td></tr></table></figure>
+<h3 id="语句触发器"><a href="#语句触发器" class="headerlink" title="语句触发器"></a>语句触发器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create tb_log(txt varchar(10));</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">create or replace trigger tri_lang</span><br><span class="line">after insert or update or delete on stu</span><br><span class="line">declare</span><br><span class="line">begin</span><br><span class="line">if inserting then insert into tb_log values(&apos;插入&apos;);</span><br><span class="line">elsif updating then insert into tb_log values(&apos;更新&apos;);</span><br><span class="line">elsif deleting then insert into tb_log values(&apos;删除&apos;);</span><br><span class="line">end if;</span><br><span class="line">end tri_lang;</span><br></pre></td></tr></table></figure>
+<h3 id="带函数的触发器"><a href="#带函数的触发器" class="headerlink" title="带函数的触发器"></a>带函数的触发器</h3><p>一</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">CREATE OR REPLACE TRIGGER tri_grade_percentage</span><br><span class="line">BEFORE INSERT OR UPDATE OF final_grade ON  db_grade</span><br><span class="line">FOR EACH ROW</span><br><span class="line">BEGIN</span><br><span class="line">IF INSERTING  THEN</span><br><span class="line">INSERT INTO   db_grade</span><br><span class="line">VALUES(:new.REGISTER_NO,:new.COURSE_NO,:new.WORK_ID,:new.COLLEGE_NO,:new.CO</span><br><span class="line">URSE_NAME,:new.REGISTERED_DATE,:new.REGISTERED_YEAR,:new.REGISTER</span><br><span class="line">ED_TERM,:new.FINAL_GRADE*0.60,:new.MAKEUP_FLAG,:new.CREDIT);</span><br><span class="line">ELSIF UPDATING  THEN</span><br><span class="line">UPDATE db_grade SET FINAL_GRADE  =:new.FINAL_GRADE*0.60;</span><br><span class="line">END IF;</span><br><span class="line">END  tri_grade_percentage;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">create or replace trigger tri_fun</span><br><span class="line">before insert or update of stu_grade on stu_info</span><br><span class="line">for each row</span><br><span class="line">begin</span><br><span class="line">if inserting then</span><br><span class="line">insert into stu_info values(:new.stu_no,:new.stu_sex,:new.stu_grade*0.60);</span><br><span class="line">elsif updating then</span><br><span class="line">update stu_info set stu_grade =: new.stu_grade*0.60;</span><br><span class="line">end if;</span><br><span class="line">end tri_fun;</span><br></pre></td></tr></table></figure>
+<p>二</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE OR REPLACE TRIGGER  tri_when_restrict</span><br><span class="line">BEFORE INSERT OR UPDATE OF final_grade ON  db_grade</span><br><span class="line">REFERENCING NEW AS  new_rec</span><br><span class="line">FOR EACH ROW</span><br><span class="line">WHEN (new_rec.final_grade&lt;60)</span><br><span class="line">BEGIN</span><br><span class="line">:new_rec.makeup_flag :=&apos;1&apos;;</span><br><span class="line">END  tri_when_restrict;</span><br></pre></td></tr></table></figure>
+<p>三</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CREATE OR REPLACE TRIGGER  tri_follows_prior</span><br><span class="line">BEFORE INSERT OR UPDATE OF final_grade ON db_grade</span><br><span class="line">REFERENCING NEW AS  new_rec</span><br><span class="line">FOR EACH ROW</span><br><span class="line">Follows  staffuser.tri_when_restrict</span><br><span class="line">WHEN (new_rec.final_grade&lt;60)</span><br><span class="line">BEGIN</span><br><span class="line">:new_rec.final_grade := 999;</span><br><span class="line">END    tri_follows_prior;</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-07-18T08:00:30.958Z" itemprop="dateUpdated">2017-07-18 16:00:30</time>
+</span><br>
+
+
+        
+        转载请注明出处，虽然不会有人转载的说：<a href="/2017/06/28/Oracle复习/" target="_blank" rel="external">http://blog.valorachen.club/2017/06/28/Oracle复习/</a>
+        
+    </div>
+    <footer>
+        <a href="http://blog.valorachen.club">
+            <img src="/img/avatar.png" alt="ViVi">
+            ViVi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.valorachen.club/2017/06/28/Oracle复习/&title=《Oracle复习》 — ViVi's craft&pic=http://blog.valorachen.club/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.valorachen.club/2017/06/28/Oracle复习/&title=《Oracle复习》 — ViVi's craft&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.valorachen.club/2017/06/28/Oracle复习/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Oracle复习》 — ViVi's craft&url=http://blog.valorachen.club/2017/06/28/Oracle复习/&via=http://blog.valorachen.club" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.valorachen.club/2017/06/28/Oracle复习/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/08/22/操作系统复习/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">操作系统复习</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/04/10/亲手打造萌萌哒的新键盘/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">亲手打造萌萌哒的新键盘</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "EwUx7kp4hDkqF3CsL5B6QGS1-gzGzoHsz",
+            appKey: "1tccniD7zvLprgUME5qQiIH1",
+            avatar: "mm",
+            placeholder: "Say something if you want to",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>ViVi &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.valorachen.club/2017/06/28/Oracle复习/&title=《Oracle复习》 — ViVi's craft&pic=http://blog.valorachen.club/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.valorachen.club/2017/06/28/Oracle复习/&title=《Oracle复习》 — ViVi's craft&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.valorachen.club/2017/06/28/Oracle复习/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Oracle复习》 — ViVi's craft&url=http://blog.valorachen.club/2017/06/28/Oracle复习/&via=http://blog.valorachen.club" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.valorachen.club/2017/06/28/Oracle复习/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLUlEQVR42u3aQXICMQwFUe5/6eEEJv0lE8pyzyqVAttvFkKS9Xrh5/n4fP48WTn9VvGRIUPGsQxyxNV/dh1xtXLw+mTIkHEBgy9NvrXajKxJXpYMGTJkkC15IsgDOt9XhgwZMtLlyOFISP1ZwJUhQ8YhjDQgkkKXBOV0rw21uAwZMg5k8K77///9lfsNGTJkHMV4woc0/WtXkk/jkSFDxmxGehnJxyz4ap0RDRkyZNzAIBeTpB3G/58OZCCYDBkyRjP4R8nSaRLZuZxY/m7IkCFjHIMXqyQU9pv7nBfnrTJkyBjESJPITquuVgyjO1gZMmQMYqTHTRO+zkVCsZSVIUPGOEanKba3AUeG0pavUoYMGRcw0iZa7Tqhsxpqt8mQIWMoIz1WrbnGQyrHLCtyGTJkXMBIW2P96rl2PSBDhox7GDz8keDbacnxFdCwhQwZMgYx+BHTcpQfupYgBuMXMmTIOJyxK8ClyWWtzbfcS4YMGaMZ6UhEGsVrpW+t0JUhQ8ZsBk8EeSjkSN6e+4MtQ4aMCxi1FI232MguvJ23HLaQIUPGaAYh8VGMTqtu2++GDBkyRjCe8Okcmjfp4otVGTJkjGbUGme1cJwG1tawhQwZMsYxeJCtNct4KdsaxZAhQ8YFjF2pWzo6lqZ9yxchQ4YMGXjLzmq1wQsZMmTI4EevNexqjbwNAVeGDBkHMmob91PAXQMZMmTImM3gpSMZsEiPGyR/jdJXhgwZxzLeVYIi4NPJ/OsAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=61021328"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Centos Php 服务器配置 | ViVi&#39;s craft | 只用来写技术相关的文章，记一些平时很少用很容易忘记的东西。能用实际项目来掌握的技术还懒得写，于是很少更新。想看更新频繁,内容日常的博客，请移步：&lt;a style=&#34;color:#FFFFFF;&#34; herf=&#34;https://chenvivi.wordpress.com&#34;&gt;https://chenvivi.wordpress.com&lt;/a&gt;</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="服务器,Linux">
+    <meta name="description" content="前言我本打算弄完Java Web所需要的运行环境就完事的，但是我发现我已经用惯了phpMyAdmin了，再换成WorkBench开始有点抓狂了，于是干脆为了phpMyAdmin把php的运行环境也配一遍 可是中途出了点事，我装完php5.6之后再装phpMyAdmin，结果需要的php是5.3版本的，卸载php和各种呕熏的依赖神烦，于是打算重装系统 我之前写的那个如何配置Java Web服务器的文">
+<meta name="keywords" content="服务器,Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Centos Php 服务器配置">
+<meta property="og:url" content="http://blog.valorachen.club/2017/09/04/Centos-Php-服务器配置/index.html">
+<meta property="og:site_name" content="ViVi&#39;s craft">
+<meta property="og:description" content="前言我本打算弄完Java Web所需要的运行环境就完事的，但是我发现我已经用惯了phpMyAdmin了，再换成WorkBench开始有点抓狂了，于是干脆为了phpMyAdmin把php的运行环境也配一遍 可是中途出了点事，我装完php5.6之后再装phpMyAdmin，结果需要的php是5.3版本的，卸载php和各种呕熏的依赖神烦，于是打算重装系统 我之前写的那个如何配置Java Web服务器的文">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-09-19T16:51:07.669Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Centos Php 服务器配置">
+<meta name="twitter:description" content="前言我本打算弄完Java Web所需要的运行环境就完事的，但是我发现我已经用惯了phpMyAdmin了，再换成WorkBench开始有点抓狂了，于是干脆为了phpMyAdmin把php的运行环境也配一遍 可是中途出了点事，我装完php5.6之后再装phpMyAdmin，结果需要的php是5.3版本的，卸载php和各种呕熏的依赖神烦，于是打算重装系统 我之前写的那个如何配置Java Web服务器的文">
+    
+        <link rel="alternate" type="application/atom+xml" title="ViVi&#39;s craft" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ViVi</h5>
+          <a href="mailto:valorachen@163.com" title="valorachen@163.com" class="mail">valorachen@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                时间线
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://chenvivi.wordpress.com/" target="_blank" >
+                <i class="icon icon-lg icon-book"></i>
+                我的日记（代替py圈）
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom.xml" target="_blank" >
+                <i class="icon icon-lg icon-rss"></i>
+                RSS
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ChenViVi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://steamcommunity.com/profiles/76561198300793241" target="_blank" >
+                <i class="icon icon-lg icon-steam"></i>
+                Steam
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/p/1005053101937447/home?from=page_100505&mod=TAB&is_all=1#place" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Centos Php 服务器配置</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Centos Php 服务器配置</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-09-04T15:55:38.000Z" itemprop="datePublished" class="page-time">
+  2017-09-04
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#环境"><span class="post-toc-number">2.</span> <span class="post-toc-text">环境</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Php"><span class="post-toc-number">3.</span> <span class="post-toc-text">Php</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Apache"><span class="post-toc-number">4.</span> <span class="post-toc-text">Apache</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#启动"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">启动</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#开机自启"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">开机自启</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#打开访问权限"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">打开访问权限</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#phpMyAdmin"><span class="post-toc-number">5.</span> <span class="post-toc-text">phpMyAdmin</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#添加源"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">添加源</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#下载"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">下载</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关联mysql账号密码"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">关联mysql账号密码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#打开访问权限-1"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">打开访问权限</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Centos-Php-服务器配置"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Centos Php 服务器配置</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-09-04 23:55:38" datetime="2017-09-04T15:55:38.000Z"  itemprop="datePublished">2017-09-04</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我本打算弄完Java Web所需要的运行环境就完事的，但是我发现我已经用惯了phpMyAdmin了，再换成WorkBench开始有点抓狂了，于是干脆为了phpMyAdmin把php的运行环境也配一遍</p>
+<p>可是中途出了点事，我装完php5.6之后再装phpMyAdmin，结果需要的php是5.3版本的，卸载php和各种呕熏的依赖神烦，于是打算重装系统</p>
+<p>我之前写的那个如何配置Java Web服务器的文章帮到了我，但是按照文章的流程走的也不是特别顺畅，甚至发现了好几处纰漏。</p>
+<p>因为这次重装意外的发现并修复了这些纰漏，真是让人惊喜。回想起来，当初为了详记如何搭建hexo博客，我甚至重走流程以便记录每个细节，但是还是在使用文章来搭hexo博客时发现纰漏。后来修正过之后，朋友们看了此文之后还是有疑惑而亲自问我。于是我后来又添加一些补充。这正与这次事件相似。</p>
+<p>我不会为我不能以清楚且完整的思维来写好文章而责备自己，这对我来说是强人所难。反而，我感谢这次意外的事件，让我认识到了即使再怎么努力的想一次性做好一件事，也是很难达成的。但是，反复地，多角度的审查，就能让事物变得更完备。</p>
+<p><strong>mysql 已在配置Java Web运行环境时配置，在此不叙述，详情参考<a href="https://chenvivi.github.io/2017/09/04/Centos-Java-Web-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE/" target="_blank" rel="noopener">Centos Java Web 服务器配置</a></strong></p>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>本机环境：</p>
+<p>Centos6.5</p>
+<p>mysql5.7</p>
+<p>将要配置的环境：</p>
+<p>php5.3</p>
+<p>Apache</p>
+<p>phpMyAdmin</p>
+<h2 id="Php"><a href="#Php" class="headerlink" title="Php"></a>Php</h2><p>不添加其他php源的话，Centos6.5会安装php5.1</p>
+<p>添加php5.3的源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm</span><br></pre></td></tr></table></figure>
+<p>启用源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh epel-release-6-8.noarch.rpm</span><br></pre></td></tr></table></figure>
+<p>安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install php</span><br></pre></td></tr></table></figure></p>
+<p>可以看到此时php版本是5.3</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php -verson</span><br></pre></td></tr></table></figure>
+<h2 id="Apache"><a href="#Apache" class="headerlink" title="Apache"></a>Apache</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install httpd</span><br></pre></td></tr></table></figure>
+<h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/httpd start</span><br></pre></td></tr></table></figure>
+<h3 id="开机自启"><a href="#开机自启" class="headerlink" title="开机自启"></a>开机自启</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chkconfig httpd on</span><br></pre></td></tr></table></figure>
+<h3 id="打开访问权限"><a href="#打开访问权限" class="headerlink" title="打开访问权限"></a>打开访问权限</h3><p>打开/etc/httpd/conf/httpd.conf</p>
+<p>将</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;Directory /&gt;</span><br><span class="line">    Options FollowSymLinks</span><br><span class="line">    AllowOverride None</span><br><span class="line">    Order deny,allow</span><br><span class="line">    Deny from all</span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure>
+<p>修改为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;Directory /&gt;</span><br><span class="line">  Options FollowSymLinks</span><br><span class="line">  AllowOverride None</span><br><span class="line">  Order deny,allow</span><br><span class="line">  allow from all</span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure>
+<p>重启服务生效</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/httpd restart</span><br></pre></td></tr></table></figure>
+<h2 id="phpMyAdmin"><a href="#phpMyAdmin" class="headerlink" title="phpMyAdmin"></a>phpMyAdmin</h2><h3 id="添加源"><a href="#添加源" class="headerlink" title="添加源"></a>添加源</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh http://ftp.iij.ad.jp/pub/linux/fedora/epel/6/x86_64/epel-release-6-8.noarch.rpm</span><br></pre></td></tr></table></figure>
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install phpmyadmin</span><br></pre></td></tr></table></figure>
+<h3 id="关联mysql账号密码"><a href="#关联mysql账号密码" class="headerlink" title="关联mysql账号密码"></a>关联mysql账号密码</h3><p>打开/etc/phpMyAdmin/config.inc.php</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$cfg[&apos;Servers&apos;][$i][&apos;user&apos;]          = &apos;账号&apos;;</span><br><span class="line">$cfg[&apos;Servers&apos;][$i][&apos;password&apos;]      = &apos;密码&apos;;</span><br></pre></td></tr></table></figure>
+<h3 id="打开访问权限-1"><a href="#打开访问权限-1" class="headerlink" title="打开访问权限"></a>打开访问权限</h3><p>打开/etc/httpd/conf.d/phpMyAdmin.conf 复制并替换如下内容到相应位置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;Directory /usr/share/phpMyAdmin/&gt;</span><br><span class="line">  AddDefaultCharset UTF-8</span><br><span class="line"></span><br><span class="line">  &lt;IfModule mod_authz_core.c&gt;</span><br><span class="line">   # Apache 2.4</span><br><span class="line">   &lt;RequireAny&gt;</span><br><span class="line">    Require all granted</span><br><span class="line">   &lt;/RequireAny&gt;</span><br><span class="line">  &lt;/IfModule&gt;</span><br><span class="line">  &lt;IfModule !mod_authz_core.c&gt;</span><br><span class="line">   # Apache 2.2</span><br><span class="line">   Order Deny,Allow</span><br><span class="line">   Allow from All</span><br><span class="line">  &lt;/IfModule&gt;</span><br><span class="line">&lt;/Directory&gt;</span><br><span class="line"></span><br><span class="line">&lt;Directory /usr/share/phpMyAdmin/setup/&gt;</span><br><span class="line">  &lt;IfModule mod_authz_core.c&gt;</span><br><span class="line">   # Apache 2.4</span><br><span class="line">   &lt;RequireAny&gt;</span><br><span class="line">    Require all granted</span><br><span class="line">   &lt;/RequireAny&gt;</span><br><span class="line">  &lt;/IfModule&gt;</span><br><span class="line">  &lt;IfModule !mod_authz_core.c&gt;</span><br><span class="line">   # Apache 2.2</span><br><span class="line">   Order Deny,Allow</span><br><span class="line">   Allow from All</span><br><span class="line">  &lt;/IfModule&gt;</span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure>
+<p>重启Apache生效</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/httpd restart</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-09-19T16:51:07.669Z" itemprop="dateUpdated">2017-09-20 00:51:07</time>
+</span><br>
+
+
+        
+        转载请注明出处，虽然不会有人转载的说：<a href="/2017/09/04/Centos-Php-服务器配置/" target="_blank" rel="external">http://blog.valorachen.club/2017/09/04/Centos-Php-服务器配置/</a>
+        
+    </div>
+    <footer>
+        <a href="http://blog.valorachen.club">
+            <img src="/img/avatar.png" alt="ViVi">
+            ViVi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/服务器/">服务器</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.valorachen.club/2017/09/04/Centos-Php-服务器配置/&title=《Centos Php 服务器配置》 — ViVi's craft&pic=http://blog.valorachen.club/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.valorachen.club/2017/09/04/Centos-Php-服务器配置/&title=《Centos Php 服务器配置》 — ViVi's craft&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.valorachen.club/2017/09/04/Centos-Php-服务器配置/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Centos Php 服务器配置》 — ViVi's craft&url=http://blog.valorachen.club/2017/09/04/Centos-Php-服务器配置/&via=http://blog.valorachen.club" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.valorachen.club/2017/09/04/Centos-Php-服务器配置/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/09/06/IDEA部署项目到远程Tomcat/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">IDEA部署项目到远程Tomcat</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/09/04/Centos-Java-Web-服务器配置/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Centos Java Web 服务器配置</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "EwUx7kp4hDkqF3CsL5B6QGS1-gzGzoHsz",
+            appKey: "1tccniD7zvLprgUME5qQiIH1",
+            avatar: "mm",
+            placeholder: "Say something if you want to",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>ViVi &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.valorachen.club/2017/09/04/Centos-Php-服务器配置/&title=《Centos Php 服务器配置》 — ViVi's craft&pic=http://blog.valorachen.club/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.valorachen.club/2017/09/04/Centos-Php-服务器配置/&title=《Centos Php 服务器配置》 — ViVi's craft&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.valorachen.club/2017/09/04/Centos-Php-服务器配置/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Centos Php 服务器配置》 — ViVi's craft&url=http://blog.valorachen.club/2017/09/04/Centos-Php-服务器配置/&via=http://blog.valorachen.club" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.valorachen.club/2017/09/04/Centos-Php-服务器配置/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrklEQVR42u3aQY4bMQwEQP//08k1QDDrbkp0jKDmZKztsUoHDbfJ1yu+fv1x5Z+cXT/f57Vx4eHh4R0sPfmxv7/7dJ+nz7RrS37rcQvw8PDw1nj5rZNvJctK3k2+9WZVeHh4eF/Aa8vrfMuSehgPDw/v/+CdvJ5tBx4eHt438JIwIl/KrFzOo5CVrAUPDw8v5p3HqZ9/vdLfw8PDwzvuqs+O6aRYbzd0uFo8PDy8Bd55nJpHFbNQ+CT2xcPDw9vjJYdv0o6aBRZtTHzUWsPDw8M75rXLSn7yJPC9O4CFh4eHt8ebNZmShlPbmsoL96g0x8PDw1vgndTgyZDBzwV0HvJeCIjx8PDwlnm3HgnnW9M+uh7xeHh4eFd559FA+5nkdftQqYtpPDw8vBGvXVB70N8KZPOgpG6A4eHh4ZW8dpjp1rLawakCg4eHh7fMa0egZsVum4sUCQoeHh7ex3k5IA9Pk3fb+7QrebOveHh4eGu8GaN9tJwEwRESDw8P7yqvPZQ3mmFtFFJsHx4eHt4a72SAYJYcn4QRyUMFDw8Pb4+Xh635QOrscTLbmmimDA8PD+8qL2+AtQ2tHFO0ssqBAzw8PLw9Xn6LdhjrZGQqj3qjAhoPDw/vEu9k7GkW+M4eObO2HB4eHt5nePnhPmt6zdpjswgDDw8Pb5uXl8J5ZNAOB8xabm9WiIeHh7fMK/7JLztNM3wblDy2wfDw8PAu8Wb/9ifhbFL+5iX1cKwBDw8Pb4HXHrhJaZuHHfnf8wh4eOHh4eGVvLy91Hbnb1W2bbBbFNZ4eHh4B7zkQE8O6Nk25YHvMJLAw8PD+6e89pMn4HY9jyk1Hh4e3tfwZq39WcAxLPrx8PDw1njnt85L8OTd9rH0WJTj4eHhLfBmY1WzYYLZKMBs5AsPDw9vgfcb4zxzqPTeEVwAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

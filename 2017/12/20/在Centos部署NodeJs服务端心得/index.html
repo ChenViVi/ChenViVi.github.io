@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=61021328"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>在Centos部署NodeJs服务端心得 | ViVi&#39;s craft | 只用来写技术相关的文章，记一些平时很少用很容易忘记的东西。能用实际项目来掌握的技术还懒得写，于是很少更新。想看更新频繁,内容日常的博客，请移步：&lt;a style=&#34;color:#FFFFFF;&#34; herf=&#34;https://chenvivi.wordpress.com&#34;&gt;https://chenvivi.wordpress.com&lt;/a&gt;</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Linux,网易云音乐,nodejs">
+    <meta name="description" content="前言因为项目需要，现需将NeteaseCloudMusicApi部署到服务器上运行，此项目是nodejs写的，所以服务器上需要安装nodejs。在实际操作的过程中，我遇到了一些问题，现记录于此文。 问题运行时报错原因：此项目对于nodejs版本有要求，不能使用5x以下的版本运行。 解决过程：安装不同版本的nodejs，直到找到可以运行程序的版本。 经验：nodejs迭代较快，下次遇到nodejs项">
+<meta name="keywords" content="Linux,网易云音乐,nodejs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在Centos部署NodeJs服务端心得">
+<meta property="og:url" content="http://blog.valorachen.club/2017/12/20/在Centos部署NodeJs服务端心得/index.html">
+<meta property="og:site_name" content="ViVi&#39;s craft">
+<meta property="og:description" content="前言因为项目需要，现需将NeteaseCloudMusicApi部署到服务器上运行，此项目是nodejs写的，所以服务器上需要安装nodejs。在实际操作的过程中，我遇到了一些问题，现记录于此文。 问题运行时报错原因：此项目对于nodejs版本有要求，不能使用5x以下的版本运行。 解决过程：安装不同版本的nodejs，直到找到可以运行程序的版本。 经验：nodejs迭代较快，下次遇到nodejs项">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-14T03:58:39.256Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在Centos部署NodeJs服务端心得">
+<meta name="twitter:description" content="前言因为项目需要，现需将NeteaseCloudMusicApi部署到服务器上运行，此项目是nodejs写的，所以服务器上需要安装nodejs。在实际操作的过程中，我遇到了一些问题，现记录于此文。 问题运行时报错原因：此项目对于nodejs版本有要求，不能使用5x以下的版本运行。 解决过程：安装不同版本的nodejs，直到找到可以运行程序的版本。 经验：nodejs迭代较快，下次遇到nodejs项">
+    
+        <link rel="alternate" type="application/atom+xml" title="ViVi&#39;s craft" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ViVi</h5>
+          <a href="mailto:valorachen@163.com" title="valorachen@163.com" class="mail">valorachen@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                时间线
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://chenvivi.wordpress.com/" target="_blank" >
+                <i class="icon icon-lg icon-book"></i>
+                我的日记（代替py圈）
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom.xml" target="_blank" >
+                <i class="icon icon-lg icon-rss"></i>
+                RSS
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ChenViVi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://steamcommunity.com/profiles/76561198300793241" target="_blank" >
+                <i class="icon icon-lg icon-steam"></i>
+                Steam
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/p/1005053101937447/home?from=page_100505&mod=TAB&is_all=1#place" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">在Centos部署NodeJs服务端心得</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">在Centos部署NodeJs服务端心得</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-12-20T08:01:37.000Z" itemprop="datePublished" class="page-time">
+  2017-12-20
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#问题"><span class="post-toc-number">2.</span> <span class="post-toc-text">问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#运行时报错"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">运行时报错</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关闭控制台后程序停止运行"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">关闭控制台后程序停止运行</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#npm安装forever命令失败"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">npm安装forever命令失败</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-在Centos部署NodeJs服务端心得"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">在Centos部署NodeJs服务端心得</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-12-20 16:01:37" datetime="2017-12-20T08:01:37.000Z"  itemprop="datePublished">2017-12-20</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>因为项目需要，现需将<a href="https://binaryify.github.io/NeteaseCloudMusicApi/#/?id=neteasecloudmusicapi" target="_blank" rel="noopener">NeteaseCloudMusicApi</a>部署到服务器上运行，此项目是nodejs写的，所以服务器上需要安装nodejs。在实际操作的过程中，我遇到了一些问题，现记录于此文。</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h3 id="运行时报错"><a href="#运行时报错" class="headerlink" title="运行时报错"></a>运行时报错</h3><p>原因：此项目对于nodejs版本有要求，不能使用5x以下的版本运行。</p>
+<p>解决过程：安装不同版本的nodejs，直到找到可以运行程序的版本。</p>
+<p>经验：nodejs迭代较快，下次遇到nodejs项目时一定要考虑其版本是否合适。</p>
+<h3 id="关闭控制台后程序停止运行"><a href="#关闭控制台后程序停止运行" class="headerlink" title="关闭控制台后程序停止运行"></a>关闭控制台后程序停止运行</h3><p>原因：需要运行forever命令来保持程序始终在后台运行</p>
+<p>解决过程：安装forever命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install forever -g</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">forever start app.js</span><br></pre></td></tr></table></figure>
+<h3 id="npm安装forever命令失败"><a href="#npm安装forever命令失败" class="headerlink" title="npm安装forever命令失败"></a>npm安装forever命令失败</h3><p>原因：npm版本过低</p>
+<p>解决过程：安装nodejs-6x（参考：<a href="https://nodejs.org/en/download/package-manager/）" target="_blank" rel="noopener">https://nodejs.org/en/download/package-manager/）</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl --silent --location https://rpm.nodesource.com/setup_6.x | sudo bash -</span><br><span class="line">sudo yum -y install nodejs</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-04-14T03:58:39.256Z" itemprop="dateUpdated">2018-04-14 11:58:39</time>
+</span><br>
+
+
+        
+        转载请注明出处，虽然不会有人转载的说：<a href="/2017/12/20/在Centos部署NodeJs服务端心得/" target="_blank" rel="external">http://blog.valorachen.club/2017/12/20/在Centos部署NodeJs服务端心得/</a>
+        
+    </div>
+    <footer>
+        <a href="http://blog.valorachen.club">
+            <img src="/img/avatar.png" alt="ViVi">
+            ViVi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网易云音乐/">网易云音乐</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.valorachen.club/2017/12/20/在Centos部署NodeJs服务端心得/&title=《在Centos部署NodeJs服务端心得》 — ViVi's craft&pic=http://blog.valorachen.club/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.valorachen.club/2017/12/20/在Centos部署NodeJs服务端心得/&title=《在Centos部署NodeJs服务端心得》 — ViVi's craft&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.valorachen.club/2017/12/20/在Centos部署NodeJs服务端心得/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《在Centos部署NodeJs服务端心得》 — ViVi's craft&url=http://blog.valorachen.club/2017/12/20/在Centos部署NodeJs服务端心得/&via=http://blog.valorachen.club" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.valorachen.club/2017/12/20/在Centos部署NodeJs服务端心得/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/12/21/网易云音乐API Part1(登录，用户，歌单)/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">网易云音乐API Part1(登录，用户，歌单)</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/12/20/网易云音乐下载链接API分析/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">网易云音乐下载链接API分析</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "EwUx7kp4hDkqF3CsL5B6QGS1-gzGzoHsz",
+            appKey: "1tccniD7zvLprgUME5qQiIH1",
+            avatar: "mm",
+            placeholder: "Say something if you want to",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>ViVi &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.valorachen.club/2017/12/20/在Centos部署NodeJs服务端心得/&title=《在Centos部署NodeJs服务端心得》 — ViVi's craft&pic=http://blog.valorachen.club/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.valorachen.club/2017/12/20/在Centos部署NodeJs服务端心得/&title=《在Centos部署NodeJs服务端心得》 — ViVi's craft&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.valorachen.club/2017/12/20/在Centos部署NodeJs服务端心得/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《在Centos部署NodeJs服务端心得》 — ViVi's craft&url=http://blog.valorachen.club/2017/12/20/在Centos部署NodeJs服务端心得/&via=http://blog.valorachen.club" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.valorachen.club/2017/12/20/在Centos部署NodeJs服务端心得/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtElEQVR42u3awW7CMBAE0P7/T1OpJw6FzuzGNIeXEwKR+BnJXmb99RVfj5+r/fTxdOXffX7n1euLLzw8PLzR0F9drwbafpqwkzHkY8bDw8M7zXu/ZP9xi3gLSb6VTEcyZjw8PLw78DaL+2bQeXmNh4eHd09ePvRZMJHcEw8PD+8OvDwImL0zm6z8/QuyFjw8PLyYtwkL/uv1wf4eHh4e3qKrnjfD9mFEuz1E38XDw8M7wEvK1s1hrDxiyA8iJE+JHo+Hh4c34rWhw1VLfPL09kjWL2PGw8PDO8bbNKjy6cg3htlEv/zHgIeHh3eYtye1xXfe7qrrZDw8PLxjvHZp3iz3eYOtKJ33Z7jw8PDwuhW7Lp3zR87Cjn0cXP+qeHh4eCUvB+Tl777Rtdkq8PDw8M7x2oZT3hLbL/Sb2AIPDw/vHC8vbWdB7Sz2nR1EqNMOPDw8vBGvDR3aA1Uz/Oxn+OU1Hh4e3gd5+cKdfNoGE21w/EcYgYeHh3eYd9USPzs6kLCLQw94eHh4B3ibhXvPaJ+e3w0PDw/vHK+NSvfHAj6zeeDh4eGd482ChoSdt6zyhlYdRuDh4eEd4LVL7X4pz++5iZiHOwkeHh5ezJst00lMkIQLebMNDw8P7w689nabZT2fjnbihv8Y8PDw8Ea8qPUes99vCfkU7I9q4eHh4X2G124AOSNpniXleF6U4+Hh4Z3jzR6TF76bqCIPi6NIAg8PD+8i3qxBtSmF89C2PXQV9ffw8PDw1rzZTjIroNsIOH/dTiIeHh7entduBi1jdhSgvXNxsgwPDw/vIt6sSZ8PKC+Ri0NUSWiCh4eH96+8/GF5MZ1EurMDDXh4eHh34yWAtsHW3i0KOPDw8PCO8WZLdhslJIVyW2S/fxYeHh7eCd6sAda2rNq7zYry4YWHh4eX8r4BDJRBBbJEcdIAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=61021328"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>哀家敲代码就是一把梭！ | ViVi&#39;s craft | 只用来写技术相关的文章，记一些平时很少用很容易忘记的东西。能用实际项目来掌握的技术还懒得写，于是很少更新。想看更新频繁,内容日常的博客，请移步：&lt;a style=&#34;color:#FFFFFF;&#34; herf=&#34;https://chenvivi.wordpress.com&#34;&gt;https://chenvivi.wordpress.com&lt;/a&gt;</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="hexo,研读源码">
+    <meta name="description" content="前言以个人的实际经历为例，分享一下当不会技术却需要研读源码时，可能会有所帮助的技巧。希望各位写代码都是一把梭，拿起键盘就是干！                                                                                                            搞事这几天搞的大事就是自己把现在博客用的indigo主题自">
+<meta name="keywords" content="hexo,研读源码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="哀家敲代码就是一把梭！">
+<meta property="og:url" content="http://blog.valorachen.club/2017/03/11/哀家敲代码就是一把梭！/index.html">
+<meta property="og:site_name" content="ViVi&#39;s craft">
+<meta property="og:description" content="前言以个人的实际经历为例，分享一下当不会技术却需要研读源码时，可能会有所帮助的技巧。希望各位写代码都是一把梭，拿起键盘就是干！                                                                                                            搞事这几天搞的大事就是自己把现在博客用的indigo主题自">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://p1.bpimg.com/567571/70243c61e9e5c8a6.jpg">
+<meta property="og:image" content="http://i1.piimg.com/567571/f87c7bdb2d5cb75b.png">
+<meta property="og:image" content="http://p1.bpimg.com/567571/e0d50ec84aed6fd6.png">
+<meta property="og:image" content="http://p1.bqimg.com/567571/ea44d4ab183e0c1d.png">
+<meta property="og:updated_time" content="2017-03-12T16:46:41.718Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="哀家敲代码就是一把梭！">
+<meta name="twitter:description" content="前言以个人的实际经历为例，分享一下当不会技术却需要研读源码时，可能会有所帮助的技巧。希望各位写代码都是一把梭，拿起键盘就是干！                                                                                                            搞事这几天搞的大事就是自己把现在博客用的indigo主题自">
+<meta name="twitter:image" content="http://p1.bpimg.com/567571/70243c61e9e5c8a6.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="ViVi&#39;s craft" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ViVi</h5>
+          <a href="mailto:valorachen@163.com" title="valorachen@163.com" class="mail">valorachen@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                时间线
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://chenvivi.wordpress.com/" target="_blank" >
+                <i class="icon icon-lg icon-book"></i>
+                我的日记（代替py圈）
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom.xml" target="_blank" >
+                <i class="icon icon-lg icon-rss"></i>
+                RSS
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ChenViVi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://steamcommunity.com/profiles/76561198300793241" target="_blank" >
+                <i class="icon icon-lg icon-steam"></i>
+                Steam
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/p/1005053101937447/home?from=page_100505&mod=TAB&is_all=1#place" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">哀家敲代码就是一把梭！</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">哀家敲代码就是一把梭！</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-03-11T06:53:00.000Z" itemprop="datePublished" class="page-time">
+  2017-03-11
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#搞事"><span class="post-toc-number">2.</span> <span class="post-toc-text">搞事</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#研究代码的第一步是使用它"><span class="post-toc-number">3.</span> <span class="post-toc-text">研究代码的第一步是使用它</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#粗看源码"><span class="post-toc-number">4.</span> <span class="post-toc-text">粗看源码</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#全局查找，定位要看的源码"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">全局查找，定位要看的源码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#不惧怕陌生的代码，代码都是相通的"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">不惧怕陌生的代码，代码都是相通的</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#自己写Demo"><span class="post-toc-number">5.</span> <span class="post-toc-text">自己写Demo</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#想知道代码的作用就删除它"><span class="post-toc-number">6.</span> <span class="post-toc-text">想知道代码的作用就删除它</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#复制，粘贴，拿起键盘就是干！"><span class="post-toc-number">7.</span> <span class="post-toc-text">复制，粘贴，拿起键盘就是干！</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#感想"><span class="post-toc-number">8.</span> <span class="post-toc-text">感想</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#后续"><span class="post-toc-number">9.</span> <span class="post-toc-text">后续</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#补充"><span class="post-toc-number">10.</span> <span class="post-toc-text">补充</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-哀家敲代码就是一把梭！"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">哀家敲代码就是一把梭！</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-03-11 14:53:00" datetime="2017-03-11T06:53:00.000Z"  itemprop="datePublished">2017-03-11</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>以个人的实际经历为例，分享一下当不会技术却需要研读源码时，可能会有所帮助的技巧。希望各位写代码都是一把梭，拿起键盘就是干！</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://p1.bpimg.com/567571/70243c61e9e5c8a6.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="搞事"><a href="#搞事" class="headerlink" title="搞事"></a>搞事</h2><p>这几天搞的大事就是自己把现在博客用的<a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="noopener">indigo主题</a>自己折腾了一下，参考<a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism" target="_blank" rel="noopener">raytaylorism主题</a>加了一个读书页面。raytaylorism主题确实有很多我非常中意的特性，但是依我个人的审美观还是觉得indigo主题更加美观，所以写了一篇文章分析了一下indigo主题没有的功能，自己研究研究源码改一下，就是这篇：<a href="https://chenvivi.github.io/2017/03/05/indigo%E4%B8%BB%E9%A2%98%E5%B0%9A%E5%BE%85%E5%AE%8C%E5%96%84%E7%9A%84%E5%8A%9F%E8%83%BD/" target="_blank" rel="noopener">indigo主题尚待完善的功能</a>。我最想要的就是读书这个板块了，这个板块稍微改一下就能把看过的电影或番剧，听过的音乐都记上去，并不是要装文艺，但是有些东西如果忘了真的可惜</p>
+<p><img src="http://i1.piimg.com/567571/f87c7bdb2d5cb75b.png" alt="读书页面"></p>
+<h2 id="研究代码的第一步是使用它"><a href="#研究代码的第一步是使用它" class="headerlink" title="研究代码的第一步是使用它"></a>研究代码的第一步是使用它</h2><p>要了解代码的工作方式，就应该先使用它。我把我的主题切换成raytaylorism主题，发现想要改变如上图读书页面中的内容，只需要改变source/_data/reading.json中的内容就行了，json大概是这种结构，不用多解释，看到就一目了然的结构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;define&quot;: &#123;</span><br><span class="line">	    &quot;readed&quot;: &quot;已读&quot;,</span><br><span class="line">        &quot;reading&quot;: &quot;在读&quot;,</span><br><span class="line">        &quot;wanted&quot;: &quot;想读&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;contents&quot;: &#123;</span><br><span class="line">        &quot;readed&quot;: [&#123;</span><br><span class="line">            &quot;title&quot;: &quot;众妙之门：网站UI设计之道&quot;,</span><br><span class="line">            &quot;cover&quot;: &quot;https://img3.doubanio.com/lpic/s23139051.jpg&quot;,</span><br><span class="line">            &quot;review&quot;: &quot;推荐非UI人士了解UI阅读。&quot;,</span><br><span class="line">            &quot;score&quot;: &quot;7&quot;,</span><br><span class="line">            &quot;doubanLink&quot;: &quot;http://book.douban.com/subject/20281463/&quot;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            &quot;title&quot;: &quot;JavaScript模式&quot;,</span><br><span class="line">            &quot;cover&quot;: &quot;https://img1.doubanio.com/lpic/s11337059.jpg&quot;,</span><br><span class="line">            &quot;review&quot;: &quot;书很薄，但内容相当实用。&quot;,</span><br><span class="line">            &quot;score&quot;: &quot;8.5&quot;,</span><br><span class="line">            &quot;doubanLink&quot;: &quot;http://book.douban.com/subject/11506062/&quot;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            &quot;title&quot;: &quot;JavaScript语言精粹&quot;,</span><br><span class="line">            &quot;cover&quot;: &quot;https://img3.doubanio.com/lpic/s27993864.jpg&quot;,</span><br><span class="line">            &quot;review&quot;: &quot;这是一本前端人员的基础书，强烈推荐阅读，而且越早看受益越多！&quot;,</span><br><span class="line">            &quot;score&quot;: &quot;9.5&quot;,</span><br><span class="line">            &quot;doubanLink&quot;: &quot;http://book.douban.com/subject/11874748/&quot;</span><br><span class="line">        &#125;],</span><br><span class="line"></span><br><span class="line">		&quot;reading&quot;: [&#123;</span><br><span class="line">            &quot;title&quot;: &quot;网络游戏核心技术与实战&quot;,</span><br><span class="line">            &quot;cover&quot;: &quot;https://img1.doubanio.com/lpic/s27881888.jpg&quot;,</span><br><span class="line">            &quot;review&quot;: &quot;&quot;,</span><br><span class="line">            &quot;score&quot;: null,</span><br><span class="line">            &quot;doubanLink&quot;: &quot;http://book.douban.com/subject/25850090/&quot;</span><br><span class="line">        &#125;],</span><br><span class="line"></span><br><span class="line">        &quot;wanted&quot;: [&#123;</span><br><span class="line">            &quot;title&quot;: &quot;计算机程序的构造和解释&quot;,</span><br><span class="line">            &quot;cover&quot;: &quot;https://img5.doubanio.com/lpic/s1113106.jpg&quot;,</span><br><span class="line">            &quot;review&quot;: &quot;&quot;,</span><br><span class="line">            &quot;score&quot;: null,</span><br><span class="line">            &quot;doubanLink&quot;: &quot;http://book.douban.com/subject/1148282/&quot;</span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="粗看源码"><a href="#粗看源码" class="headerlink" title="粗看源码"></a>粗看源码</h2><p>但是单从使用的角度无法明白具体的实现方式。就算知道了这个页面由这个json文件控制，但是为什么是这个json文件，而且数据是怎么被抓取并生成静态页面的，并不知道，所以接下来要看源码了</p>
+<h3 id="全局查找，定位要看的源码"><a href="#全局查找，定位要看的源码" class="headerlink" title="全局查找，定位要看的源码"></a>全局查找，定位要看的源码</h3><p>源码中很多文件，我这里只需要了解读书页面，不需要理解所有的源码，所以需要定位哪一个部分才是需要看的源码</p>
+<p>不管看什么代码，如果不知道要看什么部分，全局查找多半能定位到需要看的代码。这里我的具体做法如下：</p>
+<ol>
+<li><p>在火狐浏览器中，鼠标停留在某一本书上，点击右键-&gt;查看元素。如图，可以看到，这个元素的class是book-item col s12 m6</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://p1.bpimg.com/567571/e0d50ec84aed6fd6.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
+<li><p>在Atmo编辑器中全局查找关键字：book-item col s12 m6，如图，定位到reading.ejs这个文件，毫无疑问，看着名字就知道这个文件就是生成读书页面的文件</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://p1.bqimg.com/567571/ea44d4ab183e0c1d.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
+</ol>
+<h3 id="不惧怕陌生的代码，代码都是相通的"><a href="#不惧怕陌生的代码，代码都是相通的" class="headerlink" title="不惧怕陌生的代码，代码都是相通的"></a>不惧怕陌生的代码，代码都是相通的</h3><p>笔者是一个基本不会前端技术的人，水平是属于上学校的Web课也就能及个格的那种。.ejs是什么东西我是完全不知道的，Node.js也只是听过名字而已。但是当我打开reading.ejs看到陌生的代码，却能把代码逻辑看懂个大概，因为不管是什么代码都有相似之处</p>
+<p>下面是reading.ejs的代码。显然&lt;%……%&gt;中的都是逻辑代码，以var开头可以声明了一个变量，<br>readingData这个变量名一看就知道是reading.json中的数据，tabCount是Tab的数量，其值为3，因为一共3个Tab，分别是“已读”，“在读”，“想读”.第二段和第三段，外层都有for循环，分别用来生成Tab和book-item</p>
+<p>无论是什么代码，都有相似点，这里列举一下</p>
+<ol>
+<li>var开头一看就是变量</li>
+<li>有new关键字知道在创建对象</li>
+<li>if else for switch，逻辑控制语句所有语言都得有</li>
+<li>a.b.c 一看就知道在调用成员</li>
+<li>a.b.c()是在调用函数</li>
+<li>文件的名字，变量的名字，对象的名字，函数的名字描述了它的作用</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">&lt;% var readingData = site.data.reading;</span><br><span class="line">    var tabCount = Object.keys(readingData.define).length;</span><br><span class="line">%&gt;</span><br><span class="line"></span><br><span class="line">&lt;div class=&quot;container main-container&quot;&gt;</span><br><span class="line">    &lt;% if (readingData) &#123; %&gt;</span><br><span class="line">        &lt;div class=&quot;&quot;&gt;</span><br><span class="line">            &lt;div class=&quot;row&quot;&gt;</span><br><span class="line">                &lt;ul class=&quot;tabs &quot;&gt;</span><br><span class="line">                    &lt;% for (var key in readingData.define) &#123; %&gt;</span><br><span class="line">                        &lt;li class=&quot;tab col s&lt;%= 12 / tabCount %&gt; &quot;&gt;</span><br><span class="line">                            &lt;a class=&quot;&lt;%= theme.color.tab %&gt;-text &quot; href=&quot;#&lt;%= key %&gt;&quot;&gt;&lt;%= readingData.define[key] + &apos;(&apos; + readingData.contents[key].length + &apos;)&apos;%&gt;&lt;/a&gt;</span><br><span class="line">                        &lt;/li&gt;</span><br><span class="line">                    &lt;% &#125; %&gt;</span><br><span class="line">                &lt;/ul&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">            &lt;% for (var key in readingData.contents) &#123; %&gt;</span><br><span class="line">                &lt;div id=&quot;&lt;%= key %&gt;&quot; class=&quot;row&quot; style=&quot;margin-top: 20px;&quot;&gt;</span><br><span class="line">                    &lt;% var bookList = readingData.contents[key]; %&gt;</span><br><span class="line">                    &lt;% for (var i in bookList) &#123; %&gt;</span><br><span class="line">                        &lt;div class=&quot;book-item col s12 m6&quot;&gt;</span><br><span class="line">                            &lt;div class=&quot;card small hoverable&quot;&gt;</span><br><span class="line">                                &lt;div class=&quot;card-image waves-effect waves-block waves-light&quot;&gt;</span><br><span class="line">                                    &lt;img class=&quot;card-cover-image activator&quot; src=&quot;&lt;%= bookList[i].cover %&gt;&quot;&gt;</span><br><span class="line">                                &lt;/div&gt;</span><br><span class="line">                                &lt;div class=&quot;card-content &lt;%= theme.color.link %&gt;-link-context&quot;&gt;</span><br><span class="line">                                    &lt;span class=&quot;card-title truncate activator grey-text text-darken-4&quot;&gt;&lt;%= bookList[i].title %&gt;</span><br><span class="line">                                    &lt;/span&gt;</span><br><span class="line">                                    &lt;p&gt;&lt;%= __(&apos;reading.score&apos;) %&gt;: &lt;%= bookList[i].score || &apos;???&apos; %&gt;</span><br><span class="line">                                        &lt;a class=&quot;external-link right&quot; href=&quot;&lt;%= bookList[i].doubanLink %&gt;&quot; target=&quot;_blank&quot;&gt;</span><br><span class="line"></span><br><span class="line">                                            &lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;</span><br><span class="line">                                        &lt;/a&gt;</span><br><span class="line">                                    &lt;/p&gt;</span><br><span class="line">                                &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">                                &lt;div class=&quot;card-reveal&quot;&gt;</span><br><span class="line">                                    &lt;span class=&quot;card-title grey-text text-darken-4&quot;&gt;&lt;%= __(&apos;reading.comment&apos;) %&gt;</span><br><span class="line">                                        &lt;i class=&quot;fa fa-times-circle-o right&quot;&gt;&lt;/i&gt;</span><br><span class="line">                                    &lt;/span&gt;</span><br><span class="line"></span><br><span class="line">                                    &lt;p&gt;&lt;%= bookList[i].review %&gt;&lt;/p&gt;</span><br><span class="line">                                &lt;/div&gt;</span><br><span class="line">                            &lt;/div&gt;</span><br><span class="line">                        &lt;/div&gt;</span><br><span class="line">                    &lt;% &#125; %&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">            &lt;% &#125; %&gt;</span><br><span class="line"></span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;%- partial(&apos;_partial/plugin/comment&apos;, &#123;page_id: &apos;reading&apos;&#125;) %&gt;</span><br><span class="line">    &lt;% &#125; else &#123; %&gt;</span><br><span class="line">        &lt;%- partial(&apos;_partial/construction&apos;) %&gt;</span><br><span class="line">    &lt;% &#125; %&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="自己写Demo"><a href="#自己写Demo" class="headerlink" title="自己写Demo"></a>自己写Demo</h2><p>当时试着直接把reading.ejs拷到indigo主题中，但是当我执行hexo -g时报一堆错误信息，果然事情不可能这么简单。应该是缺失了一些必要的文件，可是我不了解需要哪些页面才能构成一个页面，要了解这一点，就需要知道Hexo博客主题是怎么构成的，所以到网上找教程做个Demo，这是我找到的一个手把手教程：<a href="https://segmentfault.com/a/1190000008040387#articleHeader12" target="_blank" rel="noopener">从零开始制作 Hexo 主题</a></p>
+<p>按照教程走一遍后，大概知道了整个工作方式：</p>
+<ol>
+<li>除了其子目录下的文件，/layout目录下的文件会生成Html页面</li>
+<li><p>通过如下代码导入其他ejs文件（这里导入了header.ejs文件）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%- partial(&apos;_partial/header&apos;) %&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>/layout/layout.ejs，通过&lt;%- body %&gt;来引用/layout目录下的ejs文件，/layout目录下的子目录下的ejs文件除外</p>
+</li>
+<li>/source目录下的文件是Html页面中会用到的css,font,js</li>
+<li>你的博客/source/_data下的yml文件和json文件中的内容会记录到你的博客/db.json文件中，并在ejs代码中可以引用其中的数据</li>
+</ol>
+<p>那么现在我清楚为什么代码会报错了，因为显然读书页面导入了css和js，而这些文件并不能被找到</p>
+<h2 id="想知道代码的作用就删除它"><a href="#想知道代码的作用就删除它" class="headerlink" title="想知道代码的作用就删除它"></a>想知道代码的作用就删除它</h2><p>显然raytaylorism主题的作者不是在reading.ejs中引入css和js的，上面通过写Demo而得知决定读书页面生成的代码不止是reading.ejs，还有layout.ejs，下面是其代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;%- partial(&apos;_partial/head&apos;) %&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;img src=&quot;/weixin_favicon.png&quot; style=&quot;position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;%- partial(&apos;_partial/header&apos;) %&gt;</span><br><span class="line">    &lt;main&gt;</span><br><span class="line">        &lt;%- body %&gt;</span><br><span class="line">        &lt;%- partial(&apos;_partial/float&apos;) %&gt;</span><br><span class="line">    &lt;/main&gt;</span><br><span class="line">    &lt;%- partial(&apos;_partial/footer&apos;) %&gt;</span><br><span class="line"></span><br><span class="line">    &lt;%- partial(&apos;_partial/after_footer&apos;) %&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p>可以看到layout.ejs中引用了一大堆文件，鬼才想一个一个去看引用文件的代码，我只关心什么代码会影响读书页面。最简单粗暴的弄懂代码的方式就是删除它，于是我依次删掉那些引用文件的代码，发现只有最后一项引用会让读书页面没有css和js。然后看after_footer.ejs，又是一堆引用，方法当然还是删除！删除！删除！</p>
+<h2 id="复制，粘贴，拿起键盘就是干！"><a href="#复制，粘贴，拿起键盘就是干！" class="headerlink" title="复制，粘贴，拿起键盘就是干！"></a>复制，粘贴，拿起键盘就是干！</h2><p>上一步中已经提取到了所有与读书页面的相关代码，接下来要做的就是把它们插分到indigo主题中，indigo主题中有它自己的layout.ejs，而且头部布局需要在每个掌管页面的ejs中添加代码引用而不是在layout.ejs中直接引用，还有就是需要把引用css和js的代码直接写reading.ejs中。总之，需要稍微改造一把，然后就大功告成啦</p>
+<h2 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h2><p>这篇文章，对于我来说，叙事部分和方法部分都是有用的。但是对于其他读者，可能叙事部分会看得一脸懵逼，但是希望看文章的人能多少学到一些研读源码时可能会用到的方法，我以后研读源码时也会借鉴自己这次的经验</p>
+<p>我认为自己拥有不错的阅读理解能力，不止是在研读代码方面。我能冷静下来阅读并理解晦涩难懂的书，或者是英文文章，我对此感到高兴。并不是炫耀我有多厉害，只是从很多事情中得出的结论。我既能以平常心对待自己的优点，也能以平常心对待自己的缺点</p>
+<p>其实这个故事是精简版本，其实我并不能一下子就想到什么时候该怎么做才是对的，有时会因为选择了错误的方法卡在一些地方而产生负面情绪，然而情绪可以调整，方法可以不断去尝试和改变，所以最后还是成功啦</p>
+<h2 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h2><ol>
+<li><p>我会把我改动后的主题传到github，链接会留在这里</p>
+</li>
+<li><p>手动写json一点都不优雅，写个代码自动生成吧，new一个对象多一本书的方式多么优雅</p>
+</li>
+<li><p>把看过的书、电影、，番剧还有听过的歌都搬到博客上吧</p>
+</li>
+<li><p>其实我在这一个星期再次失去了人生的方向，会研究Hexo博客主题的源码是因为我实在不知道什么才是有意义事情了。这是个大事，没有方向，谈何努力，我必须在下周之前找到人生的方向</p>
+</li>
+</ol>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p>后续中的1，2两条已经做到啦，具体看这篇吧，<a href="https://chenvivi.github.io/2017/03/11/%E5%93%80%E5%AE%B6%E6%95%B2%E4%BB%A3%E7%A0%81%E5%B0%B1%E6%98%AF%E4%B8%80%E6%8A%8A%E6%A2%AD%EF%BC%81/" target="_blank" rel="noopener">走你</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-03-12T16:46:41.718Z" itemprop="dateUpdated">2017-03-13 00:46:41</time>
+</span><br>
+
+
+        
+        转载请注明出处，虽然不会有人转载的说：<a href="/2017/03/11/哀家敲代码就是一把梭！/" target="_blank" rel="external">http://blog.valorachen.club/2017/03/11/哀家敲代码就是一把梭！/</a>
+        
+    </div>
+    <footer>
+        <a href="http://blog.valorachen.club">
+            <img src="/img/avatar.png" alt="ViVi">
+            ViVi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/研读源码/">研读源码</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.valorachen.club/2017/03/11/哀家敲代码就是一把梭！/&title=《哀家敲代码就是一把梭！》 — ViVi's craft&pic=http://blog.valorachen.club/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.valorachen.club/2017/03/11/哀家敲代码就是一把梭！/&title=《哀家敲代码就是一把梭！》 — ViVi's craft&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.valorachen.club/2017/03/11/哀家敲代码就是一把梭！/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《哀家敲代码就是一把梭！》 — ViVi's craft&url=http://blog.valorachen.club/2017/03/11/哀家敲代码就是一把梭！/&via=http://blog.valorachen.club" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.valorachen.club/2017/03/11/哀家敲代码就是一把梭！/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/03/12/如何将NetBeans中的Java程序导出可执行文件-exe/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">如何将NetBeans中的Java程序导出可执行文件.exe</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/03/09/记一些临时链接/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">记一些临时链接</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "EwUx7kp4hDkqF3CsL5B6QGS1-gzGzoHsz",
+            appKey: "1tccniD7zvLprgUME5qQiIH1",
+            avatar: "mm",
+            placeholder: "Say something if you want to",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>ViVi &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.valorachen.club/2017/03/11/哀家敲代码就是一把梭！/&title=《哀家敲代码就是一把梭！》 — ViVi's craft&pic=http://blog.valorachen.club/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.valorachen.club/2017/03/11/哀家敲代码就是一把梭！/&title=《哀家敲代码就是一把梭！》 — ViVi's craft&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.valorachen.club/2017/03/11/哀家敲代码就是一把梭！/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《哀家敲代码就是一把梭！》 — ViVi's craft&url=http://blog.valorachen.club/2017/03/11/哀家敲代码就是一把梭！/&via=http://blog.valorachen.club" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.valorachen.club/2017/03/11/哀家敲代码就是一把梭！/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtUlEQVR42u3aQW7CQAwFUO5/6VbqqlJJ+m2PgcXLqkIk8QtSPP2exyM+vn6Ov3///uTq86urXV2zerUDBx4eHl6r9Kvj/vZX37w/t4dPanhyTTw8PLw1Xq8Z9MpK2s8VI68ZDw8P7xN4+cI6Z9wvoHtNBQ8PD+9zePcFTaKEydIcDw8P7128PGI41RLyxDUPRPDw8PBew5sMwN7194vme3h4eHjFqfqkYVQHZtWlfFQhHh4e3gIvCRcm8cGkAfTi3ahQPDw8vEO8/DaTl3U+Qju2gQAPDw/vKK96QjKgypfge9sXyj0EDw8Pb8BLwtPeq38ecJQX1nh4eHgLvOa/9+PXd7JQTppHchYeHh7eWV71hDzwPfwLxPHukzACDw8P7ygvL7o6JJvHHElUEdWJh4eHt8Cbv8p7ReTjt/xB4+Hh4b2GF+0viOODXgOojsQKQQYeHh7eAi/fIlAddPUaSbOz4eHh4b2EV20JeRvIX+J5c1rveHh4eHhFXm/sVC3lvsR8+R5FwHh4eHgLvKTQamPII4a8LVVD4X+ugIeHh3eIl4S21Q1Sk20HeXPCw8PDey9vUu5koZyPypqbGPDw8PCO8nrL4t53qp8ni+zod8PDw8M7xMtD1d73qyFCLwq5rAcPDw9vgZcXkQQBkzCiFzH0NjTg4eHhneLNS+9tqKrGx3mAgoeHh7fHS179vQ0BvQAiGbwVkHh4eHhrvDyE7ZXYG4NNthrg4eHhbfC+ikf19vmCu9oAkkePh4eHt8GbDKt6R3VfQ3VINhqD4eHh4cW8agRw9sn1Qtvy6AsPDw9vgdfbFNWLJJIF+uQx4eHh4X0aL19259efBBD/3AsPDw/vrbzycjZeQPeW79HYDA8PD2+Nl9wyhyWv+Dx0qLYlPDw8vG3egX1bg4XyxuPGw8PDW+N9A5cYK/A0Zpk0AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

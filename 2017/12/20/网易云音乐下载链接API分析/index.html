@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=61021328"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>网易云音乐下载链接API分析 | ViVi&#39;s craft | 只用来写技术相关的文章，记一些平时很少用很容易忘记的东西。能用实际项目来掌握的技术还懒得写，于是很少更新。想看更新频繁,内容日常的博客，请移步：&lt;a style=&#34;color:#FFFFFF;&#34; herf=&#34;https://chenvivi.wordpress.com&#34;&gt;https://chenvivi.wordpress.com&lt;/a&gt;</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="网易云音乐,API">
+    <meta name="description" content="获取歌曲文件go版1234567891011121314func encrypt_id(id string) string &amp;#123;	byte1 := []byte(&amp;quot;3go8&amp;amp;$8*3*3h0k(2)2&amp;quot;)	byte2 := []byte(id)	for i := 0; i &amp;lt; len(byte2); i++ &amp;#123;		byte2[i] = byte2">
+<meta name="keywords" content="网易云音乐,API">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网易云音乐下载链接API分析">
+<meta property="og:url" content="http://blog.valorachen.club/2017/12/20/网易云音乐下载链接API分析/index.html">
+<meta property="og:site_name" content="ViVi&#39;s craft">
+<meta property="og:description" content="获取歌曲文件go版1234567891011121314func encrypt_id(id string) string &amp;#123;	byte1 := []byte(&amp;quot;3go8&amp;amp;$8*3*3h0k(2)2&amp;quot;)	byte2 := []byte(id)	for i := 0; i &amp;lt; len(byte2); i++ &amp;#123;		byte2[i] = byte2">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-01-01T15:39:02.380Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网易云音乐下载链接API分析">
+<meta name="twitter:description" content="获取歌曲文件go版1234567891011121314func encrypt_id(id string) string &amp;#123;	byte1 := []byte(&amp;quot;3go8&amp;amp;$8*3*3h0k(2)2&amp;quot;)	byte2 := []byte(id)	for i := 0; i &amp;lt; len(byte2); i++ &amp;#123;		byte2[i] = byte2">
+    
+        <link rel="alternate" type="application/atom+xml" title="ViVi&#39;s craft" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ViVi</h5>
+          <a href="mailto:valorachen@163.com" title="valorachen@163.com" class="mail">valorachen@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                时间线
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://chenvivi.wordpress.com/" target="_blank" >
+                <i class="icon icon-lg icon-book"></i>
+                我的日记（代替py圈）
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom.xml" target="_blank" >
+                <i class="icon icon-lg icon-rss"></i>
+                RSS
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ChenViVi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://steamcommunity.com/profiles/76561198300793241" target="_blank" >
+                <i class="icon icon-lg icon-steam"></i>
+                Steam
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/p/1005053101937447/home?from=page_100505&mod=TAB&is_all=1#place" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">网易云音乐下载链接API分析</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">网易云音乐下载链接API分析</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-12-20T03:19:22.000Z" itemprop="datePublished" class="page-time">
+  2017-12-20
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#获取歌曲文件"><span class="post-toc-number">1.</span> <span class="post-toc-text">获取歌曲文件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#go版"><span class="post-toc-number">2.</span> <span class="post-toc-text">go版</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#php版"><span class="post-toc-number">3.</span> <span class="post-toc-text">php版</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#python版"><span class="post-toc-number">4.</span> <span class="post-toc-text">python版</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Java版"><span class="post-toc-number">5.</span> <span class="post-toc-text">Java版</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-网易云音乐下载链接API分析"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">网易云音乐下载链接API分析</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-12-20 11:19:22" datetime="2017-12-20T03:19:22.000Z"  itemprop="datePublished">2017-12-20</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="获取歌曲文件"><a href="#获取歌曲文件" class="headerlink" title="获取歌曲文件"></a>获取歌曲文件</h2><h2 id="go版"><a href="#go版" class="headerlink" title="go版"></a>go版</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">func encrypt_id(id string) string &#123;</span><br><span class="line">	byte1 := []byte(&quot;3go8&amp;$8*3*3h0k(2)2&quot;)</span><br><span class="line">	byte2 := []byte(id)</span><br><span class="line">	for i := 0; i &lt; len(byte2); i++ &#123;</span><br><span class="line">		byte2[i] = byte2[i] ^ byte1[i%len(byte1)]</span><br><span class="line">	&#125;</span><br><span class="line">	m := md5.New()</span><br><span class="line">	m.Write(byte2)</span><br><span class="line">	s := base64.StdEncoding.EncodeToString(m.Sum(nil))</span><br><span class="line">	m.Reset()</span><br><span class="line">	s = strings.Replace(s, &quot;+&quot;, &quot;-&quot;, -1)</span><br><span class="line">	s = strings.Replace(s, &quot;/&quot;, &quot;_&quot;, -1)</span><br><span class="line">	return s</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="php版"><a href="#php版" class="headerlink" title="php版"></a>php版</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import md5</span><br><span class="line"></span><br><span class="line">def encrypted_id(id):</span><br><span class="line">    byte1 = bytearray(&apos;3go8&amp;$8*3*3h0k(2)2&apos;)</span><br><span class="line">    byte2 = bytearray(id)</span><br><span class="line">    byte1_len = len(byte1)</span><br><span class="line">    for i in xrange(len(byte2)):</span><br><span class="line">        byte2[i] = byte2[i]^byte1[i%byte1_len]</span><br><span class="line">    m = md5.new()</span><br><span class="line">    m.update(byte2)</span><br><span class="line">    result = m.digest().encode(&apos;base64&apos;)[:-1]</span><br><span class="line">    result = result.replace(&apos;/&apos;, &apos;_&apos;)</span><br><span class="line">    result = result.replace(&apos;+&apos;, &apos;-&apos;)</span><br><span class="line">    return result</span><br></pre></td></tr></table></figure>
+<h2 id="python版"><a href="#python版" class="headerlink" title="python版"></a>python版</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 歌曲加密算法, 基于https://github.com/yanunon/NeteaseCloudMusic脚本实现</span><br><span class="line">def encrypted_id(id):</span><br><span class="line">    magic = bytearray(&apos;3go8&amp;$8*3*3h0k(2)2&apos;, &apos;u8&apos;)</span><br><span class="line">    song_id = bytearray(id, &apos;u8&apos;)</span><br><span class="line">    magic_len = len(magic)</span><br><span class="line">    for i, sid in enumerate(song_id):</span><br><span class="line">        song_id[i] = sid ^ magic[i % magic_len]</span><br><span class="line">    m = hashlib.md5(song_id)</span><br><span class="line">    result = m.digest()</span><br><span class="line">    result = base64.b64encode(result)</span><br><span class="line">    result = result.replace(b&apos;/&apos;, b&apos;_&apos;)</span><br><span class="line">    result = result.replace(b&apos;+&apos;, b&apos;-&apos;)</span><br><span class="line">    return result.decode(&apos;utf-8&apos;)</span><br></pre></td></tr></table></figure>
+<h2 id="Java版"><a href="#Java版" class="headerlink" title="Java版"></a>Java版</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">private static String getUrl (String songId, String albumId)&#123;</span><br><span class="line">	String url = &quot;&quot;;</span><br><span class="line">	String response = HttpRequest.sendGet(&quot;http://music.163.com/api/album/&quot;+albumId,&quot;&quot;);</span><br><span class="line">	try &#123;</span><br><span class="line">		JSONObject json = new JSONObject(response);</span><br><span class="line">		JSONArray songs = json.getJSONObject(&quot;album&quot;).getJSONArray(&quot;songs&quot;);</span><br><span class="line">		for (int i = 0; i &lt; songs.length(); i++)&#123;</span><br><span class="line">			JSONObject song = songs.getJSONObject(i);</span><br><span class="line">			String id = song.getString(&quot;id&quot;);</span><br><span class="line">			if (id.equals(songId))&#123;</span><br><span class="line">				url = song.getString(&quot;mp3Url&quot;);</span><br><span class="line">				if (!url.equals(&quot;&quot;))&#123;</span><br><span class="line">					return url;</span><br><span class="line">				&#125;</span><br><span class="line">				String dfsId;</span><br><span class="line">				dfsId = song.getJSONObject(&quot;hMusic&quot;).getString(&quot;dfsId&quot;);</span><br><span class="line">				if (dfsId.equals(&quot;0&quot;))&#123;</span><br><span class="line">					dfsId = song.getJSONObject(&quot;mMusic&quot;).getString(&quot;dfsId&quot;);</span><br><span class="line">				&#125;</span><br><span class="line">				if (dfsId.equals(&quot;0&quot;))&#123;</span><br><span class="line">					dfsId = song.getJSONObject(&quot;lMusic&quot;).getString(&quot;dfsId&quot;);</span><br><span class="line">				&#125;</span><br><span class="line">				url = &quot;http://p1.music.126.net/&quot; + encrypt_id(dfsId) + &quot;/&quot; + dfsId + &quot;.mp3&quot;;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	catch (JSONException e) &#123;</span><br><span class="line">		return url;</span><br><span class="line">	&#125;</span><br><span class="line">	return url;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">private static String encrypt_id(String dfsId) &#123;</span><br><span class="line">	byte[] b1 = &quot;3go8&amp;$8*3*3h0k(2)2&quot;.getBytes();</span><br><span class="line">	byte[] b2 = dfsId.getBytes();</span><br><span class="line">	for (int i = 0; i &lt; b2.length; i++)&#123;</span><br><span class="line">		b2[i] = (byte) (b2[i] ^ b1[i%b1.length]);</span><br><span class="line">	&#125;</span><br><span class="line">	try &#123;</span><br><span class="line">		MessageDigest md5 = MessageDigest.getInstance(&quot;MD5&quot;);</span><br><span class="line">		md5.update(b2);</span><br><span class="line">		byte[] encryption = md5.digest();</span><br><span class="line">		String encrypt_id = new String(Base64.getEncoder().encode(encryption));</span><br><span class="line">		md5.reset();</span><br><span class="line">		encrypt_id = encrypt_id.replace(&quot;+&quot;, &quot;-&quot;);</span><br><span class="line">		encrypt_id = encrypt_id.replace(&quot;/&quot;, &quot;_&quot;);</span><br><span class="line">		return encrypt_id;</span><br><span class="line">	&#125;</span><br><span class="line">	catch (NoSuchAlgorithmException e) &#123;</span><br><span class="line">		return &quot;&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-01-01T15:39:02.380Z" itemprop="dateUpdated">2018-01-01 23:39:02</time>
+</span><br>
+
+
+        
+        转载请注明出处，虽然不会有人转载的说：<a href="/2017/12/20/网易云音乐下载链接API分析/" target="_blank" rel="external">http://blog.valorachen.club/2017/12/20/网易云音乐下载链接API分析/</a>
+        
+    </div>
+    <footer>
+        <a href="http://blog.valorachen.club">
+            <img src="/img/avatar.png" alt="ViVi">
+            ViVi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/API/">API</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网易云音乐/">网易云音乐</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.valorachen.club/2017/12/20/网易云音乐下载链接API分析/&title=《网易云音乐下载链接API分析》 — ViVi's craft&pic=http://blog.valorachen.club/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.valorachen.club/2017/12/20/网易云音乐下载链接API分析/&title=《网易云音乐下载链接API分析》 — ViVi's craft&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.valorachen.club/2017/12/20/网易云音乐下载链接API分析/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《网易云音乐下载链接API分析》 — ViVi's craft&url=http://blog.valorachen.club/2017/12/20/网易云音乐下载链接API分析/&via=http://blog.valorachen.club" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.valorachen.club/2017/12/20/网易云音乐下载链接API分析/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/12/20/在Centos部署NodeJs服务端心得/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">在Centos部署NodeJs服务端心得</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/11/10/Android复习/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Android复习</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "EwUx7kp4hDkqF3CsL5B6QGS1-gzGzoHsz",
+            appKey: "1tccniD7zvLprgUME5qQiIH1",
+            avatar: "mm",
+            placeholder: "Say something if you want to",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>ViVi &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.valorachen.club/2017/12/20/网易云音乐下载链接API分析/&title=《网易云音乐下载链接API分析》 — ViVi's craft&pic=http://blog.valorachen.club/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.valorachen.club/2017/12/20/网易云音乐下载链接API分析/&title=《网易云音乐下载链接API分析》 — ViVi's craft&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.valorachen.club/2017/12/20/网易云音乐下载链接API分析/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《网易云音乐下载链接API分析》 — ViVi's craft&url=http://blog.valorachen.club/2017/12/20/网易云音乐下载链接API分析/&via=http://blog.valorachen.club" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.valorachen.club/2017/12/20/网易云音乐下载链接API分析/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsklEQVR42u3aMXIjMQwEQP//077UyUozIOFTuXojl7Qm2QxICMDXV/x8Pzw/v339X0/jPL35+v3LDx4eHt6lpSfT55h2I/LteLMFeHh4eGu8pynzZeXXQLIp7TuPn+Ph4eF9JC+h3to+PDw8vL/ES4Lj2WgnI+Dh4eHt8fJE7SzZmqcb8pD6cq4FDw8PL+blVaTP+XulvoeHh4d3XFXPL4mTBeWLrleLh4eHt3UQFovImwPaBoJZqB0F7nh4eHjLvLbtKS+JzcpmeePX49rw8PDwFnj1S8dJjTZRmxfJhjkVPDw8vJJ3t/TVhtdtoqG+rvDw8PDWeHnYmh/ubVKjvUiGdx0eHh7eMW8WBCcBbn4N5KW15HrAw8PD2+PNUgBt8J0H5ScNB286I/Dw8PAu8ZIJ8oP4PCzOR4jarfDw8PAWeO2P/FnzU35JtKO9CcTx8PDw1niz4tNeAvdWkgIPDw9vg5dfALeK/W0hrS2VDTPTeHh4eCWvTQG8Dmdn7QhtEjlP7+Lh4eFt8/JF1NniUWqjBb9J5uLh4eEt8Gbg9lLJx8+TDkVIjYeHh7fAyy+G9pNZYJ1cOUUDAR4eHt4l3ixQPmnAOmnDwsPDw/u/vPbon33bkvKWgmgL8PDw8K7yZhfDLFF70mQwK9rh4eHh/SZvOFwZ/g5D5DzgxsPDw1vjJUO3U7b4k2aCRzAeHh7eGm92ELfNo+1mzTblMaTGw8PDO+Z9l0+els1bAfIzvG0gwMPDw9vgnR++r9OvSZCdYJIy26zhAA8PD2/Gm5W72qW0108bgj+C8fDw8NZ4SUK2LZidh9ezxAQeHh7ep/FmBf6TWZI3H2fBw8PD+wBecojnqd6TxoWohIaHh4e3xpsVn/ICWH7ct0H2m7nw8PDwFnjDH/nxQtt3Li8dDw8P7ybvH5sWzxRk4tOQAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

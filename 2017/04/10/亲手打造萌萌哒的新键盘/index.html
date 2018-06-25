@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=61021328"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>亲手打造萌萌哒的新键盘 | ViVi&#39;s craft | 只用来写技术相关的文章，记一些平时很少用很容易忘记的东西。能用实际项目来掌握的技术还懒得写，于是很少更新。想看更新频繁,内容日常的博客，请移步：&lt;a style=&#34;color:#FFFFFF;&#34; herf=&#34;https://chenvivi.wordpress.com&#34;&gt;https://chenvivi.wordpress.com&lt;/a&gt;</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="硬件">
+    <meta name="description" content="前言这是一个完全不懂硬件的菜鸟一步一步组装GH60键盘的故事。 之前那个ThinkPad坏得不能再写代码了，于是我换了新电脑，但是不习惯战神的键盘，太硬了好难摁下去，还是ThinkPad的键盘爽，但是目前也只好再买一个键盘，于是去网上了解什么键盘好用。 知乎上有人推荐GH60，头一次知道还可以自己组装键盘，而且是开源的，感觉非常有意思啊，于是就下手了。 组件 PCB（ Printed Circui">
+<meta name="keywords" content="硬件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="亲手打造萌萌哒的新键盘">
+<meta property="og:url" content="http://blog.valorachen.club/2017/04/10/亲手打造萌萌哒的新键盘/index.html">
+<meta property="og:site_name" content="ViVi&#39;s craft">
+<meta property="og:description" content="前言这是一个完全不懂硬件的菜鸟一步一步组装GH60键盘的故事。 之前那个ThinkPad坏得不能再写代码了，于是我换了新电脑，但是不习惯战神的键盘，太硬了好难摁下去，还是ThinkPad的键盘爽，但是目前也只好再买一个键盘，于是去网上了解什么键盘好用。 知乎上有人推荐GH60，头一次知道还可以自己组装键盘，而且是开源的，感觉非常有意思啊，于是就下手了。 组件 PCB（ Printed Circui">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://i4.buimg.com/567571/f598a40101ed0a79.png">
+<meta property="og:image" content="http://i2.muimg.com/567571/616d3da58abe6993.png">
+<meta property="og:image" content="http://i1.piimg.com/567571/f1f173decdb36b65.png">
+<meta property="og:image" content="http://i2.muimg.com/567571/0833244fcdb42994.png">
+<meta property="og:image" content="http://i1.piimg.com/567571/a29732ca539c01b2.jpg">
+<meta property="og:image" content="http://i4.buimg.com/567571/e32f6b00df3420fb.png">
+<meta property="og:image" content="http://i2.muimg.com/567571/04a81e1fa6a43680.png">
+<meta property="og:image" content="http://i4.buimg.com/567571/3e7f1d724b85da4e.png">
+<meta property="og:image" content="http://i2.muimg.com/567571/773ea8f9d25d8e09.png">
+<meta property="og:image" content="http://i2.muimg.com/567571/b01b640e56d159ff.png">
+<meta property="og:image" content="http://i4.buimg.com/567571/2cdb405c0e845e0f.png">
+<meta property="og:image" content="http://i1.piimg.com/567571/afded45a8f204712.png">
+<meta property="og:image" content="http://i2.muimg.com/567571/ff25164056ee6e2a.png">
+<meta property="og:image" content="http://i2.muimg.com/567571/b84dcfd38c4505c6.png">
+<meta property="og:updated_time" content="2017-06-22T07:58:11.325Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="亲手打造萌萌哒的新键盘">
+<meta name="twitter:description" content="前言这是一个完全不懂硬件的菜鸟一步一步组装GH60键盘的故事。 之前那个ThinkPad坏得不能再写代码了，于是我换了新电脑，但是不习惯战神的键盘，太硬了好难摁下去，还是ThinkPad的键盘爽，但是目前也只好再买一个键盘，于是去网上了解什么键盘好用。 知乎上有人推荐GH60，头一次知道还可以自己组装键盘，而且是开源的，感觉非常有意思啊，于是就下手了。 组件 PCB（ Printed Circui">
+<meta name="twitter:image" content="http://i4.buimg.com/567571/f598a40101ed0a79.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="ViVi&#39;s craft" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ViVi</h5>
+          <a href="mailto:valorachen@163.com" title="valorachen@163.com" class="mail">valorachen@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                时间线
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://chenvivi.wordpress.com/" target="_blank" >
+                <i class="icon icon-lg icon-book"></i>
+                我的日记（代替py圈）
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom.xml" target="_blank" >
+                <i class="icon icon-lg icon-rss"></i>
+                RSS
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ChenViVi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://steamcommunity.com/profiles/76561198300793241" target="_blank" >
+                <i class="icon icon-lg icon-steam"></i>
+                Steam
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/p/1005053101937447/home?from=page_100505&mod=TAB&is_all=1#place" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">亲手打造萌萌哒的新键盘</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">亲手打造萌萌哒的新键盘</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-04-10T13:39:33.000Z" itemprop="datePublished" class="page-time">
+  2017-04-10
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#组件"><span class="post-toc-number">2.</span> <span class="post-toc-text">组件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#开始组装"><span class="post-toc-number">3.</span> <span class="post-toc-text">开始组装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#刷固件"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">刷固件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#装卫星轴"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">装卫星轴</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#装轴"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">装轴</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#装底灯，装键帽"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">装底灯，装键帽</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#装外壳"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">装外壳</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#刷配列"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">刷配列</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-亲手打造萌萌哒的新键盘"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">亲手打造萌萌哒的新键盘</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-04-10 21:39:33" datetime="2017-04-10T13:39:33.000Z"  itemprop="datePublished">2017-04-10</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这是一个完全不懂硬件的菜鸟一步一步组装GH60键盘的故事。</p>
+<p>之前那个ThinkPad坏得不能再写代码了，于是我换了新电脑，但是不习惯战神的键盘，太硬了好难摁下去，还是ThinkPad的键盘爽，但是目前也只好再买一个键盘，于是去网上了解什么键盘好用。</p>
+<p>知乎上有人推荐GH60，头一次知道还可以自己组装键盘，而且是开源的，感觉非常有意思啊，于是就下手了。</p>
+<h2 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h2><ol>
+<li>PCB（ Printed Circuit Board），中文名称为印制电路板。这里是指键盘的主板，貌似有带底灯和无底灯两种PCB可选。</li>
+<li>LED底灯。可选项，如果不需要底灯就不需要买。</li>
+<li>轴。机械键盘之所以为机械键盘的原因。</li>
+<li>定位板。没有这个的话，到时候焊轴会焊歪，别问我怎么知道的，文章后面会有详细反例。但是好像也有老司机不喜欢用定位板干脆去掉定位板的。</li>
+<li>卫星轴一套。用于固定比较长的键，如空格键，enter键等，都需要卫星轴来支撑。</li>
+<li>MiNi USB数据线一条。用于连接电脑和键盘。</li>
+<li>键盘外壳。</li>
+<li>键帽。真贵啊。</li>
+</ol>
+<h2 id="开始组装"><a href="#开始组装" class="headerlink" title="开始组装"></a>开始组装</h2><h3 id="刷固件"><a href="#刷固件" class="headerlink" title="刷固件"></a>刷固件</h3><p>这一步卖家写得挺详细，就不多说了</p>
+<p><a href="https://mp.weixin.qq.com/s/N_kdfWUl1c_9EscuJ_nMoA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/N_kdfWUl1c_9EscuJ_nMoA</a></p>
+<h3 id="装卫星轴"><a href="#装卫星轴" class="headerlink" title="装卫星轴"></a>装卫星轴</h3><p>卫星轴塑料部分由两部分组成，暂且叫做A部分和B部分</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://i4.buimg.com/567571/f598a40101ed0a79.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>首先，我们需要把B怼进A里边，然而B的两侧和A的两侧的构造都是不同的，应该朝什么方向呢？这里有一个辨别方法。</p>
+<p>如下图，A的两端一端是圆型，一端是角型。画红框的那一端就是圆型。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://i2.muimg.com/567571/616d3da58abe6993.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>如下图，B的一端是上面有横梁的。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://i1.piimg.com/567571/f1f173decdb36b65.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>将A的圆型那一端与B的有横梁端朝同一面套进去就行。然后，两个一个对穿上钢丝</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://i2.muimg.com/567571/0833244fcdb42994.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>最后，把卫星轴装到PCB上。圆型端对着大孔，角型端对着小孔。角型端会比小孔稍微大一点，需要用力摁下去。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://i1.piimg.com/567571/a29732ca539c01b2.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>一共有5对卫星轴需要装配</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://i4.buimg.com/567571/e32f6b00df3420fb.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>正确安装好的卫星轴，应该是紧贴PCB的。不然说明你没有将卫星轴紧摁进去。</p>
+<p>PCB倒立时卫星轴的B部分应该是自然下垂的，不然就说明你A与B部分装反了方向，换方向重新安装即可。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://i2.muimg.com/567571/04a81e1fa6a43680.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="装轴"><a href="#装轴" class="headerlink" title="装轴"></a>装轴</h3><p>如果你不适用定位板，你可能会焊成这个样子。仔细一看，就能发现轴焊得歪歪扭扭。所以对于新手，还是用定位板的好。先把轴固定在定位板上，然后盖到PCB上，然后再焊。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://i4.buimg.com/567571/3e7f1d724b85da4e.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>需要注意的是，有些地方一个键位可以以有两种位置可以选择，这可不能随便瞎选一个，最好把键帽套在轴上试一试这个位置是否适合你的键帽然后再焊，不然可能会出现焊完后套键帽，几个键帽挤在一起根本没办法把键按下去的问题。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://i2.muimg.com/567571/773ea8f9d25d8e09.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>这是焊好所有的轴之后的样子</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://i2.muimg.com/567571/b01b640e56d159ff.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>先别急着做下一步，赶紧插上键盘试试每个键是否好用吧。</p>
+<h3 id="装底灯，装键帽"><a href="#装底灯，装键帽" class="headerlink" title="装底灯，装键帽"></a>装底灯，装键帽</h3><p>注意区分正负极，LED灯长的那一端是正极。</p>
+<p>当你在PCB正面装好灯，准备翻去反面焊的时候，灯会往下掉，直到碰到桌面。千万不能这就开焊，由于PCB反面放置于桌面时，支撑它的是轴，那么现在灯的顶端和轴的顶端是在同一水平面的。而当键按下去的时候，键帽会忘下压，这轴时也忘下压，而灯不会和轴一样弹性，于是会阻止你按下这个键。</p>
+<p>针对上面提到的问题，我有个可行方案。先把LED灯的正负极插在PCB上，然后装上键帽，拿焊锡的手把PCB压住，确保这个键是按下状态，然后开焊。一定要确保这个键是按下去的状态下才焊灯，这很重要，不然还是可能出现上面的状况。</p>
+<h3 id="装外壳"><a href="#装外壳" class="headerlink" title="装外壳"></a>装外壳</h3><p>如果你想刷配列，不必刷完配列再装外壳，装好外壳后，你会发现键盘背面有个的孔正好可以按到重置键。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://i4.buimg.com/567571/2cdb405c0e845e0f.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="刷配列"><a href="#刷配列" class="headerlink" title="刷配列"></a>刷配列</h3><p>刷配列可以说是开源键盘最让人心动的原因之一。想一想，输入默认账号密码，打开某个软件，或者某个键的功能让你不满，现在这些功能只需要你通过编程告诉键盘你想让哪个键做什么事，键盘就能如你所愿，这简直太棒了。</p>
+<p>首先，打开这个网站<a href="http://yang.tkg.io/ydkb/" target="_blank" rel="noopener">http://yang.tkg.io/ydkb/</a></p>
+<p>点击【读取KeyMao】来读取你键盘现在的配列</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://i1.piimg.com/567571/afded45a8f204712.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>点击【上放区域】中你想修改的键，然后到【下方区域】选择你希望这个键位达到的功能。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://i2.muimg.com/567571/ff25164056ee6e2a.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>人如果你希望你的键盘有多个配列，点击【上方区域】中的Tab来切换到另一个配列并进行编辑。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://i2.muimg.com/567571/b84dcfd38c4505c6.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>现在你已经编辑了多个配列了。怎么告诉键盘你要使用哪个配列呢？当然是通过按键了。所以，下一步就是设置Fn键。</p>
+<p><strong>因为我的怠惰所以断更了额，等勤勉的再补回来……</strong></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-06-22T07:58:11.325Z" itemprop="dateUpdated">2017-06-22 15:58:11</time>
+</span><br>
+
+
+        
+        转载请注明出处，虽然不会有人转载的说：<a href="/2017/04/10/亲手打造萌萌哒的新键盘/" target="_blank" rel="external">http://blog.valorachen.club/2017/04/10/亲手打造萌萌哒的新键盘/</a>
+        
+    </div>
+    <footer>
+        <a href="http://blog.valorachen.club">
+            <img src="/img/avatar.png" alt="ViVi">
+            ViVi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/硬件/">硬件</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.valorachen.club/2017/04/10/亲手打造萌萌哒的新键盘/&title=《亲手打造萌萌哒的新键盘》 — ViVi's craft&pic=http://blog.valorachen.club/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.valorachen.club/2017/04/10/亲手打造萌萌哒的新键盘/&title=《亲手打造萌萌哒的新键盘》 — ViVi's craft&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.valorachen.club/2017/04/10/亲手打造萌萌哒的新键盘/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《亲手打造萌萌哒的新键盘》 — ViVi's craft&url=http://blog.valorachen.club/2017/04/10/亲手打造萌萌哒的新键盘/&via=http://blog.valorachen.club" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.valorachen.club/2017/04/10/亲手打造萌萌哒的新键盘/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/06/28/Oracle复习/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Oracle复习</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/03/12/如何将NetBeans中的Java程序导出可执行文件-exe/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">如何将NetBeans中的Java程序导出可执行文件.exe</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "EwUx7kp4hDkqF3CsL5B6QGS1-gzGzoHsz",
+            appKey: "1tccniD7zvLprgUME5qQiIH1",
+            avatar: "mm",
+            placeholder: "Say something if you want to",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>ViVi &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.valorachen.club/2017/04/10/亲手打造萌萌哒的新键盘/&title=《亲手打造萌萌哒的新键盘》 — ViVi's craft&pic=http://blog.valorachen.club/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.valorachen.club/2017/04/10/亲手打造萌萌哒的新键盘/&title=《亲手打造萌萌哒的新键盘》 — ViVi's craft&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.valorachen.club/2017/04/10/亲手打造萌萌哒的新键盘/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《亲手打造萌萌哒的新键盘》 — ViVi's craft&url=http://blog.valorachen.club/2017/04/10/亲手打造萌萌哒的新键盘/&via=http://blog.valorachen.club" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.valorachen.club/2017/04/10/亲手打造萌萌哒的新键盘/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsUlEQVR42u3aQW7DMAwEwPz/0+21h1pdkmLhw/gUNEGsUQGLWfLzia+vH9f53Z+fefrL+XX17hcuPDw8vMHSJws9489/ST75dMenNePh4eFt8843671OHujnjUvW84cFDw8P7wW887Ly8jcvkXtbgIeHh/ceXn6z3uIm4QUeHh7ef/KSMCLHbMDWsxY8PDy8mJcXte95vdLfw8PDwxt31c8P3Oq7SZxxebV4eHh4aw/CPHLthQ6TUa1eNIyHh4e3x+v94K82saoxR2+065dV4eHh4S3z8pZYgpzHrNVj41Nl4OHh4Q148xii2vI/b1D1M49RLx4eHt4Cr/ron8S+vWVNSnk8PDy8/+FVC+JecNArl0flNR4eHt4a70I/LW6GnQ+G+bACHh4e3gav147Kg4PeqEF1JY/3wsPDw1vgTQro3hb0BhEmwwd4eHh4G7w8IKiOHeQblB8Y1VEtPDw8vA1eHr/2YoW88V8NcwuZNB4eHt5VXo+aP76T75mPWxWGrvDw8PAGvGr8Wm3tVwcUkk0vbCUeHh7eGi8vW6sDWHnw2otFyvk0Hh4e3lVe9XjIF5cPB1RHu8pDV3h4eHhjXt5emj9pJ6MJ1S3Aw8PD2+NVBwWqR8WkLM6PnEc2Hh4e3gKvR6o275Nl5WV6MqAwiiTw8PDwxry8Np8zemMH5dMPDw8Pb4GXf3WvjO5Vv70BBTw8PLw9Xi90qAa+vUd/r2THw8PD2+B9Fa9qeV19PucHTBRG4OHh4S3w8qs6PlVtX/VaZUkVjYeHh7fBq8avtx7cvSGDclsODw8Pb42XB7XJOZM0xuaxb3Ti4eHh4b2GNy+vb93xj03Bw8PDew2v2qCKenFx2R2NW+Hh4eEt86qF761yuddyK/wb8PDw8BZ4vR/585Gp6jc0l46Hh4d3k/cN5fPaT9toiVgAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

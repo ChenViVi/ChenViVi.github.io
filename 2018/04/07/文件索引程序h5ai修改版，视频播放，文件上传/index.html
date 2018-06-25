@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=61021328"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>文件索引程序h5ai修改版，视频播放，文件上传 | ViVi&#39;s craft | 只用来写技术相关的文章，记一些平时很少用很容易忘记的东西。能用实际项目来掌握的技术还懒得写，于是很少更新。想看更新频繁,内容日常的博客，请移步：&lt;a style=&#34;color:#FFFFFF;&#34; herf=&#34;https://chenvivi.wordpress.com&#34;&gt;https://chenvivi.wordpress.com&lt;/a&gt;</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="linux,建站">
+    <meta name="description" content="前言买了年vps之后天天沉迷搞机，饭不吃了，屎不拉了，甚至游戏都不打了。最近穿梭与各个大佬的博客之间，了解了vps另一种用途：存储功能（大误：下种子！存本子！存小姐姐！）。我凭着兴趣把owncloud（官网 | 教程），nextcloud（官网），Cloudreve（github | 教程）都搭了一遍，然后发现我并不想用它们存任何文件。vps只有10G不说，以我现在的玩法，哪天不带重装的哪有那么安">
+<meta name="keywords" content="linux,建站">
+<meta property="og:type" content="article">
+<meta property="og:title" content="文件索引程序h5ai修改版，视频播放，文件上传">
+<meta property="og:url" content="http://blog.valorachen.club/2018/04/07/文件索引程序h5ai修改版，视频播放，文件上传/index.html">
+<meta property="og:site_name" content="ViVi&#39;s craft">
+<meta property="og:description" content="前言买了年vps之后天天沉迷搞机，饭不吃了，屎不拉了，甚至游戏都不打了。最近穿梭与各个大佬的博客之间，了解了vps另一种用途：存储功能（大误：下种子！存本子！存小姐姐！）。我凭着兴趣把owncloud（官网 | 教程），nextcloud（官网），Cloudreve（github | 教程）都搭了一遍，然后发现我并不想用它们存任何文件。vps只有10G不说，以我现在的玩法，哪天不带重装的哪有那么安">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://p6sxs59ci.bkt.clouddn.com/o_1cafnvh7a12kp1gkfdgv1o9vatva.png">
+<meta property="og:image" content="http://p6sxs59ci.bkt.clouddn.com/o_1cafo9d21ij01up03lg1n47h0ra.png">
+<meta property="og:image" content="http://p6sxs59ci.bkt.clouddn.com/o_1caftve0854tl084ks4nu15jca.png">
+<meta property="og:updated_time" content="2018-04-13T16:07:12.382Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="文件索引程序h5ai修改版，视频播放，文件上传">
+<meta name="twitter:description" content="前言买了年vps之后天天沉迷搞机，饭不吃了，屎不拉了，甚至游戏都不打了。最近穿梭与各个大佬的博客之间，了解了vps另一种用途：存储功能（大误：下种子！存本子！存小姐姐！）。我凭着兴趣把owncloud（官网 | 教程），nextcloud（官网），Cloudreve（github | 教程）都搭了一遍，然后发现我并不想用它们存任何文件。vps只有10G不说，以我现在的玩法，哪天不带重装的哪有那么安">
+<meta name="twitter:image" content="http://p6sxs59ci.bkt.clouddn.com/o_1cafnvh7a12kp1gkfdgv1o9vatva.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="ViVi&#39;s craft" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ViVi</h5>
+          <a href="mailto:valorachen@163.com" title="valorachen@163.com" class="mail">valorachen@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                时间线
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://chenvivi.wordpress.com/" target="_blank" >
+                <i class="icon icon-lg icon-book"></i>
+                我的日记（代替py圈）
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom.xml" target="_blank" >
+                <i class="icon icon-lg icon-rss"></i>
+                RSS
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ChenViVi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://steamcommunity.com/profiles/76561198300793241" target="_blank" >
+                <i class="icon icon-lg icon-steam"></i>
+                Steam
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/p/1005053101937447/home?from=page_100505&mod=TAB&is_all=1#place" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">文件索引程序h5ai修改版，视频播放，文件上传</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">文件索引程序h5ai修改版，视频播放，文件上传</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-04-07T11:44:24.000Z" itemprop="datePublished" class="page-time">
+  2018-04-07
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#演示"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">演示</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#下载"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">下载</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#我自定义版本的食用方法"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">我自定义版本的食用方法</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-文件索引程序h5ai修改版，视频播放，文件上传"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">文件索引程序h5ai修改版，视频播放，文件上传</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-04-07 19:44:24" datetime="2018-04-07T11:44:24.000Z"  itemprop="datePublished">2018-04-07</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>买了年vps之后天天沉迷搞机，饭不吃了，屎不拉了，甚至游戏都不打了。最近穿梭与各个大佬的博客之间，了解了vps另一种用途：存储功能（大误：下种子！存本子！存小姐姐！）。我凭着兴趣把owncloud（<a href="https://owncloud.org/" target="_blank" rel="noopener">官网</a> | <a href="http://www.vpsdaquan.cn/vpsdajianowncloud.html" target="_blank" rel="noopener">教程</a>），nextcloud（<a href="https://nextcloud.com/" target="_blank" rel="noopener">官网</a>），Cloudreve（<a href="https://github.com/HFO4/Cloudreve" target="_blank" rel="noopener">github</a> | <a href="https://hub.docker.com/r/ilemonrain/cloudreve/" target="_blank" rel="noopener">教程</a>）都搭了一遍，然后发现我并不想用它们存任何文件。vps只有10G不说，以我现在的玩法，哪天不带重装的哪有那么安稳。而且如果不是公开分享的文件必须登录才能看到麻烦死了。私有文件啥的我根本就不需要啊，老娘的百度云虽然2T空间快用完了，但是全都是可以光明磊落的公开出来的文件。我要是男生的话估计会用到私人云盘的说，可是里世界的东西我真的get不到，而你不可能从不吸毒的人家里搜到海洛因。</p>
+<p>可是事实上我电脑上1T的硬盘空间已经告急了，而且有些文件我真的很希望公开共享到服务器上，这样不登录就可以被任何人下载了。然后我搜到了两个解决方案。<a href="https://larsjung.de/h5ai/" target="_blank" rel="noopener">h5ai</a>，一个优雅的目录列表程序，像是这样：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://p6sxs59ci.bkt.clouddn.com/o_1cafnvh7a12kp1gkfdgv1o9vatva.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p><a href="https://www.evoluted.net/thinktank/web-development/php-directory-listing-script" target="_blank" rel="noopener">Evoluted Directory Listing</a>，支持上传，删除操作的目录列表程序，像是这样：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://p6sxs59ci.bkt.clouddn.com/o_1cafo9d21ij01up03lg1n47h0ra.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>emmm……第一个UI很好看，支持图片查看，经过大神的修改之后还支持视频播放。第二个支持密码登录和ip白名单。但是真吃藕。但是这两者可以取长补短呀，把前者改一下，让它支持后者的功能是最好的，可是我php并不好，做不到的说。但是我抖机灵把右上角的powered by h5ai改成了manage files，然后让这个链家指向Evoluted Directory Listing。这样我可以上传和下载，而其他人可以下载，也挺好的。</p>
+<h2 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h2><p><a href="http://valorachen.club/pubcloud/" target="_blank" rel="noopener">http://valorachen.club/pubcloud/</a></p>
+<p>因为有设置ip白名单的原因，你们是无法上传和删除文件的，所以点击manage files 后并不能进入页面。</p>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p><a href="http://valorachen.club/pubcloud/code/php/public_cloud/pubcloud.zip" target="_blank" rel="noopener">我的自定义版本</a></p>
+<p>h5ai + dplayer：<a href="download.valorachen.club/h5ai_dplayer%2Bmodified%2Bby%2Bicycat.zip">本站下载</a></p>
+<p>h5ai：<a href="http://download.valorachen.club//h5ai-master.zip" target="_blank" rel="noopener">本站下载</a> | <a href="https://github.com/lrsjng/h5ai" target="_blank" rel="noopener">github</a></p>
+<p>Evoluted Directory Listing：<a href="http://download.valorachen.club/evoluted-directory-listing-script-4.0.5.zip" target="_blank" rel="noopener">本站下载</a> | <a href="https://www.evoluted.net/thinktank/web-development/php-directory-listing-script" target="_blank" rel="noopener">官网</a></p>
+<h2 id="我自定义版本的食用方法"><a href="#我自定义版本的食用方法" class="headerlink" title="我自定义版本的食用方法"></a>我自定义版本的食用方法</h2><p>下载并解压到www目录下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget http://download.valorachen.club/pubcloud.zip</span><br><span class="line"></span><br><span class="line">unzip pubcloud.zip</span><br></pre></td></tr></table></figure>
+<p>修改apache配置文件，在DirectoryIndex项中增加<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p>vi /etc/httpd/conf/httpd.conf<br><code>`</code></p>
+<p>打开upload.php，找到$ipWhitelist参数，改成自己的ip地址</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://p6sxs59ci.bkt.clouddn.com/o_1caftve0854tl084ks4nu15jca.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>打开，找到&lt;a id=”backlink”，将target参数改成upload.php对应的地址。例如：<a href="http://yourip/pubcloud/upload.php" target="_blank" rel="noopener">http://yourip/pubcloud/upload.php</a></p>
+<p>关于这点我也很想搞相对路径的，但是不知为啥就是不好使，我还真的是前端菜鸟。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-04-13T16:07:12.382Z" itemprop="dateUpdated">2018-04-14 00:07:12</time>
+</span><br>
+
+
+        
+        转载请注明出处，虽然不会有人转载的说：<a href="/2018/04/07/文件索引程序h5ai修改版，视频播放，文件上传/" target="_blank" rel="external">http://blog.valorachen.club/2018/04/07/文件索引程序h5ai修改版，视频播放，文件上传/</a>
+        
+    </div>
+    <footer>
+        <a href="http://blog.valorachen.club">
+            <img src="/img/avatar.png" alt="ViVi">
+            ViVi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/建站/">建站</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.valorachen.club/2018/04/07/文件索引程序h5ai修改版，视频播放，文件上传/&title=《文件索引程序h5ai修改版，视频播放，文件上传》 — ViVi's craft&pic=http://blog.valorachen.club/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.valorachen.club/2018/04/07/文件索引程序h5ai修改版，视频播放，文件上传/&title=《文件索引程序h5ai修改版，视频播放，文件上传》 — ViVi's craft&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.valorachen.club/2018/04/07/文件索引程序h5ai修改版，视频播放，文件上传/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《文件索引程序h5ai修改版，视频播放，文件上传》 — ViVi's craft&url=http://blog.valorachen.club/2018/04/07/文件索引程序h5ai修改版，视频播放，文件上传/&via=http://blog.valorachen.club" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.valorachen.club/2018/04/07/文件索引程序h5ai修改版，视频播放，文件上传/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/06/17/网件R6400折腾笔记/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">网件 R6400 折腾笔记</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/04/07/我的网站导航/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">我的网站导航</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "EwUx7kp4hDkqF3CsL5B6QGS1-gzGzoHsz",
+            appKey: "1tccniD7zvLprgUME5qQiIH1",
+            avatar: "mm",
+            placeholder: "Say something if you want to",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>ViVi &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.valorachen.club/2018/04/07/文件索引程序h5ai修改版，视频播放，文件上传/&title=《文件索引程序h5ai修改版，视频播放，文件上传》 — ViVi's craft&pic=http://blog.valorachen.club/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.valorachen.club/2018/04/07/文件索引程序h5ai修改版，视频播放，文件上传/&title=《文件索引程序h5ai修改版，视频播放，文件上传》 — ViVi's craft&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.valorachen.club/2018/04/07/文件索引程序h5ai修改版，视频播放，文件上传/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《文件索引程序h5ai修改版，视频播放，文件上传》 — ViVi's craft&url=http://blog.valorachen.club/2018/04/07/文件索引程序h5ai修改版，视频播放，文件上传/&via=http://blog.valorachen.club" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.valorachen.club/2018/04/07/文件索引程序h5ai修改版，视频播放，文件上传/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADOUlEQVR42u3aQXLbQAwEwPz/005VrrboGSydiEjz5FKk5TZ5QIDZX7/i6+PP9ervz9fnb35e7fpX15+/+uTmCxsbG/sh7I/L6y7Aq19df/Lq0V+/kutdYWNjY29l58u1Zea6BCZbv95t/nqwsbGxsa+LUF7Y8kYib4GwsbGxsdsClix9UgKTYvYP6jY2Njb2G7Nn46HrdfJ/bduV/FHeMEvDxsbGfnv2edD7Pn//1XwbGxsb+w3YH+WVj5PaIteuf3JhY2Njb2LPDsfk46HrFfJDP7PVvlkBGxsbexH7pAG4axSVx8OznWNjY2PvZl8P9M8HT7M1f6KwYWNjY29lJzFqzkji3vOYuf3VNyk3NjY29iJ2XjDaUU4LPj8eFJVPbGxs7BXsnxgMnce3ebPUvhJsbGzsfez2agc6SQE7+e3JOtjY2NhPZyeNR96i5A1J3n60BTU6SISNjY29iJ3HtO2APm8b8gKZrFzfFxsbG3sFOxnKtMdi8oI3e/TtC3hZvbGxsbEfzm6H/i2s5eWHdfLi98VvsbGxsZeyc1gS0971/fxB54MwbGxs7K3sPAFuf9UemslbjqRZ+uI72NjY2IvYs0H/bCh/UhrbFxA9YmxsbOxF7Lao5KHsrBVJ7nUSaWBjY2NvYp+nxEkcmz+yPDaYHe6JJlXY2NjYj2W3QW974zZCmD3WqChiY2Njr2bn251tOo8BZi8jio2xsbGx17FnDcZ5VNy2Ovnhnm92jo2Njb2I3f7nvi1156HsLOuIyiE2Njb2IvbsBidlL48E2rC5fgTY2NjYD2e3Zak9ytMOofLClgTVL1fDxsbGXsS+90DMXa3CyZipbkKwsbGxH85uy0/eruQDprzw5EUxOrKDjY2NvYjdTs5ncUIb1rZhQzECw8bGxl7HbhmzwjZrM/KWo9gJNjY29iJ2fuWBQRu+5uVqFhUfPQhsbGzsh7DbEVLbeLRDovwwUH4wqK7e2NjY2A9kn494zkmzcHfW9mBjY2P/n+z2iOQsYDjZSbICNjY2NvZJocq/k4+ThjMzbGxs7HXsdkOzUKEtQske2rtgY2Nj72PPZuntJtob56VxFgljY2Njr2D/BosCtakN7ZOKAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

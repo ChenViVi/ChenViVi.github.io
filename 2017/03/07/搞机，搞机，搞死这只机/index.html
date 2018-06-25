@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=61021328"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>搞机，搞机，搞死这只机 | ViVi&#39;s craft | 只用来写技术相关的文章，记一些平时很少用很容易忘记的东西。能用实际项目来掌握的技术还懒得写，于是很少更新。想看更新频繁,内容日常的博客，请移步：&lt;a style=&#34;color:#FFFFFF;&#34; herf=&#34;https://chenvivi.wordpress.com&#34;&gt;https://chenvivi.wordpress.com&lt;/a&gt;</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="教程,mate8,日常作死">
+    <meta name="description" content="起因想要root 想要Google服务 想要Xpose 权衡了EMUI5与EMUI4的优缺点，我选择EMUI4 流程去年就试过用KingRoot之类的软件了，可想而知是想不通的。百度搜出了一些root教程，刚开始看得我一脸懵逼，但是傻瓜教程不用懂为什么，跟着做就好了，当时没有多管。现在明白了整个流程是酱紫的： 1.去官网弄到解锁码 2.使用adb进fastboot，然后输入解锁指令，解锁指令的参数">
+<meta name="keywords" content="教程,mate8,日常作死">
+<meta property="og:type" content="article">
+<meta property="og:title" content="搞机，搞机，搞死这只机">
+<meta property="og:url" content="http://blog.valorachen.club/2017/03/07/搞机，搞机，搞死这只机/index.html">
+<meta property="og:site_name" content="ViVi&#39;s craft">
+<meta property="og:description" content="起因想要root 想要Google服务 想要Xpose 权衡了EMUI5与EMUI4的优缺点，我选择EMUI4 流程去年就试过用KingRoot之类的软件了，可想而知是想不通的。百度搜出了一些root教程，刚开始看得我一脸懵逼，但是傻瓜教程不用懂为什么，跟着做就好了，当时没有多管。现在明白了整个流程是酱紫的： 1.去官网弄到解锁码 2.使用adb进fastboot，然后输入解锁指令，解锁指令的参数">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-03-07T15:04:10.786Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="搞机，搞机，搞死这只机">
+<meta name="twitter:description" content="起因想要root 想要Google服务 想要Xpose 权衡了EMUI5与EMUI4的优缺点，我选择EMUI4 流程去年就试过用KingRoot之类的软件了，可想而知是想不通的。百度搜出了一些root教程，刚开始看得我一脸懵逼，但是傻瓜教程不用懂为什么，跟着做就好了，当时没有多管。现在明白了整个流程是酱紫的： 1.去官网弄到解锁码 2.使用adb进fastboot，然后输入解锁指令，解锁指令的参数">
+    
+        <link rel="alternate" type="application/atom+xml" title="ViVi&#39;s craft" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ViVi</h5>
+          <a href="mailto:valorachen@163.com" title="valorachen@163.com" class="mail">valorachen@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                时间线
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://chenvivi.wordpress.com/" target="_blank" >
+                <i class="icon icon-lg icon-book"></i>
+                我的日记（代替py圈）
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom.xml" target="_blank" >
+                <i class="icon icon-lg icon-rss"></i>
+                RSS
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ChenViVi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://steamcommunity.com/profiles/76561198300793241" target="_blank" >
+                <i class="icon icon-lg icon-steam"></i>
+                Steam
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/p/1005053101937447/home?from=page_100505&mod=TAB&is_all=1#place" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">搞机，搞机，搞死这只机</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">搞机，搞机，搞死这只机</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-03-07T14:50:49.000Z" itemprop="datePublished" class="page-time">
+  2017-03-07
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#起因"><span class="post-toc-number">1.</span> <span class="post-toc-text">起因</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#流程"><span class="post-toc-number">2.</span> <span class="post-toc-text">流程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#解锁码"><span class="post-toc-number">3.</span> <span class="post-toc-text">解锁码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#解锁"><span class="post-toc-number">4.</span> <span class="post-toc-text">解锁</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#刷recovery"><span class="post-toc-number">5.</span> <span class="post-toc-text">刷recovery</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#刷包"><span class="post-toc-number">6.</span> <span class="post-toc-text">刷包</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#狗带"><span class="post-toc-number">7.</span> <span class="post-toc-text">狗带</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#感想"><span class="post-toc-number">8.</span> <span class="post-toc-text">感想</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#后续"><span class="post-toc-number">9.</span> <span class="post-toc-text">后续</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-搞机，搞机，搞死这只机"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">搞机，搞机，搞死这只机</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-03-07 22:50:49" datetime="2017-03-07T14:50:49.000Z"  itemprop="datePublished">2017-03-07</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>想要root</p>
+<p>想要Google服务</p>
+<p>想要Xpose</p>
+<p>权衡了EMUI5与EMUI4的优缺点，我选择EMUI4</p>
+<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><p>去年就试过用KingRoot之类的软件了，可想而知是想不通的。百度搜出了一些root教程，刚开始看得我一脸懵逼，但是傻瓜教程不用懂为什么，跟着做就好了，当时没有多管。现在明白了整个流程是酱紫的：</p>
+<p>1.去官网弄到解锁码</p>
+<p>2.使用adb进fastboot，然后输入解锁指令，解锁指令的参数就是解锁码</p>
+<p>3.然后这样就可以刷第三方recovery了，可能是因为原生recovery无法刷包吧</p>
+<p>4.然后有了第三方recovery，就可以刷包了。可以单刷SuperSu包，也可以刷rom包</p>
+<p>5.有了SuperSu，就可以装Google服务或Xpose了</p>
+<h2 id="解锁码"><a href="#解锁码" class="headerlink" title="解锁码"></a>解锁码</h2><p>听说华为手机需要解锁码才能搞机，于是去官网弄解锁码。网站上总是提示我的华为账号没有在手机上登陆超过14天，其实早就超过14天了。于是就一直卡在这块了，渐渐的就不去在意root的事了</p>
+<p>后来偶然看到大家也有遇到同样状况的，有几个人说是官方故意限制用户开rooy，打客服就解决了</p>
+<p>刚开学这几天，不知怎么地，又燃起了搞机的欲望，于是试着打客服了。客服记下了好几个难念的手机序列号之后，不知道为啥，我在网上又操作了一遍，就这么轻松地弄到了解锁码</p>
+<h2 id="解锁"><a href="#解锁" class="headerlink" title="解锁"></a>解锁</h2><p>这个倒是没啥，咱搬来就是Android程序员，adb不至于不会用，3个指令搞定</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adb devices</span><br><span class="line">adb reboot-bootloader</span><br><span class="line">fastboot oem unlock &lt;解锁码&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="刷recovery"><a href="#刷recovery" class="headerlink" title="刷recovery"></a>刷recovery</h2><p>这一步就是个大坑了,以前玩的是Android4.4手机，没有刷过recovery，因为原版的recovery够用，所以对这方面没有什么经验，鬼知道recovery与手机的系统存在兼容性问题，固定版本的EXUI必须刷固定版本的recovery。</p>
+<p>然后我的手机就一直停在开机画面进不去了，当然也进不了recovery。以之前的搞机经验，只要硬件没事，recovery还在，无论发生什么事我都会处惊不变。但是这次我真的无法风轻云淡了，我明白搞机有变砖的风险，但是，当事情真的发生在我身上，啊不，我手机身上，我开始方了。</p>
+<p>度娘再次拯救了我，原来华为有一种神奇的机制。开机时持续按音量+键3秒就可以联wifi下载官方系统恢复手机，这一点确实很良心。</p>
+<p>这一恢复，没有还原成EMUI5，而是直接退回到了EMUI4.1，庆幸服务器上的系统还没有更新。我以为这下好了，不是EMUI5就不会有recovery不兼容的问题了，结果再一次重演悲剧</p>
+<p>后来查询到怎么还原到以前版本的系统后，下载了华为的手机助手HiSuite，还原到了EMUI4.0，终于成功刷入了recovery</p>
+<h2 id="刷包"><a href="#刷包" class="headerlink" title="刷包"></a>刷包</h2><p>本来下到了SuoerSU的包准备刷的，但是我的心脏经不起折腾了，觉得刷rom比较稳，于是刷了个第三方rom</p>
+<h2 id="狗带"><a href="#狗带" class="headerlink" title="狗带"></a>狗带</h2><p>到此为止，终于root了，第一件事就是装上酷安，下载自己备份的应用集，有了root，装app终于可以不用一个一个点确定了。于是我又向往常一样刷起了排行，在排行上刷到了Xpose，想起自己还没装这个呢，于是点了下载。</p>
+<p>打开Xpose，上来就是一个写着英文警告的提示框，翻译成中文就是不会搞机的别瞎tm刷Xpose，我错误的选择了相信自己</p>
+<p>再次不能开机。这一次，recovery能进，但是不能联wifi恢复官方系统了，提示服务器连接失败什么的。关于这个提示，我在系统为官方EMUI4.1时也有发生过，所以可以排除因为是第三方ROM所以接口响应失败这个原因</p>
+<p>这我就不明白了，按理来说，这个接口的传参应该是手机型号，而手机型号不会根据现在的系统而变化，如果真跟系统扯上关系，为什么EMUI5就能成功，而其他版本就不行呢？也许是我多想了，华为的技术还是很优秀的/，不至于写出这么没有鲁棒性的接口，可是硬说是WIFI原因也是说不通的，因为之前都成功刷入了，而且wifi不止我一个人在用。</p>
+<p>当时是没有像这么多的，无法刷官方系统就刷第三方系统好了。可是重刷了一遍，一点改善都没有，还是死死的停在开机画面。</p>
+<p>当时已经到了凌晨，我是记不住学校的事情的人，其中当然包括课表。而且，我也真没招了，如果再去问度娘，又不知道要试到第几个方法才能好。于是只好睡了，也不知怀着怎样的心情睡着了</p>
+<p>大清早被吵醒，这是早上有课的凶兆，厕所被占无法洗漱，于是又开始折腾手机，能打开的就只有recovery，看到了一个格式化data分区的选项，以开发者的经验来看，所有的软件都安装在data里边，如果格式化data分区，Xpose作为一款软件应该也会被清除掉，于是就死马当活马医地点了下去，重启之后，还是卡在开机界面，死马只是被我又鞭尸了一次而已</p>
+<p>反正已经鞭尸一次了，不如再鞭一次，可能是data里还有其他重要的东西带着一起删了所以无法重启，于是我再次刷包，手机神奇的复活了，开心得我恨不得马上下一堆我手机原来的软件，可惜一上午的课，想了想还是别逃了，不过能拯救我的手机我已经很开心了</p>
+<h2 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h2><p>其实这个故事已经是精简版本了，虽然是昨天才发生的事情，但是记不太清了，以上的每一步，其实都不是一遍成功的。</p>
+<p>由于我的行为，整个过程中屡屡发生让人心惊的事情，刚开始一股后悔涌上心头，但是不一会儿我就看开了。咋一看发生那么多屁事都是因为我手贱，但是仔细一想，这并不是可以避免的事情</p>
+<p>因为心理上不可避免，而心理决定行为。好奇与探索是从我一生下来就植根于基因的东西，以此惹过麻烦，也饱受折磨。这种心理并不会强烈到完全不受外界事物的影响，但是根深蒂固。我尊重他人隐私所以不好奇，我珍惜生命所以绝不探索与死亡有关的事物。但是我可以毫不在意千元手机的死活瞎折腾，也不顾老师的点名而逃课不折腾好不罢休。</p>
+<p>补充一下，关于珍惜生命的理解。珍惜生命绝不等同于害怕死亡，生命是重要的，但对于我来说，却不是最重要的。虽然比生命重要的事物不多，但还是有一些的。个人觉得那种把生命放在第一位的人是可悲的人</p>
+<h2 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h2><p>嗨呀，Xpose还是没有安装上，好气哦，有时间还得再折腾手机。</p>
+<p>话说寒假装ubuntu因为总是死机而告终，后来把电脑弄得不能启动了，差点被维修人员骗了70RMB，虽然最后还是成功自救了，但是没有装好ubuntu还是好气哦。最近听朋友说他也遇到这个问题，说是当前linux内核对skylake架构的cpu支持不是很好，要翻墙下驱动貌似。</p>
+<p>如果不出意外，明天去泡咖啡厅蹭网吧。解决方案留在这里方便明天用</p>
+<p><a href="http://blog.csdn.net/xjz18298268521/article/details/52788133" target="_blank" rel="noopener">http://blog.csdn.net/xjz18298268521/article/details/52788133</a></p>
+<p><a href="http://www.jianshu.com/p/34236a9c4a2f?winzoom=1" target="_blank" rel="noopener">http://www.jianshu.com/p/34236a9c4a2f?winzoom=1</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-03-07T15:04:10.786Z" itemprop="dateUpdated">2017-03-07 23:04:10</time>
+</span><br>
+
+
+        
+        转载请注明出处，虽然不会有人转载的说：<a href="/2017/03/07/搞机，搞机，搞死这只机/" target="_blank" rel="external">http://blog.valorachen.club/2017/03/07/搞机，搞机，搞死这只机/</a>
+        
+    </div>
+    <footer>
+        <a href="http://blog.valorachen.club">
+            <img src="/img/avatar.png" alt="ViVi">
+            ViVi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mate8/">mate8</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/日常作死/">日常作死</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.valorachen.club/2017/03/07/搞机，搞机，搞死这只机/&title=《搞机，搞机，搞死这只机》 — ViVi's craft&pic=http://blog.valorachen.club/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.valorachen.club/2017/03/07/搞机，搞机，搞死这只机/&title=《搞机，搞机，搞死这只机》 — ViVi's craft&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.valorachen.club/2017/03/07/搞机，搞机，搞死这只机/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《搞机，搞机，搞死这只机》 — ViVi's craft&url=http://blog.valorachen.club/2017/03/07/搞机，搞机，搞死这只机/&via=http://blog.valorachen.club" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.valorachen.club/2017/03/07/搞机，搞机，搞死这只机/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/03/09/记一些临时链接/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">记一些临时链接</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/03/05/indigo主题尚待完善的功能/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">indigo主题尚待完善的功能</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "EwUx7kp4hDkqF3CsL5B6QGS1-gzGzoHsz",
+            appKey: "1tccniD7zvLprgUME5qQiIH1",
+            avatar: "mm",
+            placeholder: "Say something if you want to",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>ViVi &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.valorachen.club/2017/03/07/搞机，搞机，搞死这只机/&title=《搞机，搞机，搞死这只机》 — ViVi's craft&pic=http://blog.valorachen.club/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.valorachen.club/2017/03/07/搞机，搞机，搞死这只机/&title=《搞机，搞机，搞死这只机》 — ViVi's craft&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.valorachen.club/2017/03/07/搞机，搞机，搞死这只机/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《搞机，搞机，搞死这只机》 — ViVi's craft&url=http://blog.valorachen.club/2017/03/07/搞机，搞机，搞死这只机/&via=http://blog.valorachen.club" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.valorachen.club/2017/03/07/搞机，搞机，搞死这只机/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACt0lEQVR42u3aUWrsMBAEwNz/0slvIPGme0Z67IPyVzCOrPKCNLTm4yO+Pn9cP+8/Pfn6+e/3n9749MyxCw8PD2899ddD55NOPtDT+PlnfT0yHh4e3j3e04SS17Sv3G8nyZzx8PDw3p+XV7N5GY2Hh4f3v/PyxT2Z9KyAxsPDw3sfXl7UtqXz6w/0elNpS3A8PDy8f8PLT5He5+8r53t4eHh461P1zbLblult+BvNEw8PD+8Cr12UE2pSOrfF9yqqwMPDwzvK2y/ESUNVGzS0G8zjfTw8PLwLvLYsnsW1m2aCNmEY5it4eHh4o6OvfBKzMnrfrJC3EfxSUuPh4eEd4rUF8b45IP8Qmw0myjDw8PDwFrx8iFljQXtklYfFKyQeHh7eiLcvhdtPkMQZs4j5l4IbDw8P7wLv1E6SL/HJBpDHu0UcjIeHh3eI1x5HzRb0fEtIkEUEjIeHh3eZl7xg9pp6WuU4jz8JHh4e3gXe8DA++N99Q1X7THS+h4eHh7fmtSFpe4TfluAJvmg7wMPDw7vAa5fs9gh/1lDVNl398ZPg4eHhXeDtS+RZQ8CwCQAPDw/vDXj7yeVLfM7IQ9s/RsPDw8M7ytuEBbM2qTzC2LCHnQ54eHh4owOw/ULfNgTkH3cYcODh4eEd5bXFbn6nbRFItofh74aHh4d3lJdvDEmAm//vJs6oNzM8PDy8o7x2Qm3EkIQIeThSh794eHh4F3ib6LYubcsnZ6Ph4eHh3eZ9lldbaufbTNuGFeHx8PDwLvDyKznsb4vg9oO2I+Ph4eHd4yUvSLaHDWwfGRedEXh4eHiHeKfK5Xw7aefQNiLg4eHhvQMvOXbaL+ubQzI8PDy8d+Ntztna5oNZFHKgpMbDw8OLeW0Y0Ua6m3HaT38gxsXDw8PruqcOZ6H7pqvrzQR4eHh4Ke8L1tUNATYTr9gAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
