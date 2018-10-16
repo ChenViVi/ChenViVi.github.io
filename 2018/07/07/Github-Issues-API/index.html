@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=61021328"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>网易云音乐API Part1(登录，用户，歌单) | ViVi&#39;s craft | 只用来写技术相关的文章，记一些平时很少用很容易忘记的东西。能用实际项目来掌握的技术还懒得写，于是很少更新。想看更新频繁,内容日常的博客，请移步：&lt;a style=&#34;color:#FFFFFF;&#34; herf=&#34;https://chenvivi.wordpress.com&#34;&gt;https://chenvivi.wordpress.com&lt;/a&gt;</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Github,API">
+    <meta name="description" content="测试相关仓库地址：https://github.com/ChenViViPage/test Issues查询某个仓库的Issues链接https://api.github.com/repos/ChenViViPage/test/issues  参数   Name Type Description     milestone integeror string If an integer is pas">
+<meta name="keywords" content="Github,API">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网易云音乐API Part1(登录，用户，歌单)">
+<meta property="og:url" content="http://blog.valorachen.club/2018/07/07/Github-Issues-API/index.html">
+<meta property="og:site_name" content="ViVi&#39;s craft">
+<meta property="og:description" content="测试相关仓库地址：https://github.com/ChenViViPage/test Issues查询某个仓库的Issues链接https://api.github.com/repos/ChenViViPage/test/issues  参数   Name Type Description     milestone integeror string If an integer is pas">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-07-07T13:59:08.681Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网易云音乐API Part1(登录，用户，歌单)">
+<meta name="twitter:description" content="测试相关仓库地址：https://github.com/ChenViViPage/test Issues查询某个仓库的Issues链接https://api.github.com/repos/ChenViViPage/test/issues  参数   Name Type Description     milestone integeror string If an integer is pas">
+    
+        <link rel="alternate" type="application/atom+xml" title="ViVi&#39;s craft" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ViVi</h5>
+          <a href="mailto:valorachen@163.com" title="valorachen@163.com" class="mail">valorachen@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                时间线
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://chenvivi.wordpress.com/" target="_blank" >
+                <i class="icon icon-lg icon-book"></i>
+                我的日记（代替py圈）
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom.xml" target="_blank" >
+                <i class="icon icon-lg icon-rss"></i>
+                RSS
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ChenViVi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://steamcommunity.com/profiles/76561198300793241" target="_blank" >
+                <i class="icon icon-lg icon-steam"></i>
+                Steam
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/p/1005053101937447/home?from=page_100505&mod=TAB&is_all=1#place" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">网易云音乐API Part1(登录，用户，歌单)</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">网易云音乐API Part1(登录，用户，歌单)</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-07-07T13:25:43.000Z" itemprop="datePublished" class="page-time">
+  2018-07-07
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#测试相关"><span class="post-toc-number">1.</span> <span class="post-toc-text">测试相关</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Issues"><span class="post-toc-number">2.</span> <span class="post-toc-text">Issues</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查询某个仓库的Issues"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">查询某个仓库的Issues</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#链接"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">链接</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#参数"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">参数</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#返回数据"><span class="post-toc-number">2.1.3.</span> <span class="post-toc-text">返回数据</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查询单条Issue"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">查询单条Issue</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#链接-1"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">链接</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#参数-1"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">参数</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#返回数据-1"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">返回数据</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建Issue"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">创建Issue</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#链接-2"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">链接</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Github-Issues-API"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">网易云音乐API Part1(登录，用户，歌单)</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-07-07 21:25:43" datetime="2018-07-07T13:25:43.000Z"  itemprop="datePublished">2018-07-07</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="测试相关"><a href="#测试相关" class="headerlink" title="测试相关"></a>测试相关</h2><p>仓库地址：<a href="https://github.com/ChenViViPage/test" target="_blank" rel="noopener">https://github.com/ChenViViPage/test</a></p>
+<h2 id="Issues"><a href="#Issues" class="headerlink" title="Issues"></a>Issues</h2><h3 id="查询某个仓库的Issues"><a href="#查询某个仓库的Issues" class="headerlink" title="查询某个仓库的Issues"></a>查询某个仓库的Issues</h3><h4 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h4><p><a href="https://api.github.com/repos/ChenViViPage/test/issues" target="_blank" rel="noopener">https://api.github.com/repos/ChenViViPage/test/issues </a></p>
+<h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>milestone</code></td>
+<td><code>integer</code>or <code>string</code></td>
+<td>If an <code>integer</code> is passed, it should refer to a milestone by its <code>number</code>field. If the string <code>*</code> is passed, issues with any milestone are accepted. If the string <code>none</code> is passed, issues without milestones are returned.</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td><code>string</code></td>
+<td>Indicates the state of the issues to return. Can be either <code>open</code>, <code>closed</code>, or <code>all</code>. Default: <code>open</code></td>
+</tr>
+<tr>
+<td><code>assignee</code></td>
+<td><code>string</code></td>
+<td>Can be the name of a user. Pass in <code>none</code> for issues with no assigned user, and <code>*</code> for issues assigned to any user.</td>
+</tr>
+<tr>
+<td><code>creator</code></td>
+<td><code>string</code></td>
+<td>The user that created the issue.</td>
+</tr>
+<tr>
+<td><code>mentioned</code></td>
+<td><code>string</code></td>
+<td>A user that’s mentioned in the issue.</td>
+</tr>
+<tr>
+<td><code>labels</code></td>
+<td><code>string</code></td>
+<td>A list of comma separated label names. Example: <code>bug,ui,@high</code></td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td><code>string</code></td>
+<td>What to sort results by. Can be either <code>created</code>, <code>updated</code>, <code>comments</code>. Default: <code>created</code></td>
+</tr>
+<tr>
+<td><code>direction</code></td>
+<td><code>string</code></td>
+<td>The direction of the sort. Can be either <code>asc</code> or <code>desc</code>. Default: <code>desc</code></td>
+</tr>
+<tr>
+<td><code>since</code></td>
+<td><code>string</code></td>
+<td>Only issues updated at or after this time are returned. This is a timestamp in ISO 8601 format: <code>YYYY-MM-DDTHH:MM:SSZ</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="返回数据"><a href="#返回数据" class="headerlink" title="返回数据"></a>返回数据</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    &quot;url&quot;: &quot;https://api.github.com/repos/ChenViViPage/test/issues/2&quot;,</span><br><span class="line">    &quot;repository_url&quot;: &quot;https://api.github.com/repos/ChenViViPage/test&quot;,</span><br><span class="line">    &quot;labels_url&quot;: &quot;https://api.github.com/repos/ChenViViPage/test/issues/2/labels&#123;/name&#125;&quot;,</span><br><span class="line">    &quot;comments_url&quot;: &quot;https://api.github.com/repos/ChenViViPage/test/issues/2/comments&quot;,</span><br><span class="line">    &quot;events_url&quot;: &quot;https://api.github.com/repos/ChenViViPage/test/issues/2/events&quot;,</span><br><span class="line">    &quot;html_url&quot;: &quot;https://github.com/ChenViViPage/test/issues/2&quot;,</span><br><span class="line">    &quot;id&quot;: 338796546,</span><br><span class="line">    &quot;node_id&quot;: &quot;MDU6SXNzdWUzMzg3OTY1NDY=&quot;,</span><br><span class="line">    &quot;number&quot;: 2,</span><br><span class="line">    &quot;title&quot;: &quot;亲手打造萌萌哒的新键盘&quot;,</span><br><span class="line">    &quot;user&quot;: &#123;</span><br><span class="line">      &quot;login&quot;: &quot;ChenViViPage&quot;,</span><br><span class="line">      &quot;id&quot;: 38697453,</span><br><span class="line">      &quot;node_id&quot;: &quot;MDQ6VXNlcjM4Njk3NDUz&quot;,</span><br><span class="line">      &quot;avatar_url&quot;: &quot;https://avatars0.githubusercontent.com/u/38697453?v=4&quot;,</span><br><span class="line">      &quot;gravatar_id&quot;: &quot;&quot;,</span><br><span class="line">      &quot;url&quot;: &quot;https://api.github.com/users/ChenViViPage&quot;,</span><br><span class="line">      &quot;html_url&quot;: &quot;https://github.com/ChenViViPage&quot;,</span><br><span class="line">      &quot;followers_url&quot;: &quot;https://api.github.com/users/ChenViViPage/followers&quot;,</span><br><span class="line">      &quot;following_url&quot;: &quot;https://api.github.com/users/ChenViViPage/following&#123;/other_user&#125;&quot;,</span><br><span class="line">      &quot;gists_url&quot;: &quot;https://api.github.com/users/ChenViViPage/gists&#123;/gist_id&#125;&quot;,</span><br><span class="line">      &quot;starred_url&quot;: &quot;https://api.github.com/users/ChenViViPage/starred&#123;/owner&#125;&#123;/repo&#125;&quot;,</span><br><span class="line">      &quot;subscriptions_url&quot;: &quot;https://api.github.com/users/ChenViViPage/subscriptions&quot;,</span><br><span class="line">      &quot;organizations_url&quot;: &quot;https://api.github.com/users/ChenViViPage/orgs&quot;,</span><br><span class="line">      &quot;repos_url&quot;: &quot;https://api.github.com/users/ChenViViPage/repos&quot;,</span><br><span class="line">      &quot;events_url&quot;: &quot;https://api.github.com/users/ChenViViPage/events&#123;/privacy&#125;&quot;,</span><br><span class="line">      &quot;received_events_url&quot;: &quot;https://api.github.com/users/ChenViViPage/received_events&quot;,</span><br><span class="line">      &quot;type&quot;: &quot;User&quot;,</span><br><span class="line">      &quot;site_admin&quot;: false</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;labels&quot;: [</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;id&quot;: 985475685,</span><br><span class="line">        &quot;node_id&quot;: &quot;MDU6TGFiZWw5ODU0NzU2ODU=&quot;,</span><br><span class="line">        &quot;url&quot;: &quot;https://api.github.com/repos/ChenViViPage/test/labels/%E7%A1%AC%E4%BB%B6&quot;,</span><br><span class="line">        &quot;name&quot;: &quot;硬件&quot;,</span><br><span class="line">        &quot;color&quot;: &quot;f29668&quot;,</span><br><span class="line">        &quot;default&quot;: false</span><br><span class="line">      &#125;</span><br><span class="line">    ],</span><br><span class="line">    &quot;state&quot;: &quot;open&quot;,</span><br><span class="line">    &quot;locked&quot;: false,</span><br><span class="line">    &quot;assignee&quot;: null,</span><br><span class="line">    &quot;assignees&quot;: [</span><br><span class="line"></span><br><span class="line">    ],</span><br><span class="line">    &quot;milestone&quot;: null,</span><br><span class="line">    &quot;comments&quot;: 0,</span><br><span class="line">    &quot;created_at&quot;: &quot;2018-07-06T03:53:08Z&quot;,</span><br><span class="line">    &quot;updated_at&quot;: &quot;2018-07-06T03:57:14Z&quot;,</span><br><span class="line">    &quot;closed_at&quot;: null,</span><br><span class="line">    &quot;author_association&quot;: &quot;OWNER&quot;,</span><br><span class="line">    &quot;body&quot;: &quot;---\r\ntitle: 亲手打造萌萌哒的新键盘\r\ndate: 2017-04-10 21:39:33\r\ntags: [硬件]\r\n---\r\n\r\n## 前言\r\n\r\n这是一个完全不懂硬件的菜鸟一步一步组装GH60键盘的故事。\r\n\r\n之前那个ThinkPad坏得不能再写代码了，于是我换了新电脑，但是不习惯战神的键盘，太硬了好难摁下去，还是ThinkPad的键盘爽，但是目前也只好再买一个键盘，于是去网上了解什么键盘好用。\r\n\r\n知乎上有人推荐GH60，头一次知道还可以自己组装键盘，而且是开源的，感觉非常有意思啊，于是就下手了。\r\n\r\n## 组件\r\n\r\n1. PCB（ Printed Circuit Board），中文名称为印制电路板。这里是指键盘的主板，貌似有带底灯和无底灯两种PCB可选。\r\n2. LED底灯。可选项，如果不需要底灯就不需要买。\r\n3. 轴。机械键盘之所以为机械键盘的原因。\r\n4. 定位板。没有这个的话，到时候焊轴会焊歪，别问我怎么知道的，文章后面会有详细反例。但是好像也有老司机不喜欢用定位板干脆去掉定位板的。\r\n5. 卫星轴一套。用于固定比较长的键，如空格键，enter键等，都需要卫星轴来支撑。\r\n6. MiNi USB数据线一条。用于连接电脑和键盘。\r\n7. 键盘外壳。\r\n8. 键帽。真贵啊。\r\n\r\n## 开始组装\r\n\r\n### 刷固件\r\n\r\n这一步卖家写得挺详细，就不多说了\r\n\r\n[https://mp.weixin.qq.com/s/N_kdfWUl1c_9EscuJ_nMoA](https://mp.weixin.qq.com/s/N_kdfWUl1c_9EscuJ_nMoA)\r\n\r\n### 装卫星轴\r\n\r\n卫星轴塑料部分由两部分组成，暂且叫做A部分和B部分\r\n\r\n![](http://i4.buimg.com/567571/f598a40101ed0a79.png)\r\n\r\n首先，我们需要把B怼进A里边，然而B的两侧和A的两侧的构造都是不同的，应该朝什么方向呢？这里有一个辨别方法。\r\n\r\n如下图，A的两端一端是圆型，一端是角型。画红框的那一端就是圆型。\r\n\r\n![](http://i2.muimg.com/567571/616d3da58abe6993.png)\r\n\r\n如下图，B的一端是上面有横梁的。\r\n\r\n![](http://i1.piimg.com/567571/f1f173decdb36b65.png)\r\n\r\n将A的圆型那一端与B的有横梁端朝同一面套进去就行。然后，两个一个对穿上钢丝\r\n\r\n![](http://i2.muimg.com/567571/0833244fcdb42994.png)\r\n\r\n最后，把卫星轴装到PCB上。圆型端对着大孔，角型端对着小孔。角型端会比小孔稍微大一点，需要用力摁下去。\r\n\r\n![](http://i1.piimg.com/567571/a29732ca539c01b2.jpg)\r\n\r\n一共有5对卫星轴需要装配\r\n\r\n![](http://i4.buimg.com/567571/e32f6b00df3420fb.png)\r\n\r\n正确安装好的卫星轴，应该是紧贴PCB的。不然说明你没有将卫星轴紧摁进去。\r\n\r\nPCB倒立时卫星轴的B部分应该是自然下垂的，不然就说明你A与B部分装反了方向，换方向重新安装即可。\r\n\r\n![](http://i2.muimg.com/567571/04a81e1fa6a43680.png)\r\n\r\n### 装轴\r\n\r\n如果你不适用定位板，你可能会焊成这个样子。仔细一看，就能发现轴焊得歪歪扭扭。所以对于新手，还是用定位板的好。先把轴固定在定位板上，然后盖到PCB上，然后再焊。\r\n\r\n![](http://i4.buimg.com/567571/3e7f1d724b85da4e.png)\r\n\r\n需要注意的是，有些地方一个键位可以以有两种位置可以选择，这可不能随便瞎选一个，最好把键帽套在轴上试一试这个位置是否适合你的键帽然后再焊，不然可能会出现焊完后套键帽，几个键帽挤在一起根本没办法把键按下去的问题。\r\n\r\n![](http://i2.muimg.com/567571/773ea8f9d25d8e09.png)\r\n\r\n这是焊好所有的轴之后的样子\r\n\r\n![](http://i2.muimg.com/567571/b01b640e56d159ff.png)\r\n\r\n先别急着做下一步，赶紧插上键盘试试每个键是否好用吧。\r\n\r\n### 装底灯，装键帽\r\n\r\n注意区分正负极，LED灯长的那一端是正极。\r\n\r\n当你在PCB正面装好灯，准备翻去反面焊的时候，灯会往下掉，直到碰到桌面。千万不能这就开焊，由于PCB反面放置于桌面时，支撑它的是轴，那么现在灯的顶端和轴的顶端是在同一水平面的。而当键按下去的时候，键帽会忘下压，这轴时也忘下压，而灯不会和轴一样弹性，于是会阻止你按下这个键。\r\n\r\n针对上面提到的问题，我有个可行方案。先把LED灯的正负极插在PCB上，然后装上键帽，拿焊锡的手把PCB压住，确保这个键是按下状态，然后开焊。一定要确保这个键是按下去的状态下才焊灯，这很重要，不然还是可能出现上面的状况。\r\n\r\n### 装外壳\r\n\r\n如果你想刷配列，不必刷完配列再装外壳，装好外壳后，你会发现键盘背面有个的孔正好可以按到重置键。\r\n\r\n![](http://i4.buimg.com/567571/2cdb405c0e845e0f.png)\r\n\r\n### 刷配列\r\n\r\n刷配列可以说是开源键盘最让人心动的原因之一。想一想，输入默认账号密码，打开某个软件，或者某个键的功能让你不满，现在这些功能只需要你通过编程告诉键盘你想让哪个键做什么事，键盘就能如你所愿，这简直太棒了。\r\n\r\n首先，打开这个网站[http://yang.tkg.io/ydkb/](http://yang.tkg.io/ydkb/)\r\n\r\n点击【读取KeyMao】来读取你键盘现在的配列\r\n\r\n![](http://i1.piimg.com/567571/afded45a8f204712.png)\r\n\r\n点击【上放区域】中你想修改的键，然后到【下方区域】选择你希望这个键位达到的功能。\r\n\r\n![](http://i2.muimg.com/567571/ff25164056ee6e2a.png)\r\n\r\n人如果你希望你的键盘有多个配列，点击【上方区域】中的Tab来切换到另一个配列并进行编辑。\r\n![](http://i2.muimg.com/567571/b84dcfd38c4505c6.png)\r\n\r\n现在你已经编辑了多个配列了。怎么告诉键盘你要使用哪个配列呢？当然是通过按键了。所以，下一步就是设置Fn键。\r\n\r\n\r\n**因为我的怠惰所以断更了额，等勤勉的再补回来......**\r\n&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    &quot;url&quot;: &quot;https://api.github.com/repos/ChenViViPage/test/issues/1&quot;,</span><br><span class="line">    &quot;repository_url&quot;: &quot;https://api.github.com/repos/ChenViViPage/test&quot;,</span><br><span class="line">    &quot;labels_url&quot;: &quot;https://api.github.com/repos/ChenViViPage/test/issues/1/labels&#123;/name&#125;&quot;,</span><br><span class="line">    &quot;comments_url&quot;: &quot;https://api.github.com/repos/ChenViViPage/test/issues/1/comments&quot;,</span><br><span class="line">    &quot;events_url&quot;: &quot;https://api.github.com/repos/ChenViViPage/test/issues/1/events&quot;,</span><br><span class="line">    &quot;html_url&quot;: &quot;https://github.com/ChenViViPage/test/issues/1&quot;,</span><br><span class="line">    &quot;id&quot;: 338794067,</span><br><span class="line">    &quot;node_id&quot;: &quot;MDU6SXNzdWUzMzg3OTQwNjc=&quot;,</span><br><span class="line">    &quot;number&quot;: 1,</span><br><span class="line">    &quot;title&quot;: &quot;排序算法&quot;,</span><br><span class="line">    &quot;user&quot;: &#123;</span><br><span class="line">      &quot;login&quot;: &quot;ChenViViPage&quot;,</span><br><span class="line">      &quot;id&quot;: 38697453,</span><br><span class="line">      &quot;node_id&quot;: &quot;MDQ6VXNlcjM4Njk3NDUz&quot;,</span><br><span class="line">      &quot;avatar_url&quot;: &quot;https://avatars0.githubusercontent.com/u/38697453?v=4&quot;,</span><br><span class="line">      &quot;gravatar_id&quot;: &quot;&quot;,</span><br><span class="line">      &quot;url&quot;: &quot;https://api.github.com/users/ChenViViPage&quot;,</span><br><span class="line">      &quot;html_url&quot;: &quot;https://github.com/ChenViViPage&quot;,</span><br><span class="line">      &quot;followers_url&quot;: &quot;https://api.github.com/users/ChenViViPage/followers&quot;,</span><br><span class="line">      &quot;following_url&quot;: &quot;https://api.github.com/users/ChenViViPage/following&#123;/other_user&#125;&quot;,</span><br><span class="line">      &quot;gists_url&quot;: &quot;https://api.github.com/users/ChenViViPage/gists&#123;/gist_id&#125;&quot;,</span><br><span class="line">      &quot;starred_url&quot;: &quot;https://api.github.com/users/ChenViViPage/starred&#123;/owner&#125;&#123;/repo&#125;&quot;,</span><br><span class="line">      &quot;subscriptions_url&quot;: &quot;https://api.github.com/users/ChenViViPage/subscriptions&quot;,</span><br><span class="line">      &quot;organizations_url&quot;: &quot;https://api.github.com/users/ChenViViPage/orgs&quot;,</span><br><span class="line">      &quot;repos_url&quot;: &quot;https://api.github.com/users/ChenViViPage/repos&quot;,</span><br><span class="line">      &quot;events_url&quot;: &quot;https://api.github.com/users/ChenViViPage/events&#123;/privacy&#125;&quot;,</span><br><span class="line">      &quot;received_events_url&quot;: &quot;https://api.github.com/users/ChenViViPage/received_events&quot;,</span><br><span class="line">      &quot;type&quot;: &quot;User&quot;,</span><br><span class="line">      &quot;site_admin&quot;: false</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;labels&quot;: [</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;id&quot;: 985475825,</span><br><span class="line">        &quot;node_id&quot;: &quot;MDU6TGFiZWw5ODU0NzU4MjU=&quot;,</span><br><span class="line">        &quot;url&quot;: &quot;https://api.github.com/repos/ChenViViPage/test/labels/%E7%AE%97%E6%B3%95&quot;,</span><br><span class="line">        &quot;name&quot;: &quot;算法&quot;,</span><br><span class="line">        &quot;color&quot;: &quot;bc3138&quot;,</span><br><span class="line">        &quot;default&quot;: false</span><br><span class="line">      &#125;</span><br><span class="line">    ],</span><br><span class="line">    &quot;state&quot;: &quot;open&quot;,</span><br><span class="line">    &quot;locked&quot;: false,</span><br><span class="line">    &quot;assignee&quot;: null,</span><br><span class="line">    &quot;assignees&quot;: [</span><br><span class="line"></span><br><span class="line">    ],</span><br><span class="line">    &quot;milestone&quot;: null,</span><br><span class="line">    &quot;comments&quot;: 0,</span><br><span class="line">    &quot;created_at&quot;: &quot;2018-07-06T03:35:08Z&quot;,</span><br><span class="line">    &quot;updated_at&quot;: &quot;2018-07-06T03:56:55Z&quot;,</span><br><span class="line">    &quot;closed_at&quot;: null,</span><br><span class="line">    &quot;author_association&quot;: &quot;OWNER&quot;,</span><br><span class="line">    &quot;body&quot;: &quot;---\r\ntitle: 排序算法\r\ndate: 2017-11-08 21:54:51\r\ntags: [复习]\r\n---\r\n\r\n## 冒泡排序\r\n\r\n```\r\n#include&lt;stdio.h&gt;\r\n\r\nvoid bubble_sort(int a[], int n);\r\n\r\nint main()&#123;\r\n\tint a[] = &#123;50,40,63,20,98,41,65,78,21,34&#125;;\r\n\tsort2(a,10);\r\n\tfor(int i = 0;i &lt; 10 ;i ++)\tprintf(\&quot; %d\&quot;,a[i]);\r\n    return 0;\r\n&#125;\r\n\r\nvoid bubble_sort(int a[], int n)&#123;\r\n\tfor(int i=0;i&lt;n-1;i++)&#123;\r\n\t\tfor(int j=0;j&lt;n-i;j++)&#123;\r\n\t\t\tif(a[j]&gt;a[j+1])&#123;\r\n\t\t\t\tint temp=a[j];\r\n\t\t\t\ta[j]=a[j+1];\r\n\t\t\t\ta[j+1]=temp;\r\n\t\t\t&#125;\r\n\t\t&#125;\r\n\t&#125;\r\n&#125;\r\n```\r\n\r\n## 选择排序\r\n\r\n```\r\n#include &lt;stdio.h&gt;\r\n\r\nvoid insert_sort(int a[], int n);\r\n\r\nint main()&#123;\r\n    int a[]=&#123;32,12,7, 78, 23,45&#125;;\r\n    insert_sort(a,6);\r\n    for(int i=0; i&lt;6; i++) printf(\&quot; %d\&quot;, a[i]);\r\n    return 0;\r\n&#125;\r\n\r\nvoid insert_sort(int a[], int n) &#123;\r\n    for (int i=0; i&lt;n; i++) &#123;\r\n        int k = i;\r\n        for (int j=i+1; j&lt;n; j++)\r\n            if (a[k]&gt;a[j]) k=j;\r\n        if (i!=k) &#123;\r\n            int tmp=a[i];\r\n            a[i]=a[k];\r\n            a[k]=tmp;\r\n        &#125;\r\n    &#125;\r\n&#125;\r\n```\r\n\r\n## 快速排序\r\n\r\n```\r\n#include &lt;stdio.h&gt;\r\nvoid Merge(int sourceArr[],int tempArr[], int startIndex, int midIndex, int endIndex)&#123;\r\n\tint i = startIndex, j=midIndex+1, k = startIndex;\r\n\twhile(i!=midIndex+1 &amp;&amp; j!=endIndex+1)&#123;\r\n       if(sourceArr[i] &gt; sourceArr[j]) tempArr[k++] = sourceArr[j++];\r\n\t   else tempArr[k++] = sourceArr[i++];\r\n\t&#125;\r\n\twhile(i != midIndex+1) tempArr[k++] = sourceArr[i++];\r\n\twhile(j != endIndex+1) tempArr[k++] = sourceArr[j++];\r\n\tfor(i=startIndex; i&lt;=endIndex; i++) sourceArr[i] = tempArr[i];\r\n&#125;\r\n\r\nvoid MergeSort(int sourceArr[], int tempArr[], int startIndex, int endIndex)&#123;\r\n\tint midIndex;\r\n\tif(startIndex &lt; endIndex)&#123;\r\n\t\tmidIndex = (startIndex + endIndex) / 2;\r\n\t\tMergeSort(sourceArr, tempArr, startIndex, midIndex);\r\n\t\tMergeSort(sourceArr, tempArr, midIndex+1, endIndex);\r\n\t\tMerge(sourceArr, tempArr, startIndex, midIndex, endIndex);\r\n\t&#125;\r\n&#125;\r\n\r\nint main()&#123;\r\n\tint a[8] = &#123;50, 10, 20, 30, 70, 40, 80, 60&#125;;\r\n\tint i, b[8];\r\n\tMergeSort(a, b, 0, 7);\r\n    for(i=0; i&lt;8; i++) printf(\&quot;%d \&quot;, a[i]);\r\n\treturn 0;\r\n&#125;\r\n```\r\n## 并归排序\r\n\r\n```\r\n#include &lt;stdio.h&gt;\r\n\r\nvoid Merge(int a[],int b[], int start, int mid, int end);\r\nvoid MergeSort(int a[], int b[], int start, int end);\r\n\r\nint main()&#123;\r\n\tint a[8] = &#123;50, 10, 30, 20, 70, 40, 80, 60&#125;;\r\n\tint i, b[8];\r\n\tMergeSort(a,b,0,7);\r\n    for(i=0;i&lt;8;i++) printf(\&quot;%d \&quot;,a[i]);\r\n\treturn 0;\r\n&#125;\r\n\r\nvoid MergeSort(int a[], int b[], int start, int end)&#123;\r\n    int mid;\r\n    if(start&lt;end)&#123;\r\n        mid = (start+end)/2;\r\n        MergeSort(a,b,start,mid);\r\n        MergeSort(a,b,mid+1,end);\r\n        Merge(a,b,start,mid,end);\r\n    &#125;\r\n&#125;\r\n\r\nvoid Merge(int a[],int b[], int start, int mid, int end)&#123;\r\n    int i=start, j=mid+1, k=start;\r\n    while(i!=mid+1 &amp;&amp; j!=end+1)&#123;\r\n        if(a[i]&gt;a[j]) b[k++]=a[j++];\r\n        else b[k++]=a[i++];\r\n    &#125;\r\n    while(i!=mid+1) b[k++]=a[i++];\r\n    while(j!=end+1) b[k++]=a[j++];\r\n    for(i=start;i&lt;=end;i++) a[i]=b[i];\r\n&#125;\r\n\r\n```\r\n&quot;</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h3 id="查询单条Issue"><a href="#查询单条Issue" class="headerlink" title="查询单条Issue"></a>查询单条Issue</h3><h4 id="链接-1"><a href="#链接-1" class="headerlink" title="链接"></a>链接</h4><p><a href="https://api.github.com/repos/ChenViViPage/test/issues/2" target="_blank" rel="noopener">https://api.github.com/repos/ChenViViPage/test/issues/2</a></p>
+<h4 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h4><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>milestone</code></td>
+<td><code>integer</code>or <code>string</code></td>
+<td>If an <code>integer</code> is passed, it should refer to a milestone by its <code>number</code>field. If the string <code>*</code> is passed, issues with any milestone are accepted. If the string <code>none</code> is passed, issues without milestones are returned.</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td><code>string</code></td>
+<td>Indicates the state of the issues to return. Can be either <code>open</code>, <code>closed</code>, or <code>all</code>. Default: <code>open</code></td>
+</tr>
+<tr>
+<td><code>assignee</code></td>
+<td><code>string</code></td>
+<td>Can be the name of a user. Pass in <code>none</code> for issues with no assigned user, and <code>*</code> for issues assigned to any user.</td>
+</tr>
+<tr>
+<td><code>creator</code></td>
+<td><code>string</code></td>
+<td>The user that created the issue.</td>
+</tr>
+<tr>
+<td><code>mentioned</code></td>
+<td><code>string</code></td>
+<td>A user that’s mentioned in the issue.</td>
+</tr>
+<tr>
+<td><code>labels</code></td>
+<td><code>string</code></td>
+<td>A list of comma separated label names. Example: <code>bug,ui,@high</code></td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td><code>string</code></td>
+<td>What to sort results by. Can be either <code>created</code>, <code>updated</code>, <code>comments</code>. Default: <code>created</code></td>
+</tr>
+<tr>
+<td><code>direction</code></td>
+<td><code>string</code></td>
+<td>The direction of the sort. Can be either <code>asc</code> or <code>desc</code>. Default: <code>desc</code></td>
+</tr>
+<tr>
+<td><code>since</code></td>
+<td><code>string</code></td>
+<td>Only issues updated at or after this time are returned. This is a timestamp in ISO 8601 format: <code>YYYY-MM-DDTHH:MM:SSZ</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="返回数据-1"><a href="#返回数据-1" class="headerlink" title="返回数据"></a>返回数据</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;url&quot;: &quot;https://api.github.com/repos/ChenViViPage/test/issues/2&quot;,</span><br><span class="line">  &quot;repository_url&quot;: &quot;https://api.github.com/repos/ChenViViPage/test&quot;,</span><br><span class="line">  &quot;labels_url&quot;: &quot;https://api.github.com/repos/ChenViViPage/test/issues/2/labels&#123;/name&#125;&quot;,</span><br><span class="line">  &quot;comments_url&quot;: &quot;https://api.github.com/repos/ChenViViPage/test/issues/2/comments&quot;,</span><br><span class="line">  &quot;events_url&quot;: &quot;https://api.github.com/repos/ChenViViPage/test/issues/2/events&quot;,</span><br><span class="line">  &quot;html_url&quot;: &quot;https://github.com/ChenViViPage/test/issues/2&quot;,</span><br><span class="line">  &quot;id&quot;: 338796546,</span><br><span class="line">  &quot;node_id&quot;: &quot;MDU6SXNzdWUzMzg3OTY1NDY=&quot;,</span><br><span class="line">  &quot;number&quot;: 2,</span><br><span class="line">  &quot;title&quot;: &quot;亲手打造萌萌哒的新键盘&quot;,</span><br><span class="line">  &quot;user&quot;: &#123;</span><br><span class="line">    &quot;login&quot;: &quot;ChenViViPage&quot;,</span><br><span class="line">    &quot;id&quot;: 38697453,</span><br><span class="line">    &quot;node_id&quot;: &quot;MDQ6VXNlcjM4Njk3NDUz&quot;,</span><br><span class="line">    &quot;avatar_url&quot;: &quot;https://avatars0.githubusercontent.com/u/38697453?v=4&quot;,</span><br><span class="line">    &quot;gravatar_id&quot;: &quot;&quot;,</span><br><span class="line">    &quot;url&quot;: &quot;https://api.github.com/users/ChenViViPage&quot;,</span><br><span class="line">    &quot;html_url&quot;: &quot;https://github.com/ChenViViPage&quot;,</span><br><span class="line">    &quot;followers_url&quot;: &quot;https://api.github.com/users/ChenViViPage/followers&quot;,</span><br><span class="line">    &quot;following_url&quot;: &quot;https://api.github.com/users/ChenViViPage/following&#123;/other_user&#125;&quot;,</span><br><span class="line">    &quot;gists_url&quot;: &quot;https://api.github.com/users/ChenViViPage/gists&#123;/gist_id&#125;&quot;,</span><br><span class="line">    &quot;starred_url&quot;: &quot;https://api.github.com/users/ChenViViPage/starred&#123;/owner&#125;&#123;/repo&#125;&quot;,</span><br><span class="line">    &quot;subscriptions_url&quot;: &quot;https://api.github.com/users/ChenViViPage/subscriptions&quot;,</span><br><span class="line">    &quot;organizations_url&quot;: &quot;https://api.github.com/users/ChenViViPage/orgs&quot;,</span><br><span class="line">    &quot;repos_url&quot;: &quot;https://api.github.com/users/ChenViViPage/repos&quot;,</span><br><span class="line">    &quot;events_url&quot;: &quot;https://api.github.com/users/ChenViViPage/events&#123;/privacy&#125;&quot;,</span><br><span class="line">    &quot;received_events_url&quot;: &quot;https://api.github.com/users/ChenViViPage/received_events&quot;,</span><br><span class="line">    &quot;type&quot;: &quot;User&quot;,</span><br><span class="line">    &quot;site_admin&quot;: false</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;labels&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;id&quot;: 985475685,</span><br><span class="line">      &quot;node_id&quot;: &quot;MDU6TGFiZWw5ODU0NzU2ODU=&quot;,</span><br><span class="line">      &quot;url&quot;: &quot;https://api.github.com/repos/ChenViViPage/test/labels/%E7%A1%AC%E4%BB%B6&quot;,</span><br><span class="line">      &quot;name&quot;: &quot;硬件&quot;,</span><br><span class="line">      &quot;color&quot;: &quot;f29668&quot;,</span><br><span class="line">      &quot;default&quot;: false</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  &quot;state&quot;: &quot;open&quot;,</span><br><span class="line">  &quot;locked&quot;: false,</span><br><span class="line">  &quot;assignee&quot;: null,</span><br><span class="line">  &quot;assignees&quot;: [</span><br><span class="line"></span><br><span class="line">  ],</span><br><span class="line">  &quot;milestone&quot;: null,</span><br><span class="line">  &quot;comments&quot;: 0,</span><br><span class="line">  &quot;created_at&quot;: &quot;2018-07-06T03:53:08Z&quot;,</span><br><span class="line">  &quot;updated_at&quot;: &quot;2018-07-06T03:57:14Z&quot;,</span><br><span class="line">  &quot;closed_at&quot;: null,</span><br><span class="line">  &quot;author_association&quot;: &quot;OWNER&quot;,</span><br><span class="line">  &quot;body&quot;: &quot;---\r\ntitle: 亲手打造萌萌哒的新键盘\r\ndate: 2017-04-10 21:39:33\r\ntags: [硬件]\r\n---\r\n\r\n## 前言\r\n\r\n这是一个完全不懂硬件的菜鸟一步一步组装GH60键盘的故事。\r\n\r\n之前那个ThinkPad坏得不能再写代码了，于是我换了新电脑，但是不习惯战神的键盘，太硬了好难摁下去，还是ThinkPad的键盘爽，但是目前也只好再买一个键盘，于是去网上了解什么键盘好用。\r\n\r\n知乎上有人推荐GH60，头一次知道还可以自己组装键盘，而且是开源的，感觉非常有意思啊，于是就下手了。\r\n\r\n## 组件\r\n\r\n1. PCB（ Printed Circuit Board），中文名称为印制电路板。这里是指键盘的主板，貌似有带底灯和无底灯两种PCB可选。\r\n2. LED底灯。可选项，如果不需要底灯就不需要买。\r\n3. 轴。机械键盘之所以为机械键盘的原因。\r\n4. 定位板。没有这个的话，到时候焊轴会焊歪，别问我怎么知道的，文章后面会有详细反例。但是好像也有老司机不喜欢用定位板干脆去掉定位板的。\r\n5. 卫星轴一套。用于固定比较长的键，如空格键，enter键等，都需要卫星轴来支撑。\r\n6. MiNi USB数据线一条。用于连接电脑和键盘。\r\n7. 键盘外壳。\r\n8. 键帽。真贵啊。\r\n\r\n## 开始组装\r\n\r\n### 刷固件\r\n\r\n这一步卖家写得挺详细，就不多说了\r\n\r\n[https://mp.weixin.qq.com/s/N_kdfWUl1c_9EscuJ_nMoA](https://mp.weixin.qq.com/s/N_kdfWUl1c_9EscuJ_nMoA)\r\n\r\n### 装卫星轴\r\n\r\n卫星轴塑料部分由两部分组成，暂且叫做A部分和B部分\r\n\r\n![](http://i4.buimg.com/567571/f598a40101ed0a79.png)\r\n\r\n首先，我们需要把B怼进A里边，然而B的两侧和A的两侧的构造都是不同的，应该朝什么方向呢？这里有一个辨别方法。\r\n\r\n如下图，A的两端一端是圆型，一端是角型。画红框的那一端就是圆型。\r\n\r\n![](http://i2.muimg.com/567571/616d3da58abe6993.png)\r\n\r\n如下图，B的一端是上面有横梁的。\r\n\r\n![](http://i1.piimg.com/567571/f1f173decdb36b65.png)\r\n\r\n将A的圆型那一端与B的有横梁端朝同一面套进去就行。然后，两个一个对穿上钢丝\r\n\r\n![](http://i2.muimg.com/567571/0833244fcdb42994.png)\r\n\r\n最后，把卫星轴装到PCB上。圆型端对着大孔，角型端对着小孔。角型端会比小孔稍微大一点，需要用力摁下去。\r\n\r\n![](http://i1.piimg.com/567571/a29732ca539c01b2.jpg)\r\n\r\n一共有5对卫星轴需要装配\r\n\r\n![](http://i4.buimg.com/567571/e32f6b00df3420fb.png)\r\n\r\n正确安装好的卫星轴，应该是紧贴PCB的。不然说明你没有将卫星轴紧摁进去。\r\n\r\nPCB倒立时卫星轴的B部分应该是自然下垂的，不然就说明你A与B部分装反了方向，换方向重新安装即可。\r\n\r\n![](http://i2.muimg.com/567571/04a81e1fa6a43680.png)\r\n\r\n### 装轴\r\n\r\n如果你不适用定位板，你可能会焊成这个样子。仔细一看，就能发现轴焊得歪歪扭扭。所以对于新手，还是用定位板的好。先把轴固定在定位板上，然后盖到PCB上，然后再焊。\r\n\r\n![](http://i4.buimg.com/567571/3e7f1d724b85da4e.png)\r\n\r\n需要注意的是，有些地方一个键位可以以有两种位置可以选择，这可不能随便瞎选一个，最好把键帽套在轴上试一试这个位置是否适合你的键帽然后再焊，不然可能会出现焊完后套键帽，几个键帽挤在一起根本没办法把键按下去的问题。\r\n\r\n![](http://i2.muimg.com/567571/773ea8f9d25d8e09.png)\r\n\r\n这是焊好所有的轴之后的样子\r\n\r\n![](http://i2.muimg.com/567571/b01b640e56d159ff.png)\r\n\r\n先别急着做下一步，赶紧插上键盘试试每个键是否好用吧。\r\n\r\n### 装底灯，装键帽\r\n\r\n注意区分正负极，LED灯长的那一端是正极。\r\n\r\n当你在PCB正面装好灯，准备翻去反面焊的时候，灯会往下掉，直到碰到桌面。千万不能这就开焊，由于PCB反面放置于桌面时，支撑它的是轴，那么现在灯的顶端和轴的顶端是在同一水平面的。而当键按下去的时候，键帽会忘下压，这轴时也忘下压，而灯不会和轴一样弹性，于是会阻止你按下这个键。\r\n\r\n针对上面提到的问题，我有个可行方案。先把LED灯的正负极插在PCB上，然后装上键帽，拿焊锡的手把PCB压住，确保这个键是按下状态，然后开焊。一定要确保这个键是按下去的状态下才焊灯，这很重要，不然还是可能出现上面的状况。\r\n\r\n### 装外壳\r\n\r\n如果你想刷配列，不必刷完配列再装外壳，装好外壳后，你会发现键盘背面有个的孔正好可以按到重置键。\r\n\r\n![](http://i4.buimg.com/567571/2cdb405c0e845e0f.png)\r\n\r\n### 刷配列\r\n\r\n刷配列可以说是开源键盘最让人心动的原因之一。想一想，输入默认账号密码，打开某个软件，或者某个键的功能让你不满，现在这些功能只需要你通过编程告诉键盘你想让哪个键做什么事，键盘就能如你所愿，这简直太棒了。\r\n\r\n首先，打开这个网站[http://yang.tkg.io/ydkb/](http://yang.tkg.io/ydkb/)\r\n\r\n点击【读取KeyMao】来读取你键盘现在的配列\r\n\r\n![](http://i1.piimg.com/567571/afded45a8f204712.png)\r\n\r\n点击【上放区域】中你想修改的键，然后到【下方区域】选择你希望这个键位达到的功能。\r\n\r\n![](http://i2.muimg.com/567571/ff25164056ee6e2a.png)\r\n\r\n人如果你希望你的键盘有多个配列，点击【上方区域】中的Tab来切换到另一个配列并进行编辑。\r\n![](http://i2.muimg.com/567571/b84dcfd38c4505c6.png)\r\n\r\n现在你已经编辑了多个配列了。怎么告诉键盘你要使用哪个配列呢？当然是通过按键了。所以，下一步就是设置Fn键。\r\n\r\n\r\n**因为我的怠惰所以断更了额，等勤勉的再补回来......**\r\n&quot;,</span><br><span class="line">  &quot;closed_by&quot;: null</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="创建Issue"><a href="#创建Issue" class="headerlink" title="创建Issue"></a>创建Issue</h3><h4 id="链接-2"><a href="#链接-2" class="headerlink" title="链接"></a>链接</h4><p><a href="https://api.github.com/repos/" target="_blank" rel="noopener">https://api.github.com/repos/</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-07-07T13:59:08.681Z" itemprop="dateUpdated">2018-07-07 21:59:08</time>
+</span><br>
+
+
+        
+        转载请注明出处，虽然不会有人转载的说：<a href="/2018/07/07/Github-Issues-API/" target="_blank" rel="external">http://blog.valorachen.club/2018/07/07/Github-Issues-API/</a>
+        
+    </div>
+    <footer>
+        <a href="http://blog.valorachen.club">
+            <img src="/img/avatar.png" alt="ViVi">
+            ViVi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/API/">API</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.valorachen.club/2018/07/07/Github-Issues-API/&title=《网易云音乐API Part1(登录，用户，歌单)》 — ViVi's craft&pic=http://blog.valorachen.club/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.valorachen.club/2018/07/07/Github-Issues-API/&title=《网易云音乐API Part1(登录，用户，歌单)》 — ViVi's craft&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.valorachen.club/2018/07/07/Github-Issues-API/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《网易云音乐API Part1(登录，用户，歌单)》 — ViVi's craft&url=http://blog.valorachen.club/2018/07/07/Github-Issues-API/&via=http://blog.valorachen.club" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.valorachen.club/2018/07/07/Github-Issues-API/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/10/16/现有Android框架研究/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">现有Android框架研究</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/06/25/记一些以前不知道的-Gradle-配置/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">记一些以前不知道的 Gradle 配置</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "EwUx7kp4hDkqF3CsL5B6QGS1-gzGzoHsz",
+            appKey: "1tccniD7zvLprgUME5qQiIH1",
+            avatar: "mm",
+            placeholder: "Say something if you want to",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>ViVi &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.valorachen.club/2018/07/07/Github-Issues-API/&title=《网易云音乐API Part1(登录，用户，歌单)》 — ViVi's craft&pic=http://blog.valorachen.club/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.valorachen.club/2018/07/07/Github-Issues-API/&title=《网易云音乐API Part1(登录，用户，歌单)》 — ViVi's craft&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.valorachen.club/2018/07/07/Github-Issues-API/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《网易云音乐API Part1(登录，用户，歌单)》 — ViVi's craft&url=http://blog.valorachen.club/2018/07/07/Github-Issues-API/&via=http://blog.valorachen.club" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.valorachen.club/2018/07/07/Github-Issues-API/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACK0lEQVR42u3ay46DMAwF0P7/T3ekWc2oAq5tuiA5rFBLG04WVvx4veLr/Xudf/v3mc9Pkn/Of9W8MDAwHst4n15HiyX3ny+U/PPRJ0fvhoGBsQ8jD4VHL1cN1vm60W8xMDAwTv/6PEznFwYGBsa3A26CyfEYGBgYvSQ2ecW8WFZNhm/LxTEwMB7IuHfJe++/2N/AwMB4CKOXZE7anPmRtPBWGBgYSzMmC+QNyGqzs3n0xMDA2IyRj23lQTPflOagGAYGxtKMSSqbDH7lW1DdIAwMjN0YkyGJu5qXOQ8DA2MfRnWcYt6G7LUfCtMiGBgYizKSUNsrmSWbckMJDwMDYwNGb8AiH+SqzkhUj6oYGBhrM6rF+nzhaomtuikYGBi7MXqNw2pw7JX7C4kxBgbGoox83GEyWlE9LJZH1jAwMJZm5CliNYD2joaTMhwGBsaqjCQU9tLXJFjn314EbgwMjM0Yk+A4GVTtbRMGBsYOjDyw9kpv1QGvpOg2SmUxMDAeyEgOhZOOaHVT8gZD1FXAwMBYiFE9rlXHL+bthAsYBgbG0oxJ0a2XEk/S1It3wMDAWJTRC6PVEtg3AvG/ewwMjKUZ+VVdslqwq+akGBgYuzGqTcS80N8jVVuqGBgY+zDyMn2voN8LvoVDIQYGBkYQ+HrPnD9ZSKExMDAw4mZnL9HNx8Iu2gMYGBhLM3pjE9XUtFeqi0bZMDAwlmbMi/XVFmMevm/GYGBgPI/xA8eDDyxcB5KzAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
