@@ -41,7 +41,7 @@
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/9/26/fb77688ba420944b34e82b0b6ef20a07?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/9/26/857316692be156e8bd2d0779fbdd9847?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/9/26/ada08d38bad75868981d15d007a7c9fb?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
-<meta property="og:updated_time" content="2018-10-18T03:51:00.043Z">
+<meta property="og:updated_time" content="2018-10-18T11:00:54.238Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="现有Android框架研究">
 <meta name="twitter:description" content="第一天 (2018/10/15)简述基本上大家都知道 Google 有 android-architecture，看了看简介发现是一种教程性质的东西并不是具体框架。然后我自己知道有 iosched，每年 Google 大会的新内容都会在里边呈现。还有一个 Android-CleanArchitecture，然而项目都还是基于 Android Studio 2.0 的无法直接运行，于是先看了 ios">
@@ -290,11 +290,15 @@
 <p>那么还是手动实践一下 Jetpack 吧</p>
 <h2 id="第四天-2018-10-18"><a href="#第四天-2018-10-18" class="headerlink" title="第四天(2018/10/18)"></a>第四天(2018/10/18)</h2><h3 id="简述-2"><a href="#简述-2" class="headerlink" title="简述"></a>简述</h3><p>昨天已经用 Jetpack 做了个简单的 Demo，但我嫌这个 Demo 太简单了，它相当于没有 Model 层，于是今天打算把整个流程都走一遍，实现一个这样的场景：从网络获取列表页并实现下拉加载更多。这下就涉及到 Model 层的数据获取以及缓存的部分了。而 Model 层的数据，在 Jetpack 下都是 LiveData，它们对此也有一个 ORM 框架 叫做 <a href="https://developer.android.com/training/data-storage/room/" target="_blank" rel="noopener">Room</a>。据说这个框架本身就支持了 LiveData</p>
 <h3 id="Room-框架"><a href="#Room-框架" class="headerlink" title="Room 框架"></a>Room 框架</h3><p>然后我发现了 <a href="https://codelabs.developers.google.com/" target="_blank" rel="noopener">Google Codelabs</a>，一个可以直接下载 Demo 学习的 Google 官方教程网站，上面有关于结合 Jetpack 讲的 <a href="https://codelabs.developers.google.com/codelabs/android-room-with-a-view-kotlin/index.html" target="_blank" rel="noopener">教程</a>，于是借此了解了一下 Room</p>
-<p>查询操作貌似必须使用 SQL 语句，这点不太友好</p>
+<p>查询操作貌似必须使用 SQL 语句，这点不太友好。为什么 Android 上没有像 Java 后端 Jpa 一样的东西呢？所有东西都可以选择以写 Java 代码或写 SQL 来完成，而且 IDE 上还有插件一键根据整个数据库的表结构生成 Dao 和 Entity</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@Dao</span><br><span class="line">interface WordDao &#123;</span><br><span class="line"></span><br><span class="line">    @Query(&quot;SELECT * from word_table ORDER BY word ASC&quot;)</span><br><span class="line">    fun getAllWords(): List&lt;Word&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>insert，update，delete可以直接使用标签，也可以使用 SQL 语句</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@Dao</span><br><span class="line">interface WordDao &#123;</span><br><span class="line"></span><br><span class="line">    @Insert</span><br><span class="line">    fun insert(word: Word)</span><br><span class="line"></span><br><span class="line">    @Update</span><br><span class="line">    fun update(word: Word)</span><br><span class="line">    </span><br><span class="line">    @Delete</span><br><span class="line">    fun delete(word: Word)</span><br><span class="line">    </span><br><span class="line">    @Query(&quot;DELETE FROM word_table&quot;)</span><br><span class="line">    fun deleteAll()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>可以直接查询出 LiveData，这是 Room 独有的特点了</p>
+<blockquote>
+<p>参考：<a href="https://codelabs.developers.google.com/codelabs/android-room-with-a-view-kotlin/index.html#5" target="_blank" rel="noopener">Android Room with a View - Kotlin</a></p>
+<p>If you use <code>LiveData</code> independently from Room, you have to manage updating the data. <code>LiveData</code> has no publicly available methods to update the stored data.</p>
+</blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@Dao</span><br><span class="line">interface WordDao &#123;</span><br><span class="line"></span><br><span class="line">    @Query(&quot;SELECT * from word_table ORDER BY word ASC&quot;)</span><br><span class="line">   	fun getAllWords(): LiveData&lt;List&lt;Word&gt;&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>接着我看到一篇对比 ORM 框架的文章，发现 ROOM 的性能相对而言并不是很好，也不支持加密，但是优点在于轻量。只占包体积的 50kb，方法数 300 左右。参考文章：<a href="https://juejin.im/entry/59ca6db55188257a125d85b9" target="_blank" rel="noopener">Room，Realm, ObjectBox 你选择哪个？</a>(下面图表的纵轴单位我猜是一种速度单位？因为文章的结论是 ObjectBox 性能最优)</p>
 <figure class="image-bubble">
@@ -347,7 +351,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-10-18T03:51:00.043Z" itemprop="dateUpdated">2018-10-18 11:51:00</time>
+    最后更新时间：<time datetime="2018-10-18T11:00:54.238Z" itemprop="dateUpdated">2018-10-18 19:00:54</time>
 </span><br>
 
 
